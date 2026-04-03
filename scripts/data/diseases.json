@@ -1,0 +1,1437 @@
+[
+  {
+    "name": "Late Blight",
+    "nameHi": "पछेती झुलसा",
+    "scientificName": "Phytophthora infestans",
+    "type": "fungal",
+    "affectedCrops": ["Tomato", "Potato"],
+    "symptoms": ["Dark brown water-soaked spots on leaves", "White fungal growth on underside of leaves", "Fruit rot with greasy appearance", "Rapid wilting and death of foliage"],
+    "symptomsHi": ["पत्तियों पर गहरे भूरे पानी जैसे धब्बे", "पत्तियों की निचली सतह पर सफेद फफूंद", "फलों पर चिकनी सड़न", "पत्तियों का तेजी से मुरझाना और मरना"],
+    "causativeAgent": "Phytophthora infestans",
+    "favorableConditions": "High humidity (>80%), temperature 15-25°C, cloudy weather, continuous rainfall",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected plants immediately", "Improve air circulation by proper spacing"],
+      "physical": ["Soil solarization before planting"],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 7 days as preventive"},
+        {"name": "Metalaxyl 8% + Mancozeb 64% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-14 days"},
+        {"name": "Cymoxanil 8% + Mancozeb 64% WP", "dosage": "3g/L", "applicationMethod": "Foliar spray", "frequency": "Every 7-10 days"}
+      ],
+      "biological": ["Trichoderma viride soil application at 2.5 kg/ha", "Pseudomonas fluorescens foliar spray"]
+    },
+    "preventionTips": ["Use certified disease-free seed tubers", "Use resistant varieties (Kufri Jyoti, Kufri Khyati)", "Avoid overhead irrigation", "Maintain proper spacing for air circulation", "Crop rotation with non-solanaceous crops"],
+    "preventionTipsHi": ["प्रमाणित रोगमुक्त बीज कंदों का उपयोग करें", "प्रतिरोधी किस्मों का उपयोग करें", "ऊपर से सिंचाई न करें", "उचित दूरी बनाए रखें", "गैर-सोलेनेसी फसलों के साथ फसल चक्र अपनाएं"],
+    "source": "ICAR-Central Potato Research Institute / Indian Phytopathological Society"
+  },
+  {
+    "name": "Early Blight",
+    "nameHi": "अगेती झुलसा",
+    "scientificName": "Alternaria solani",
+    "type": "fungal",
+    "affectedCrops": ["Tomato", "Potato"],
+    "symptoms": ["Concentric ring-shaped brown spots on older leaves (target-board appearance)", "Leaf yellowing and premature defoliation", "Dark sunken lesions on fruit near stem end", "Collar rot in seedlings"],
+    "symptomsHi": ["पुरानी पत्तियों पर गोल छल्लेदार भूरे धब्बे (निशाना जैसा)", "पत्तियों का पीला पड़ना और समय से पहले गिरना", "फल पर तने के पास गहरे धँसे घाव", "पौधों में कॉलर सड़न"],
+    "causativeAgent": "Alternaria solani",
+    "favorableConditions": "Temperature 25-30°C, high humidity, alternating wet and dry periods, nutrient-stressed plants",
+    "treatments": {
+      "mechanical": ["Remove infected lower leaves", "Destroy crop residues after harvest"],
+      "physical": ["Hot water seed treatment at 50°C for 25 minutes"],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 7-10 days"},
+        {"name": "Chlorothalonil 75% WP", "dosage": "2g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-14 days"},
+        {"name": "Azoxystrobin 23% SC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "Every 14 days"}
+      ],
+      "biological": ["Trichoderma harzianum seed treatment at 5g/kg seed", "Pseudomonas fluorescens at 5g/L foliar spray"]
+    },
+    "preventionTips": ["Use disease-free seeds and transplants", "Follow 3-year crop rotation", "Ensure adequate nutrition especially potassium", "Avoid overhead irrigation", "Mulching to prevent soil splash"],
+    "preventionTipsHi": ["रोगमुक्त बीज और पौध का उपयोग करें", "3 साल का फसल चक्र अपनाएं", "पर्याप्त पोषण विशेषकर पोटाश सुनिश्चित करें", "ऊपर से सिंचाई न करें", "मल्चिंग करें"],
+    "source": "ICAR-Indian Institute of Vegetable Research"
+  },
+  {
+    "name": "Powdery Mildew",
+    "nameHi": "चूर्णिल आसिता",
+    "scientificName": "Erysiphe cichoracearum / Sphaerotheca fuliginea",
+    "type": "fungal",
+    "affectedCrops": ["Okra", "Pea", "Mango", "Grapes", "Chili", "Capsicum", "Wheat", "Mustard"],
+    "symptoms": ["White powdery coating on leaf surfaces", "Curling and yellowing of leaves", "Premature leaf fall", "Reduced fruit size and quality"],
+    "symptomsHi": ["पत्तियों की सतह पर सफेद चूर्णी परत", "पत्तियों का मुड़ना और पीला पड़ना", "समय से पहले पत्तियों का गिरना", "फलों के आकार और गुणवत्ता में कमी"],
+    "causativeAgent": "Erysiphe cichoracearum / Sphaerotheca fuliginea",
+    "favorableConditions": "Dry weather with moderate temperatures (20-25°C), high relative humidity, shaded conditions",
+    "treatments": {
+      "mechanical": ["Remove and destroy severely infected plant parts", "Improve air circulation by pruning"],
+      "physical": [],
+      "chemical": [
+        {"name": "Sulphur 80% WP", "dosage": "3g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-15 days"},
+        {"name": "Karathane (Dinocap) 48% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-14 days"},
+        {"name": "Hexaconazole 5% EC", "dosage": "2ml/L", "applicationMethod": "Foliar spray", "frequency": "Every 15 days"}
+      ],
+      "biological": ["Ampelomyces quisqualis bio-fungicide", "Neem oil 3% spray"]
+    },
+    "preventionTips": ["Use resistant varieties", "Avoid overcrowding of plants", "Ensure proper sunlight exposure", "Balanced fertilization avoiding excess nitrogen"],
+    "preventionTipsHi": ["प्रतिरोधी किस्मों का उपयोग करें", "पौधों में भीड़ न करें", "उचित धूप सुनिश्चित करें", "अधिक नाइट्रोजन से बचें"],
+    "source": "ICAR / Indian Phytopathological Society"
+  },
+  {
+    "name": "Downy Mildew",
+    "nameHi": "मृदुरोमिल आसिता",
+    "scientificName": "Sclerospora graminicola / Peronospora spp.",
+    "type": "fungal",
+    "affectedCrops": ["Bajra", "Maize", "Grapes", "Cauliflower", "Cabbage", "Onion"],
+    "symptoms": ["Chlorotic streaks on leaves", "Downy white-grey fungal growth on lower leaf surface", "Malformation of earheads (green ear in bajra)", "Stunted growth"],
+    "symptomsHi": ["पत्तियों पर पीली धारियाँ", "पत्ती की निचली सतह पर सफेद-धूसर मुलायम फफूंद", "बालियों का विकृत होना (बाजरे में हरी बाली)", "पौधों की वृद्धि रुकना"],
+    "causativeAgent": "Sclerospora graminicola (bajra), Plasmopara viticola (grapes), Peronospora destructor (onion)",
+    "favorableConditions": "Cool temperatures (10-20°C), high humidity (>85%), heavy dew, foggy weather",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected plants", "Rogue out diseased plants in the field"],
+      "physical": [],
+      "chemical": [
+        {"name": "Metalaxyl 35% WS", "dosage": "6g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"},
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 7-10 days"},
+        {"name": "Ridomil Gold (Metalaxyl-M + Mancozeb)", "dosage": "2g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-14 days"}
+      ],
+      "biological": ["Trichoderma viride seed treatment at 4g/kg"]
+    },
+    "preventionTips": ["Use treated seeds", "Use resistant varieties", "Avoid planting in low-lying waterlogged areas", "Follow crop rotation", "Remove volunteer plants"],
+    "preventionTipsHi": ["उपचारित बीजों का प्रयोग करें", "प्रतिरोधी किस्में लगाएं", "निचले जलभराव वाले क्षेत्रों में न बोएं", "फसल चक्र अपनाएं", "स्वयंजात पौधों को हटाएं"],
+    "source": "ICAR-Indian Institute of Millets Research"
+  },
+  {
+    "name": "Rust of Wheat",
+    "nameHi": "गेहूँ का गेरुआ रोग",
+    "scientificName": "Puccinia spp.",
+    "type": "fungal",
+    "affectedCrops": ["Wheat"],
+    "symptoms": ["Orange-brown pustules on leaves (leaf rust - P. triticina)", "Yellow stripe pustules (stripe rust - P. striiformis)", "Dark brown-black pustules on stems (stem rust - P. graminis)", "Premature drying of leaves"],
+    "symptomsHi": ["पत्तियों पर नारंगी-भूरे रंग के फुंसियाँ (पत्ती गेरुआ)", "पीली धारीदार फुंसियाँ (पीला गेरुआ)", "तनों पर गहरी काली-भूरी फुंसियाँ (तना गेरुआ)", "पत्तियों का समय से पहले सूखना"],
+    "causativeAgent": "Puccinia triticina (leaf rust), Puccinia striiformis (yellow rust), Puccinia graminis tritici (stem rust)",
+    "favorableConditions": "Cool moist weather (10-20°C for yellow rust, 15-25°C for leaf rust), dew, humid conditions",
+    "treatments": {
+      "mechanical": ["Remove volunteer wheat plants", "Destroy stubbles after harvest"],
+      "physical": [],
+      "chemical": [
+        {"name": "Propiconazole 25% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At first appearance, repeat after 15 days if needed"},
+        {"name": "Tebuconazole 25.9% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease appearance"},
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Preventive every 10-15 days"}
+      ],
+      "biological": []
+    },
+    "preventionTips": ["Grow resistant varieties (HD 3226, DBW 187, PBW 826)", "Timely sowing in recommended window", "Avoid late sowing", "Follow seed rate recommendations", "Monitor fields regularly after January"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में उगाएं (HD 3226, DBW 187, PBW 826)", "अनुशंसित समय पर बुवाई करें", "देर से बुवाई से बचें", "अनुशंसित बीज दर का पालन करें", "जनवरी के बाद नियमित निगरानी करें"],
+    "source": "ICAR-Indian Institute of Wheat and Barley Research"
+  },
+  {
+    "name": "Rice Blast",
+    "nameHi": "धान का ब्लास्ट रोग",
+    "scientificName": "Magnaporthe oryzae (Pyricularia oryzae)",
+    "type": "fungal",
+    "affectedCrops": ["Rice"],
+    "symptoms": ["Spindle-shaped spots with grey center and brown border on leaves", "Neck rot causing panicle breakage (neck blast)", "Node blast causing blackening of nodes", "Brown spots on seeds"],
+    "symptomsHi": ["पत्तियों पर भूरी किनारी और धूसर केंद्र वाले तकली आकार के धब्बे", "गर्दन सड़न जिससे बाली टूट जाती है", "गाँठ ब्लास्ट जिसमें गाँठें काली हो जाती हैं", "बीजों पर भूरे धब्बे"],
+    "causativeAgent": "Magnaporthe oryzae",
+    "favorableConditions": "Temperature 20-30°C, high humidity (>90%), prolonged leaf wetness, excessive nitrogen, cloudy weather",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected crop residue", "Maintain clean bunds"],
+      "physical": [],
+      "chemical": [
+        {"name": "Tricyclazole 75% WP", "dosage": "0.6g/L", "applicationMethod": "Foliar spray", "frequency": "At tillering and panicle emergence"},
+        {"name": "Isoprothiolane 40% EC", "dosage": "1.5ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease initiation, repeat after 15 days"},
+        {"name": "Carbendazim 50% WP", "dosage": "1g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-15 days"}
+      ],
+      "biological": ["Pseudomonas fluorescens seed treatment at 10g/kg", "Trichoderma viride at 4g/kg seed treatment"]
+    },
+    "preventionTips": ["Use resistant varieties (Tetep, Rasi, CO 39)", "Avoid excessive nitrogen fertilization", "Seed treatment with fungicide before sowing", "Maintain optimum plant population", "Split application of nitrogen"],
+    "preventionTipsHi": ["प्रतिरोधी किस्मों का उपयोग करें", "अधिक नाइट्रोजन से बचें", "बुवाई से पहले बीज उपचार करें", "उचित पौध संख्या बनाए रखें", "नाइट्रोजन का विभाजित उपयोग करें"],
+    "source": "ICAR-Indian Institute of Rice Research"
+  },
+  {
+    "name": "Sheath Blight of Rice",
+    "nameHi": "धान का आवरण अंगमारी रोग",
+    "scientificName": "Rhizoctonia solani",
+    "type": "fungal",
+    "affectedCrops": ["Rice"],
+    "symptoms": ["Oval or irregular greenish-grey lesions on leaf sheaths near water level", "Lesions enlarge and merge covering entire sheath", "White-grey mycelial growth on lesions", "Lodging in severe cases"],
+    "symptomsHi": ["पानी की सतह के पास पत्ती आवरण पर अंडाकार हरे-धूसर घाव", "घाव बढ़कर पूरे आवरण को ढक लेते हैं", "घावों पर सफेद-धूसर कवकजाल", "गंभीर स्थिति में पौधे गिर जाते हैं"],
+    "causativeAgent": "Rhizoctonia solani Kuhn (Teleomorph: Thanatephorus cucumeris)",
+    "favorableConditions": "High temperature (28-32°C), high humidity, dense planting, excessive nitrogen, continuous flooding",
+    "treatments": {
+      "mechanical": ["Remove floating sclerotia from irrigation water", "Avoid dense transplanting"],
+      "physical": [],
+      "chemical": [
+        {"name": "Hexaconazole 5% EC", "dosage": "2ml/L", "applicationMethod": "Foliar spray on lower plant parts", "frequency": "At disease initiation"},
+        {"name": "Validamycin 3% SL", "dosage": "2ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease initiation, repeat after 15 days"},
+        {"name": "Propiconazole 25% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At boot leaf stage"}
+      ],
+      "biological": ["Trichoderma viride at 2.5 kg/ha mixed with FYM", "Pseudomonas fluorescens at 2.5 kg/ha"]
+    },
+    "preventionTips": ["Avoid excessive nitrogen", "Maintain optimum spacing (20x15 cm)", "Drain fields periodically", "Avoid continuous rice monoculture", "Use silicon-based fertilizers"],
+    "preventionTipsHi": ["अधिक नाइट्रोजन से बचें", "उचित दूरी (20x15 सेमी) बनाए रखें", "समय-समय पर खेत से पानी निकालें", "लगातार धान की खेती न करें", "सिलिकॉन आधारित उर्वरक उपयोग करें"],
+    "source": "ICAR-Indian Institute of Rice Research"
+  },
+  {
+    "name": "Brown Spot of Rice",
+    "nameHi": "धान का भूरा धब्बा रोग",
+    "scientificName": "Bipolaris oryzae (Helminthosporium oryzae)",
+    "type": "fungal",
+    "affectedCrops": ["Rice"],
+    "symptoms": ["Oval brown spots with grey center on leaves", "Dark brown spots on glumes and grains", "Seedling blight", "Poor grain filling"],
+    "symptomsHi": ["पत्तियों पर धूसर केंद्र वाले अंडाकार भूरे धब्बे", "भूसी और दानों पर गहरे भूरे धब्बे", "पौधशाला में अंगमारी", "दानों का खराब भरना"],
+    "causativeAgent": "Bipolaris oryzae",
+    "favorableConditions": "Nutrient-deficient soils (especially potassium), temperature 25-30°C, high humidity, drought stress",
+    "treatments": {
+      "mechanical": ["Use clean seeds", "Remove crop residues"],
+      "physical": ["Hot water seed treatment at 52°C for 10 minutes"],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-15 days"},
+        {"name": "Carbendazim 50% WP", "dosage": "1g/L", "applicationMethod": "Seed treatment at 2g/kg", "frequency": "Before sowing"},
+        {"name": "Propiconazole 25% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease appearance"}
+      ],
+      "biological": ["Pseudomonas fluorescens seed treatment", "Trichoderma viride soil application"]
+    },
+    "preventionTips": ["Balanced fertilization with adequate potassium", "Seed treatment before sowing", "Avoid water stress", "Use resistant varieties"],
+    "preventionTipsHi": ["पर्याप्त पोटाश के साथ संतुलित उर्वरीकरण", "बुवाई से पहले बीज उपचार", "पानी की कमी से बचें", "प्रतिरोधी किस्मों का उपयोग करें"],
+    "source": "ICAR-Indian Institute of Rice Research"
+  },
+  {
+    "name": "Smut of Wheat (Loose Smut)",
+    "nameHi": "गेहूँ का खुला कंड रोग",
+    "scientificName": "Ustilago tritici",
+    "type": "fungal",
+    "affectedCrops": ["Wheat"],
+    "symptoms": ["Earheads converted into black powdery mass of spores", "Entire grain replaced by dark brown-black spore mass", "Affected earheads emerge slightly earlier than healthy ones", "Only rachis remains after spore dispersal"],
+    "symptomsHi": ["बालियाँ काले चूर्ण बीजाणुओं में बदल जाती हैं", "पूरा दाना गहरे काले-भूरे बीजाणुओं में बदल जाता है", "प्रभावित बालियाँ स्वस्थ से पहले निकलती हैं", "बीजाणु उड़ने के बाद केवल अक्ष बचता है"],
+    "causativeAgent": "Ustilago tritici",
+    "favorableConditions": "Seed-borne infection, moderate temperature (18-22°C) at flowering",
+    "treatments": {
+      "mechanical": ["Rogue out infected earheads before spore dispersal"],
+      "physical": ["Solar heat treatment of seeds (spread seeds in sun for 4 hours)"],
+      "chemical": [
+        {"name": "Carboxin 75% WP", "dosage": "2g/kg seed", "applicationMethod": "Seed treatment (slurry)", "frequency": "Before sowing"},
+        {"name": "Carbendazim 50% WP", "dosage": "2.5g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"},
+        {"name": "Tebuconazole 2% DS", "dosage": "1.5g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"}
+      ],
+      "biological": []
+    },
+    "preventionTips": ["Use certified disease-free seeds", "Seed treatment is essential", "Rogue infected plants before spore dispersal", "Grow resistant varieties"],
+    "preventionTipsHi": ["प्रमाणित रोगमुक्त बीजों का उपयोग करें", "बीज उपचार आवश्यक है", "बीजाणु उड़ने से पहले रोगी पौधे उखाड़ें", "प्रतिरोधी किस्में उगाएं"],
+    "source": "ICAR-Indian Institute of Wheat and Barley Research"
+  },
+  {
+    "name": "Wilt of Chickpea",
+    "nameHi": "चने का उकठा रोग",
+    "scientificName": "Fusarium oxysporum f.sp. ciceri",
+    "type": "fungal",
+    "affectedCrops": ["Chana"],
+    "symptoms": ["Drooping and yellowing of leaves starting from lower parts", "Internal browning of vascular tissues", "Plants dry out completely within days", "Roots show no external rotting"],
+    "symptomsHi": ["पत्तियों का नीचे से ऊपर की ओर पीला पड़ना और मुरझाना", "संवहन ऊतकों का आंतरिक भूरापन", "पौधे कुछ दिनों में पूरी तरह सूख जाते हैं", "जड़ों पर बाहरी सड़न नहीं होती"],
+    "causativeAgent": "Fusarium oxysporum f.sp. ciceri",
+    "favorableConditions": "Temperature 25-30°C, dry weather followed by irrigation, soil-borne pathogen persists for years",
+    "treatments": {
+      "mechanical": ["Remove and destroy wilted plants", "Deep summer ploughing to expose fungal resting bodies"],
+      "physical": ["Soil solarization with polythene sheet for 6 weeks in summer"],
+      "chemical": [
+        {"name": "Carbendazim 50% WP", "dosage": "2g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"},
+        {"name": "Carboxin 37.5% + Thiram 37.5% DS", "dosage": "3g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"}
+      ],
+      "biological": ["Trichoderma viride seed treatment at 4g/kg", "Trichoderma harzianum soil application at 2.5 kg/ha with FYM"]
+    },
+    "preventionTips": ["Use wilt-resistant varieties (JG 315, Vishal, Avrodhi)", "Follow 4-5 year crop rotation", "Seed treatment is essential", "Avoid water-logging", "Use organic amendments"],
+    "preventionTipsHi": ["उकठा प्रतिरोधी किस्में उगाएं (JG 315, विशाल, अव्रोधी)", "4-5 साल का फसल चक्र अपनाएं", "बीज उपचार अवश्य करें", "जलभराव से बचें", "जैविक खाद का उपयोग करें"],
+    "source": "ICAR-Indian Institute of Pulses Research"
+  },
+  {
+    "name": "Anthracnose",
+    "nameHi": "एन्थ्रेक्नोज",
+    "scientificName": "Colletotrichum spp.",
+    "type": "fungal",
+    "affectedCrops": ["Chili", "Mango", "Banana", "Guava", "Papaya", "Grapes"],
+    "symptoms": ["Dark sunken lesions on fruits", "Concentric rings of black dots (acervuli) on lesions", "Fruit rotting and mummification", "Die-back of twigs in mango", "Leaf spots with shot-hole appearance"],
+    "symptomsHi": ["फलों पर गहरे धँसे घाव", "घावों पर काले बिंदुओं के गोल छल्ले", "फलों की सड़न और सिकुड़न", "आम में टहनियों का सूखना", "पत्तियों पर छेद वाले धब्बे"],
+    "causativeAgent": "Colletotrichum capsici (chili), C. gloeosporioides (mango, papaya)",
+    "favorableConditions": "Warm humid weather (25-30°C), frequent rains, high humidity (>80%), wounds on fruits",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected fruits and plant parts", "Prune dead twigs in fruit trees"],
+      "physical": ["Hot water treatment of fruits at 52°C for 10 minutes (mango)"],
+      "chemical": [
+        {"name": "Carbendazim 50% WP", "dosage": "1g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-15 days during fruiting"},
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10 days"},
+        {"name": "Azoxystrobin 23% SC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "Every 14 days"}
+      ],
+      "biological": ["Trichoderma viride at 5g/L spray", "Pseudomonas fluorescens at 5g/L spray"]
+    },
+    "preventionTips": ["Use disease-free seeds and planting material", "Avoid injuries during harvesting", "Proper drying of chili before storage", "Field sanitation", "Pre-harvest spray of fungicides"],
+    "preventionTipsHi": ["रोगमुक्त बीज और रोपण सामग्री का उपयोग करें", "तुड़ाई के दौरान चोट से बचें", "भंडारण से पहले मिर्च को अच्छी तरह सुखाएं", "खेत की स्वच्छता रखें", "तुड़ाई से पहले फफूंदनाशक छिड़काव करें"],
+    "source": "ICAR-Indian Institute of Spices Research / ICAR-Indian Institute of Horticultural Research"
+  },
+  {
+    "name": "Bacterial Wilt",
+    "nameHi": "जीवाणु उकठा रोग",
+    "scientificName": "Ralstonia solanacearum",
+    "type": "bacterial",
+    "affectedCrops": ["Tomato", "Brinjal", "Chili", "Potato", "Ginger", "Banana"],
+    "symptoms": ["Sudden wilting of entire plant without yellowing", "Browning of vascular bundles visible when stem is cut", "Bacterial ooze test: milky white stream from cut stem in water", "Plants wilt during hot part of day, recover at night initially"],
+    "symptomsHi": ["बिना पीला पड़े पूरे पौधे का अचानक मुरझाना", "तना काटने पर संवहन ऊतकों का भूरापन दिखना", "जीवाणु स्राव परीक्षण: पानी में तने से दूधिया सफेद धारा", "दिन में मुरझाना, शुरू में रात को वापस आना"],
+    "causativeAgent": "Ralstonia solanacearum",
+    "favorableConditions": "High soil moisture, temperature 28-35°C, acidic to neutral soil pH, waterlogged conditions",
+    "treatments": {
+      "mechanical": ["Remove and destroy wilted plants along with surrounding soil", "Avoid movement of soil from infected to clean fields"],
+      "physical": ["Soil solarization for 40-45 days in summer", "Raised bed cultivation for better drainage"],
+      "chemical": [
+        {"name": "Streptomycin sulphate + Tetracycline (Streptocycline)", "dosage": "0.5g/10L (50 ppm)", "applicationMethod": "Soil drench around plant base", "frequency": "At transplanting and at disease appearance"},
+        {"name": "Copper oxychloride 50% WP", "dosage": "3g/L", "applicationMethod": "Soil drench", "frequency": "Preventive at transplanting"}
+      ],
+      "biological": ["Pseudomonas fluorescens at 20g/L soil drench", "Bacillus subtilis soil application", "Trichoderma viride at 2.5 kg mixed with neem cake 100 kg/ha"]
+    },
+    "preventionTips": ["Use resistant rootstocks for grafting", "Crop rotation with non-host crops (cereals, crucifers)", "Maintain soil pH above 7.0 with lime application", "Avoid waterlogging", "Use pathogen-free seedlings"],
+    "preventionTipsHi": ["ग्राफ्टिंग के लिए प्रतिरोधी मूलवृंत का उपयोग करें", "गैर-होस्ट फसलों के साथ फसल चक्र अपनाएं", "चूना डालकर मिट्टी का pH 7.0 से ऊपर रखें", "जलभराव से बचें", "रोगमुक्त पौधे लगाएं"],
+    "source": "ICAR-Indian Institute of Vegetable Research / ICAR-Indian Institute of Spices Research"
+  },
+  {
+    "name": "Bacterial Leaf Blight of Rice",
+    "nameHi": "धान का जीवाणु पत्ती अंगमारी रोग",
+    "scientificName": "Xanthomonas oryzae pv. oryzae",
+    "type": "bacterial",
+    "affectedCrops": ["Rice"],
+    "symptoms": ["Water-soaked lesions on leaf margins that enlarge and turn yellow to white", "Leaves dry up from tip to base", "Milky to yellowish bacterial ooze on leaf surface in morning", "Entire field gives a burnt appearance in severe cases"],
+    "symptomsHi": ["पत्ती के किनारों पर पानी भरे घाव जो बढ़कर पीले से सफेद हो जाते हैं", "पत्तियाँ ऊपर से नीचे तक सूख जाती हैं", "सुबह पत्ती की सतह पर दूधिया-पीला जीवाणु स्राव", "गंभीर स्थिति में पूरा खेत जला हुआ दिखता है"],
+    "causativeAgent": "Xanthomonas oryzae pv. oryzae",
+    "favorableConditions": "High nitrogen levels, continuous rain, warm temperature (25-34°C), strong winds, wounds from insects or storms",
+    "treatments": {
+      "mechanical": ["Avoid clipping of seedling tips during transplanting", "Drain excess water"],
+      "physical": [],
+      "chemical": [
+        {"name": "Streptocycline", "dosage": "0.5g/10L", "applicationMethod": "Foliar spray", "frequency": "At disease appearance, repeat after 7 days"},
+        {"name": "Copper oxychloride 50% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-15 days"}
+      ],
+      "biological": ["Pseudomonas fluorescens at 5g/L foliar spray", "Bacillus subtilis foliar spray"]
+    },
+    "preventionTips": ["Use resistant varieties (Improved Samba Mahsuri, Rajendra Dhan 201)", "Avoid excessive nitrogen", "Balanced use of NPK fertilizers", "Avoid field-to-field irrigation water flow", "Seed treatment with Streptocycline"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में लगाएं", "अधिक नाइट्रोजन से बचें", "NPK उर्वरकों का संतुलित उपयोग करें", "खेत से खेत में सिंचाई के पानी का बहाव रोकें", "बीज उपचार करें"],
+    "source": "ICAR-Indian Institute of Rice Research"
+  },
+  {
+    "name": "Citrus Canker",
+    "nameHi": "नींबू वर्गीय फलों का कैंकर रोग",
+    "scientificName": "Xanthomonas citri subsp. citri",
+    "type": "bacterial",
+    "affectedCrops": ["Citrus (Lemon, Orange, Mosambi)"],
+    "symptoms": ["Raised corky lesions on leaves, stems, and fruits", "Lesions have water-soaked margins and yellow halo", "Crater-like appearance on both leaf surfaces", "Premature fruit drop and fruit blemishes"],
+    "symptomsHi": ["पत्तियों, टहनियों और फलों पर उभरे कॉर्की घाव", "घावों के चारों ओर पानी भरा किनारा और पीला घेरा", "दोनों तरफ गड्ढे जैसा दिखना", "फलों का समय से पहले गिरना और दाग"],
+    "causativeAgent": "Xanthomonas citri subsp. citri",
+    "favorableConditions": "Warm humid weather (25-35°C), rain with wind, leaf miner injuries provide entry points",
+    "treatments": {
+      "mechanical": ["Prune and destroy infected twigs and branches", "Remove severely infected trees"],
+      "physical": [],
+      "chemical": [
+        {"name": "Bordeaux mixture 1%", "dosage": "10g copper sulphate + 10g lime per liter", "applicationMethod": "Foliar spray", "frequency": "Before and after monsoon"},
+        {"name": "Copper oxychloride 50% WP", "dosage": "3g/L", "applicationMethod": "Foliar spray", "frequency": "3-4 sprays during monsoon at 15 day intervals"},
+        {"name": "Streptocycline", "dosage": "0.5g/10L mixed with copper oxychloride 3g/L", "applicationMethod": "Foliar spray", "frequency": "At disease appearance"}
+      ],
+      "biological": []
+    },
+    "preventionTips": ["Use disease-free planting material", "Control leaf miner to prevent entry wounds", "Windbreaks to reduce spread", "Avoid working in orchards when foliage is wet", "Quarantine measures for new plantings"],
+    "preventionTipsHi": ["रोगमुक्त रोपण सामग्री का उपयोग करें", "पत्ती सुरंगक कीट को नियंत्रित करें", "हवा रोकने के लिए वायुरोधक पट्टी लगाएं", "गीली पत्तियों के समय बाग में काम न करें", "नई रोपाई के लिए संगरोध उपाय अपनाएं"],
+    "source": "ICAR-Central Citrus Research Institute"
+  },
+  {
+    "name": "Yellow Mosaic of Moong/Urad",
+    "nameHi": "मूँग/उड़द का पीला मोजेक रोग",
+    "scientificName": "Mungbean Yellow Mosaic India Virus (MYMIV)",
+    "type": "viral",
+    "affectedCrops": ["Moong", "Urad", "Soybean"],
+    "symptoms": ["Bright yellow patches alternating with green areas on leaves (mosaic pattern)", "Entire leaves turn yellow in severe infection", "Pods become small and deformed", "Severe yield reduction up to 85%"],
+    "symptomsHi": ["पत्तियों पर चमकीले पीले और हरे धब्बों का मोजेक पैटर्न", "गंभीर संक्रमण में पूरी पत्तियाँ पीली हो जाती हैं", "फलियाँ छोटी और विकृत हो जाती हैं", "उपज में 85% तक की कमी"],
+    "causativeAgent": "Mungbean Yellow Mosaic India Virus (MYMIV), transmitted by whitefly (Bemisia tabaci)",
+    "favorableConditions": "Warm humid weather (25-35°C), high whitefly population, late sowing, continuous pulse cultivation",
+    "treatments": {
+      "mechanical": ["Uproot and destroy infected plants early", "Use yellow sticky traps for whitefly monitoring"],
+      "physical": [],
+      "chemical": [
+        {"name": "Imidacloprid 17.8% SL", "dosage": "0.5ml/L", "applicationMethod": "Foliar spray for whitefly control", "frequency": "At 15 and 30 days after sowing"},
+        {"name": "Thiamethoxam 25% WG", "dosage": "0.3g/L", "applicationMethod": "Foliar spray", "frequency": "At disease appearance"},
+        {"name": "Imidacloprid 70% WS", "dosage": "5g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"}
+      ],
+      "biological": ["Neem oil 5ml/L spray to repel whiteflies", "Release of natural enemies of whitefly (Encarsia formosa)"]
+    },
+    "preventionTips": ["Use resistant varieties (Samrat, Pusa Vishal for moong; TAU-1 for urad)", "Timely sowing (early kharif)", "Seed treatment with Imidacloprid", "Intercropping with cereals", "Remove weed hosts of whitefly"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में लगाएं (सम्राट, पूसा विशाल)", "समय पर बुवाई करें (जल्दी खरीफ)", "इमिडाक्लोप्रिड से बीज उपचार करें", "अनाज फसलों के साथ अंतरफसल करें", "सफेद मक्खी के वैकल्पिक खरपतवार हटाएं"],
+    "source": "ICAR-Indian Institute of Pulses Research"
+  },
+  {
+    "name": "Tomato Leaf Curl Virus",
+    "nameHi": "टमाटर का पत्ती मोड़ विषाणु रोग",
+    "scientificName": "Tomato Leaf Curl New Delhi Virus (ToLCNDV)",
+    "type": "viral",
+    "affectedCrops": ["Tomato", "Chili", "Capsicum"],
+    "symptoms": ["Upward curling and cupping of leaves", "Leaves become thick, leathery, and brittle", "Stunted plant growth with shortened internodes", "Flower drop and poor fruit set", "Plants become bushy"],
+    "symptomsHi": ["पत्तियों का ऊपर की ओर मुड़ना और कप जैसा होना", "पत्तियाँ मोटी, चमड़े जैसी और भंगुर हो जाती हैं", "पौधों की वृद्धि रुकना", "फूल गिरना और फल कम लगना", "पौधे झाड़ीनुमा हो जाते हैं"],
+    "causativeAgent": "Tomato Leaf Curl New Delhi Virus (ToLCNDV), transmitted by whitefly (Bemisia tabaci)",
+    "favorableConditions": "Hot dry weather (30-35°C), high whitefly population, summer season, proximity to infected fields",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected plants immediately", "Use whitefly-proof net (40-mesh) in nursery", "Use yellow sticky traps at 12/acre"],
+      "physical": ["Cover nursery beds with nylon net (60-mesh)"],
+      "chemical": [
+        {"name": "Imidacloprid 17.8% SL", "dosage": "0.3ml/L", "applicationMethod": "Foliar spray for whitefly control", "frequency": "Every 10-15 days"},
+        {"name": "Diafenthiuron 50% WP", "dosage": "1.2g/L", "applicationMethod": "Foliar spray", "frequency": "Alternating with other insecticides"},
+        {"name": "Thiamethoxam 25% WG", "dosage": "0.3g/L", "applicationMethod": "Foliar spray", "frequency": "At 15-day intervals"}
+      ],
+      "biological": ["Neem oil 5ml/L as whitefly repellent", "Release Encarsia formosa parasitoid", "Install border rows of maize/sorghum as barrier crop"]
+    },
+    "preventionTips": ["Grow resistant/tolerant varieties (Arka Rakshak, Arka Samrat)", "Raise seedlings under insect-proof nets", "Avoid summer transplanting if possible", "Remove alternate host weeds", "Border cropping with maize"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में लगाएं (अर्का रक्षक, अर्का सम्राट)", "कीट-रोधी जाली में पौध तैयार करें", "गर्मियों में रोपाई से बचें", "वैकल्पिक खरपतवार हटाएं", "मक्का की बॉर्डर फसल लगाएं"],
+    "source": "ICAR-Indian Institute of Vegetable Research / ICAR-Indian Institute of Horticultural Research"
+  },
+  {
+    "name": "Banana Bunchy Top",
+    "nameHi": "केले का गुच्छा शीर्ष रोग",
+    "scientificName": "Banana Bunchy Top Virus (BBTV)",
+    "type": "viral",
+    "affectedCrops": ["Banana"],
+    "symptoms": ["Narrow leaves with upturned margins forming rosette at top", "Dark green streaks (morse code pattern) on leaf veins and petioles", "Severe stunting of plant", "No fruiting or bunchy small fingers"],
+    "symptomsHi": ["शीर्ष पर किनारे ऊपर मुड़ी संकरी पत्तियाँ गुलाबनुमा बनती हैं", "पत्ती की नसों और डंठलों पर गहरी हरी धारियाँ (मोर्स कोड पैटर्न)", "पौधे का गंभीर बौनापन", "फल नहीं लगते या गुच्छेदार छोटी उंगलियाँ"],
+    "causativeAgent": "Banana Bunchy Top Virus (BBTV), transmitted by banana aphid (Pentalonia nigronervosa)",
+    "favorableConditions": "Infected planting material, aphid population buildup, warm humid conditions",
+    "treatments": {
+      "mechanical": ["Uproot and destroy infected plants (inject with herbicide to kill)", "Use virus-free tissue culture plants for new plantations"],
+      "physical": [],
+      "chemical": [
+        {"name": "Imidacloprid 17.8% SL", "dosage": "0.3ml/L", "applicationMethod": "Foliar spray to control aphid vector", "frequency": "Every 15 days during critical period"},
+        {"name": "Dimethoate 30% EC", "dosage": "1.7ml/L", "applicationMethod": "Foliar spray", "frequency": "At aphid appearance"}
+      ],
+      "biological": ["Release of aphid parasitoids (Aphidius colemani)", "Neem-based products for aphid management"]
+    },
+    "preventionTips": ["Use only virus-indexed tissue culture plants", "Destroy all infected plants and ratoons", "Control aphid vector regularly", "Avoid planting near infected orchards", "Quarantine regulations for planting material"],
+    "preventionTipsHi": ["केवल वायरस-मुक्त ऊतक संवर्धित पौधे लगाएं", "सभी संक्रमित पौधों और पेड़ियों को नष्ट करें", "माहू (एफिड) कीट को नियमित नियंत्रित करें", "संक्रमित बागों के पास नई बुवाई न करें", "रोपण सामग्री के लिए संगरोध नियमों का पालन करें"],
+    "source": "ICAR-National Research Centre for Banana"
+  },
+  {
+    "name": "Rice Tungro",
+    "nameHi": "धान का टुंग्रो रोग",
+    "scientificName": "Rice Tungro Bacilliform Virus (RTBV) + Rice Tungro Spherical Virus (RTSV)",
+    "type": "viral",
+    "affectedCrops": ["Rice"],
+    "symptoms": ["Yellow to orange discoloration of leaves from tip", "Stunted plant growth", "Reduced tiller number", "Delayed flowering", "Incompletely exserted panicles with mostly unfilled grains"],
+    "symptomsHi": ["पत्तियों की नोक से पीला-नारंगी रंग बदलना", "पौधों की वृद्धि रुकना", "कम कल्ले निकलना", "फूल आने में देरी", "अधूरी निकली बालियों में अधिकतर खाली दाने"],
+    "causativeAgent": "Rice Tungro Bacilliform Virus (RTBV) and Rice Tungro Spherical Virus (RTSV), transmitted by green leafhopper (Nephotettix virescens)",
+    "favorableConditions": "Continuous rice cultivation, staggered planting, high leafhopper population, warm humid weather",
+    "treatments": {
+      "mechanical": ["Remove and destroy tungro-infected plants", "Synchronous planting in a village/area"],
+      "physical": ["Light traps for leafhopper monitoring and mass trapping"],
+      "chemical": [
+        {"name": "Carbofuran 3% CG", "dosage": "1 kg/acre", "applicationMethod": "Root zone application", "frequency": "At 15 and 30 days after transplanting"},
+        {"name": "Imidacloprid 17.8% SL", "dosage": "0.3ml/L", "applicationMethod": "Foliar spray for leafhopper control", "frequency": "At leafhopper appearance"}
+      ],
+      "biological": ["Conservation of leafhopper predators (spiders, Mirid bugs)"]
+    },
+    "preventionTips": ["Use resistant varieties (Improved Samba Mahsuri, Vikramarya)", "Synchronous planting to break virus cycle", "Control leafhopper vector", "Avoid late planting", "Remove ratoon and volunteer rice"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में लगाएं", "वायरस चक्र तोड़ने के लिए एक साथ बुवाई करें", "हरा फुदका कीट नियंत्रित करें", "देर से बुवाई से बचें", "पेड़ी और स्वयंजात धान हटाएं"],
+    "source": "ICAR-Indian Institute of Rice Research"
+  },
+  {
+    "name": "Panama Wilt of Banana",
+    "nameHi": "केले का पनामा उकठा रोग",
+    "scientificName": "Fusarium oxysporum f.sp. cubense",
+    "type": "fungal",
+    "affectedCrops": ["Banana"],
+    "symptoms": ["Yellowing of lower leaves starting from margins", "Longitudinal splitting of pseudostem base", "Brown-red discoloration of vascular bundles in cross-section", "Leaves break at petiole and hang down like skirt", "Complete wilting and plant death"],
+    "symptomsHi": ["निचली पत्तियों का किनारों से पीला पड़ना", "तने के आधार में लंबवत दरारें", "तने के काट में संवहन ऊतकों का भूरा-लाल रंग", "पत्तियाँ डंठल से टूटकर स्कर्ट जैसी लटक जाती हैं", "पूर्ण मुरझान और पौधे की मृत्यु"],
+    "causativeAgent": "Fusarium oxysporum f.sp. cubense (Tropical Race 4 - TR4 is the most destructive)",
+    "favorableConditions": "Waterlogged acidic soils, poor drainage, temperature 25-30°C, soil-borne pathogen survives for decades",
+    "treatments": {
+      "mechanical": ["Uproot and destroy infected plants", "Quarantine affected area", "Avoid movement of soil from infected fields"],
+      "physical": ["Soil solarization"],
+      "chemical": [
+        {"name": "Carbendazim 50% WP", "dosage": "2g/L", "applicationMethod": "Soil drench around plant base", "frequency": "At disease appearance, 2-3 times at monthly intervals"}
+      ],
+      "biological": ["Trichoderma viride at 50g/plant in planting pit", "Pseudomonas fluorescens at 20g/plant", "Application of bio-enriched FYM"]
+    },
+    "preventionTips": ["Use tissue culture plants from certified labs", "Grow resistant varieties (Poovan, Ney Poovan)", "Maintain soil pH 6.5-7.0", "Improve drainage", "Apply Trichoderma in planting pits", "Strict quarantine for TR4"],
+    "preventionTipsHi": ["प्रमाणित प्रयोगशाला से ऊतक संवर्धित पौधे लगाएं", "प्रतिरोधी किस्में उगाएं (पूवन, नेय पूवन)", "मिट्टी का pH 6.5-7.0 बनाए रखें", "जल निकासी सुधारें", "रोपण गड्ढों में ट्राइकोडर्मा डालें"],
+    "source": "ICAR-National Research Centre for Banana"
+  },
+  {
+    "name": "Powdery Mildew of Mango",
+    "nameHi": "आम का चूर्णिल आसिता रोग",
+    "scientificName": "Oidium mangiferae",
+    "type": "fungal",
+    "affectedCrops": ["Mango"],
+    "symptoms": ["White powdery growth on panicles, flowers, and young fruits", "Flower and fruitlet drop", "Affected fruits remain small and drop prematurely", "Young leaves show powdery coating"],
+    "symptomsHi": ["पुष्पगुच्छों, फूलों और छोटे फलों पर सफेद चूर्णी वृद्धि", "फूल और छोटे फल गिर जाते हैं", "प्रभावित फल छोटे रहते हैं और समय से पहले गिर जाते हैं", "नई पत्तियों पर चूर्णी परत"],
+    "causativeAgent": "Oidium mangiferae",
+    "favorableConditions": "Cool nights (15-20°C) followed by warm days, cloudy weather during flowering (February-March), high humidity",
+    "treatments": {
+      "mechanical": ["Remove and destroy severely infected panicles"],
+      "physical": [],
+      "chemical": [
+        {"name": "Wettable Sulphur 80% WP", "dosage": "3g/L", "applicationMethod": "Foliar spray", "frequency": "First spray at panicle emergence, second at full bloom, third at pea stage"},
+        {"name": "Hexaconazole 5% EC", "dosage": "2ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease appearance"},
+        {"name": "Dinocap 48% EC (Karathane)", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At flowering"}
+      ],
+      "biological": ["Neem oil 5ml/L spray"]
+    },
+    "preventionTips": ["Prophylactic sulphur spray at panicle emergence", "Avoid excessive nitrogen fertilization", "Open canopy management for air circulation", "Pre-bloom spray schedule"],
+    "preventionTipsHi": ["पुष्पगुच्छ निकलते समय निवारक गंधक छिड़काव करें", "अधिक नाइट्रोजन से बचें", "हवा के आवागमन के लिए खुला छत्र प्रबंधन", "फूल आने से पहले छिड़काव कार्यक्रम अपनाएं"],
+    "source": "ICAR-Indian Institute of Horticultural Research"
+  },
+  {
+    "name": "Black Rust (Stem Rust) of Wheat",
+    "nameHi": "गेहूँ का काला गेरुआ (तना गेरुआ) रोग",
+    "scientificName": "Puccinia graminis tritici",
+    "type": "fungal",
+    "affectedCrops": ["Wheat"],
+    "symptoms": ["Dark reddish-brown to black elongated pustules on stems and leaf sheaths", "Pustules rupture epidermis exposing dark spores", "Severe infections cause stem weakening and lodging", "Shriveled grains"],
+    "symptomsHi": ["तनों और पत्ती आवरण पर गहरी लाल-भूरी से काली लंबी फुंसियाँ", "फुंसियाँ बाह्य त्वचा को फोड़कर काले बीजाणु दिखाती हैं", "गंभीर संक्रमण में तना कमजोर होकर गिर जाता है", "सिकुड़े हुए दाने"],
+    "causativeAgent": "Puccinia graminis f.sp. tritici",
+    "favorableConditions": "Temperature 20-30°C, moist weather, late-maturing varieties more susceptible",
+    "treatments": {
+      "mechanical": ["Remove barberry (alternate host) plants from vicinity"],
+      "physical": [],
+      "chemical": [
+        {"name": "Propiconazole 25% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At first appearance, repeat after 15 days"},
+        {"name": "Tebuconazole 25.9% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease initiation"}
+      ],
+      "biological": []
+    },
+    "preventionTips": ["Grow resistant varieties", "Timely sowing", "Avoid excessive late nitrogen application", "Eradicate barberry bushes"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में उगाएं", "समय पर बुवाई करें", "देर से अधिक नाइट्रोजन देने से बचें", "बारबेरी झाड़ियाँ हटाएं"],
+    "source": "ICAR-Indian Institute of Wheat and Barley Research"
+  },
+  {
+    "name": "Smut of Sugarcane (Whip Smut)",
+    "nameHi": "गन्ने का कंडुआ रोग (चाबुक कंड)",
+    "scientificName": "Sporisorium scitamineum (Ustilago scitaminea)",
+    "type": "fungal",
+    "affectedCrops": ["Sugarcane"],
+    "symptoms": ["Long whip-like black structure emerging from growing point", "Whip covered with black powdery spores", "Profuse tillering giving grassy appearance", "Thin stalks with narrow leaves"],
+    "symptomsHi": ["बढ़ती नोक से लंबी चाबुक जैसी काली संरचना निकलना", "चाबुक काले चूर्णी बीजाणुओं से ढकी होती है", "अत्यधिक कल्ले निकलना जिससे घास जैसा दिखता है", "पतले तने और संकरी पत्तियाँ"],
+    "causativeAgent": "Sporisorium scitamineum",
+    "favorableConditions": "Hot dry weather, temperature 25-35°C, infected setts, ratoon crop more susceptible",
+    "treatments": {
+      "mechanical": ["Remove and destroy smutted whips before spore dispersal", "Avoid ratooning in infected fields"],
+      "physical": ["Hot water treatment of setts at 52°C for 30 minutes", "Moist hot air treatment at 54°C for 2.5 hours"],
+      "chemical": [
+        {"name": "Carbendazim 50% WP", "dosage": "0.1% sett dip (1g/L) for 15 minutes", "applicationMethod": "Sett treatment", "frequency": "Before planting"},
+        {"name": "Propiconazole 25% EC", "dosage": "0.1% sett dip", "applicationMethod": "Sett treatment", "frequency": "Before planting"}
+      ],
+      "biological": ["Trichoderma harzianum sett treatment"]
+    },
+    "preventionTips": ["Use disease-free setts from healthy crop", "Hot water treatment of setts", "Grow resistant varieties (CoJ 64, Co 86032)", "Avoid ratooning in infected fields", "Rogue out infected clumps regularly"],
+    "preventionTipsHi": ["स्वस्थ फसल से रोगमुक्त पेड़ी का उपयोग करें", "पेड़ी का गर्म पानी उपचार करें", "प्रतिरोधी किस्में उगाएं", "संक्रमित खेतों में पेड़ी फसल न लें", "संक्रमित झुंडों को नियमित रूप से उखाड़ें"],
+    "source": "ICAR-Sugarcane Breeding Institute"
+  },
+  {
+    "name": "Red Rot of Sugarcane",
+    "nameHi": "गन्ने का लाल सड़न रोग",
+    "scientificName": "Colletotrichum falcatum",
+    "type": "fungal",
+    "affectedCrops": ["Sugarcane"],
+    "symptoms": ["Reddening of internal tissue of cane with white patches", "Drying of third and fourth leaves from top", "Stalks become hollow and give alcoholic smell when split", "Discoloration of rind visible at nodes"],
+    "symptomsHi": ["गन्ने के आंतरिक ऊतक का लाल होना सफेद धब्बों के साथ", "ऊपर से तीसरी-चौथी पत्ती का सूखना", "तने खोखले हो जाते हैं और चीरने पर शराब जैसी गंध", "गाँठों पर छाल का रंग बदलना"],
+    "causativeAgent": "Colletotrichum falcatum (Glomerella tucumanensis)",
+    "favorableConditions": "High humidity, waterlogged conditions, temperature 28-32°C, wounds on stalks, infected setts",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected canes immediately", "Avoid waterlogging in fields"],
+      "physical": ["Hot water treatment of setts at 52°C for 30 minutes"],
+      "chemical": [
+        {"name": "Carbendazim 50% WP", "dosage": "0.1% sett dip for 15 minutes", "applicationMethod": "Sett treatment", "frequency": "Before planting"},
+        {"name": "Thiophanate methyl 70% WP", "dosage": "0.1% sett dip", "applicationMethod": "Sett treatment", "frequency": "Before planting"}
+      ],
+      "biological": ["Trichoderma viride sett treatment at 4g/kg"]
+    },
+    "preventionTips": ["Use disease-free seed material", "Select red rot resistant varieties (CoJ 64, Co 0238)", "Do not use infected cane as seed", "Proper drainage", "Avoid ratooning from infected crop"],
+    "preventionTipsHi": ["रोगमुक्त बीज सामग्री का उपयोग करें", "लाल सड़न प्रतिरोधी किस्मों का चयन करें", "संक्रमित गन्ने को बीज के रूप में उपयोग न करें", "उचित जल निकासी करें", "संक्रमित फसल से पेड़ी न लें"],
+    "source": "ICAR-Sugarcane Breeding Institute"
+  },
+  {
+    "name": "Cotton Wilt",
+    "nameHi": "कपास का उकठा रोग",
+    "scientificName": "Fusarium oxysporum f.sp. vasinfectum",
+    "type": "fungal",
+    "affectedCrops": ["Cotton"],
+    "symptoms": ["Yellowing and wilting of leaves usually on one side first", "Brown discoloration of vascular bundles", "Stunted growth", "Shedding of squares and bolls", "Plants may die within 2-3 weeks"],
+    "symptomsHi": ["पत्तियों का पीला पड़ना और मुरझाना, आमतौर पर पहले एक तरफ", "संवहन ऊतकों का भूरा पड़ना", "वृद्धि रुकना", "कलियों और गुलरों का गिरना", "पौधे 2-3 सप्ताह में मर सकते हैं"],
+    "causativeAgent": "Fusarium oxysporum f.sp. vasinfectum, often in association with root-knot nematode (Meloidogyne incognita)",
+    "favorableConditions": "Sandy loam soils, temperature 25-30°C, root-knot nematode infestation, acidic soils",
+    "treatments": {
+      "mechanical": ["Remove and destroy wilted plants", "Deep summer ploughing"],
+      "physical": ["Soil solarization for 6 weeks in May-June"],
+      "chemical": [
+        {"name": "Carbendazim 50% WP", "dosage": "2g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"},
+        {"name": "Carbosulfan 25% EC", "dosage": "Soil application for nematode control", "applicationMethod": "Soil treatment", "frequency": "At sowing"}
+      ],
+      "biological": ["Trichoderma viride seed treatment at 4g/kg", "Pseudomonas fluorescens at 10g/kg seed", "Apply neem cake at 250 kg/ha for nematode management"]
+    },
+    "preventionTips": ["Use wilt-resistant varieties (Rajat, PKV Hy 2)", "Manage root-knot nematode", "Crop rotation with cereals and sorghum", "Balanced fertilization", "Maintain soil pH above 6.5"],
+    "preventionTipsHi": ["उकठा प्रतिरोधी किस्में लगाएं", "जड़ गाँठ सूत्रकृमि का प्रबंधन करें", "अनाज और ज्वार के साथ फसल चक्र अपनाएं", "संतुलित उर्वरीकरण करें", "मिट्टी का pH 6.5 से ऊपर रखें"],
+    "source": "ICAR-Central Institute for Cotton Research"
+  },
+  {
+    "name": "Cotton Bollworm",
+    "nameHi": "कपास की अमेरिकन बॉलवर्म",
+    "scientificName": "Helicoverpa armigera",
+    "type": "pest",
+    "affectedCrops": ["Cotton", "Tomato", "Chili", "Chickpea", "Maize"],
+    "symptoms": ["Bore holes in squares, flowers, and bolls", "Larval excreta (frass) visible near bore holes", "Fruit and boll shedding", "Damaged bolls with feeding tunnels", "Reduced yield"],
+    "symptomsHi": ["कलियों, फूलों और गुलरों में छेद", "छेदों के पास कीट मल दिखाई देना", "फल और गुलरों का गिरना", "खाने की सुरंगों वाले क्षतिग्रस्त गुलर", "उपज में कमी"],
+    "causativeAgent": "Helicoverpa armigera (Hubner) - Lepidoptera: Noctuidae",
+    "favorableConditions": "Warm weather (25-35°C), continuous cotton cultivation, mono-cropping, resistance to conventional insecticides",
+    "treatments": {
+      "mechanical": ["Hand picking of grown larvae", "Install pheromone traps (Helilure) at 5/acre", "Bird perches at 20/acre"],
+      "physical": ["Light traps for moth monitoring"],
+      "chemical": [
+        {"name": "Emamectin benzoate 5% SG", "dosage": "0.4g/L", "applicationMethod": "Foliar spray", "frequency": "At ETL (5% damage to fruiting bodies)"},
+        {"name": "Chlorantraniliprole 18.5% SC", "dosage": "0.3ml/L", "applicationMethod": "Foliar spray", "frequency": "At pest appearance"},
+        {"name": "Spinosad 45% SC", "dosage": "0.3ml/L", "applicationMethod": "Foliar spray", "frequency": "At peak egg-laying"}
+      ],
+      "biological": ["Release Trichogramma chilonis at 1.5 lakh/ha at flowering", "HaNPV (Nuclear Polyhedrosis Virus) at 250 LE/ha", "Bt spray (Bacillus thuringiensis) at 1kg/ha"]
+    },
+    "preventionTips": ["Grow Bt cotton varieties where permitted", "Maintain refuge crop (non-Bt cotton on 20% area)", "Intercropping with cowpea or coriander", "Early sowing", "Crop rotation"],
+    "preventionTipsHi": ["अनुमति जहाँ है वहाँ बीटी कपास उगाएं", "शरण फसल (20% क्षेत्र पर गैर-बीटी कपास) रखें", "लोबिया या धनिया के साथ अंतरफसल करें", "जल्दी बुवाई करें", "फसल चक्र अपनाएं"],
+    "source": "ICAR-Central Institute for Cotton Research"
+  },
+  {
+    "name": "Rhizome Rot of Ginger",
+    "nameHi": "अदरक का प्रकंद सड़न रोग",
+    "scientificName": "Pythium spp.",
+    "type": "fungal",
+    "affectedCrops": ["Ginger", "Turmeric"],
+    "symptoms": ["Water-soaked lesions at collar region", "Yellowing and wilting of aerial parts from lower leaves upward", "Soft rot of rhizomes with foul smell", "Easy pulling of pseudostems", "Complete plant collapse"],
+    "symptomsHi": ["कॉलर क्षेत्र में पानी भरे घाव", "निचली पत्तियों से ऊपर की ओर पीला पड़ना और मुरझाना", "प्रकंदों की मुलायम सड़न जिसमें दुर्गंध आती है", "छद्मतने आसानी से खिंच जाते हैं", "पूरा पौधा गिर जाता है"],
+    "causativeAgent": "Pythium aphanidermatum (primary), Pythium myriotylum",
+    "favorableConditions": "Heavy rainfall, waterlogged conditions, poorly drained soils, temperature 30-35°C, contaminated seed rhizomes",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected plants along with surrounding soil", "Improve drainage channels"],
+      "physical": ["Seed rhizome treatment with hot water at 47°C for 30 minutes"],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "3g/L", "applicationMethod": "Seed rhizome treatment (30 min dip)", "frequency": "Before planting"},
+        {"name": "Metalaxyl-M + Mancozeb 68% WP", "dosage": "2g/L", "applicationMethod": "Soil drench", "frequency": "At disease appearance, repeat after 15 days"},
+        {"name": "Copper oxychloride 50% WP", "dosage": "3g/L", "applicationMethod": "Foliar spray + soil drench", "frequency": "Monthly during monsoon"}
+      ],
+      "biological": ["Trichoderma harzianum at 5g/L seed rhizome treatment", "Pseudomonas fluorescens at 20g/L soil drench", "Application of neem cake at 1 ton/ha"]
+    },
+    "preventionTips": ["Use disease-free seed rhizomes", "Treat seed rhizomes before planting", "Ensure raised bed cultivation", "Good drainage", "Crop rotation with rice", "Apply Trichoderma enriched FYM"],
+    "preventionTipsHi": ["रोगमुक्त बीज प्रकंदों का उपयोग करें", "रोपण से पहले बीज प्रकंद उपचार करें", "उठी हुई क्यारियों में खेती करें", "अच्छी जल निकासी सुनिश्चित करें", "धान के साथ फसल चक्र अपनाएं", "ट्राइकोडर्मा समृद्ध गोबर खाद डालें"],
+    "source": "ICAR-Indian Institute of Spices Research"
+  },
+  {
+    "name": "Turcicum Leaf Blight of Maize",
+    "nameHi": "मक्का का टर्सिकम पत्ती अंगमारी",
+    "scientificName": "Exserohilum turcicum",
+    "type": "fungal",
+    "affectedCrops": ["Maize", "Jowar"],
+    "symptoms": ["Long elliptical greyish-green to tan lesions on leaves", "Lesions 5-15 cm long, boat-shaped", "Lesions may coalesce causing complete leaf blight", "Premature drying of leaves starting from lower canopy"],
+    "symptomsHi": ["पत्तियों पर लंबे अंडाकार धूसर-हरे से भूरे घाव", "घाव 5-15 सेमी लंबे, नाव के आकार के", "घाव मिलकर पूरी पत्ती को झुलसा सकते हैं", "निचली पत्तियों से समय से पहले सूखना"],
+    "causativeAgent": "Exserohilum turcicum (Helminthosporium turcicum)",
+    "favorableConditions": "Moderate temperature (20-26°C), high humidity, heavy dew, continuous maize cropping",
+    "treatments": {
+      "mechanical": ["Remove lower infected leaves", "Destroy crop residues after harvest"],
+      "physical": [],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-14 days from disease onset"},
+        {"name": "Zineb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-14 days"},
+        {"name": "Propiconazole 25% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease appearance"}
+      ],
+      "biological": ["Trichoderma viride seed treatment"]
+    },
+    "preventionTips": ["Use resistant hybrids", "Crop rotation", "Balanced nutrition", "Timely sowing", "Remove crop debris"],
+    "preventionTipsHi": ["प्रतिरोधी संकर किस्में उगाएं", "फसल चक्र अपनाएं", "संतुलित पोषण दें", "समय पर बुवाई करें", "फसल अवशेष हटाएं"],
+    "source": "ICAR-Indian Institute of Maize Research"
+  },
+  {
+    "name": "Downy Mildew of Grapes",
+    "nameHi": "अंगूर का मृदुरोमिल आसिता रोग",
+    "scientificName": "Plasmopara viticola",
+    "type": "fungal",
+    "affectedCrops": ["Grapes"],
+    "symptoms": ["Oily translucent yellow spots on upper leaf surface", "White cottony growth on lower leaf surface", "Affected berries shrivel and turn brown", "Severe defoliation"],
+    "symptomsHi": ["पत्ती की ऊपरी सतह पर तैलीय पारभासी पीले धब्बे", "पत्ती की निचली सतह पर सफेद रुई जैसी वृद्धि", "प्रभावित दाने सिकुड़कर भूरे हो जाते हैं", "गंभीर पत्तियों का गिरना"],
+    "causativeAgent": "Plasmopara viticola",
+    "favorableConditions": "Temperature 18-25°C, high humidity, rainfall, morning dew",
+    "treatments": {
+      "mechanical": ["Remove infected shoots and leaves", "Good canopy management"],
+      "physical": [],
+      "chemical": [
+        {"name": "Bordeaux mixture 1%", "dosage": "10g CuSO4 + 10g lime/L", "applicationMethod": "Foliar spray", "frequency": "Before monsoon and after every rain"},
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 7-10 days during wet season"},
+        {"name": "Metalaxyl + Mancozeb 68% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-14 days"}
+      ],
+      "biological": []
+    },
+    "preventionTips": ["Proper training system for air circulation", "Pre-monsoon Bordeaux mixture spray", "Avoid excess nitrogen", "Good drainage around vines"],
+    "preventionTipsHi": ["हवा के आवागमन के लिए उचित सहारा प्रणाली", "मानसून पूर्व बोर्डो मिश्रण छिड़काव", "अधिक नाइट्रोजन से बचें", "बेलों के चारों ओर अच्छी जल निकासी"],
+    "source": "ICAR-National Research Centre for Grapes"
+  },
+  {
+    "name": "Alternaria Blight of Mustard",
+    "nameHi": "सरसों का अल्टरनेरिया अंगमारी",
+    "scientificName": "Alternaria brassicae",
+    "type": "fungal",
+    "affectedCrops": ["Mustard", "Cabbage", "Cauliflower"],
+    "symptoms": ["Dark brown circular spots with concentric rings on leaves", "Spots on siliquae (pods) leading to premature shattering", "Black spots on stems", "Seed discoloration"],
+    "symptomsHi": ["पत्तियों पर गोल छल्लेदार गहरे भूरे धब्बे", "फलियों पर धब्बे जिससे समय से पहले बिखरना", "तनों पर काले धब्बे", "बीजों का रंग बदलना"],
+    "causativeAgent": "Alternaria brassicae, A. brassicicola",
+    "favorableConditions": "Temperature 20-25°C, relative humidity >80%, intermittent rain, cloudy weather during podding stage",
+    "treatments": {
+      "mechanical": ["Remove infected crop residues", "Clean cultivation"],
+      "physical": [],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "First at disease appearance, repeat at 10-day intervals"},
+        {"name": "Iprodione 50% WP", "dosage": "2g/L", "applicationMethod": "Foliar spray", "frequency": "At disease initiation"},
+        {"name": "Metalaxyl + Mancozeb 68% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray or seed treatment", "frequency": "At pod formation stage"}
+      ],
+      "biological": ["Trichoderma viride seed treatment"]
+    },
+    "preventionTips": ["Use resistant varieties (Rajat, Pusa Bold)", "Timely sowing", "Crop rotation", "Seed treatment with fungicide", "Balanced fertilization"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में उगाएं (रजत, पूसा बोल्ड)", "समय पर बुवाई करें", "फसल चक्र अपनाएं", "बीज उपचार करें", "संतुलित उर्वरीकरण"],
+    "source": "ICAR-Directorate of Rapeseed-Mustard Research"
+  },
+  {
+    "name": "White Rust of Mustard",
+    "nameHi": "सरसों का श्वेत गेरुआ रोग",
+    "scientificName": "Albugo candida",
+    "type": "fungal",
+    "affectedCrops": ["Mustard"],
+    "symptoms": ["White blister-like pustules on underside of leaves", "Corresponding yellow spots on upper leaf surface", "Hypertrophy (swelling) of floral parts - staghead formation", "Distorted inflorescence without seed formation"],
+    "symptomsHi": ["पत्तियों की निचली सतह पर सफेद फफोलेदार फुंसियाँ", "ऊपरी सतह पर इसके अनुरूप पीले धब्बे", "पुष्प भागों की अतिवृद्धि - स्टैगहेड बनना", "बिना बीज बनाव के विकृत पुष्पक्रम"],
+    "causativeAgent": "Albugo candida",
+    "favorableConditions": "Cool moist weather (10-20°C), high humidity, morning dew, close spacing",
+    "treatments": {
+      "mechanical": ["Remove staghead-affected plants before spore dispersal"],
+      "physical": [],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "At disease initiation, repeat after 10-15 days"},
+        {"name": "Metalaxyl + Mancozeb 68% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "At disease appearance"},
+        {"name": "Metalaxyl 35% WS", "dosage": "6g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"}
+      ],
+      "biological": []
+    },
+    "preventionTips": ["Use resistant varieties", "Seed treatment with Metalaxyl", "Timely sowing", "Wider spacing for air circulation", "Avoid low-lying wet areas"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में उगाएं", "मेटालैक्सिल से बीज उपचार", "समय पर बुवाई", "हवा के लिए अधिक दूरी", "निचले गीले क्षेत्रों से बचें"],
+    "source": "ICAR-Directorate of Rapeseed-Mustard Research"
+  },
+  {
+    "name": "Charcoal Rot",
+    "nameHi": "चारकोल सड़न रोग",
+    "scientificName": "Macrophomina phaseolina",
+    "type": "fungal",
+    "affectedCrops": ["Soybean", "Jowar", "Maize", "Cotton", "Groundnut"],
+    "symptoms": ["Premature wilting and drying of plants at maturity", "Charcoal-grey discoloration of stem base and roots", "Tiny black sclerotia (microsclerotia) on affected tissues", "Shredding of bark at stem base", "Light-weight and poorly filled grains"],
+    "symptomsHi": ["परिपक्वता पर पौधों का समय से पहले मुरझाना और सूखना", "तने के आधार और जड़ों का चारकोल-धूसर रंग", "प्रभावित ऊतकों पर छोटे काले स्क्लेरोशिया", "तने के आधार पर छाल का उधड़ना", "हल्के और खराब भरे दाने"],
+    "causativeAgent": "Macrophomina phaseolina",
+    "favorableConditions": "High temperature (30-35°C), drought stress at reproductive stage, sandy soils, low organic matter",
+    "treatments": {
+      "mechanical": ["Remove crop residues", "Deep summer ploughing"],
+      "physical": ["Soil solarization"],
+      "chemical": [
+        {"name": "Carbendazim 50% WP", "dosage": "2g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"},
+        {"name": "Carboxin + Thiram 37.5+37.5% DS", "dosage": "3g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"}
+      ],
+      "biological": ["Trichoderma viride at 4g/kg seed", "Pseudomonas fluorescens seed treatment", "Application of organic matter to soil"]
+    },
+    "preventionTips": ["Avoid moisture stress during reproductive stage", "Use tolerant varieties", "Maintain soil organic carbon", "Balanced fertilization", "Crop rotation with cereals"],
+    "preventionTipsHi": ["प्रजनन अवस्था में नमी की कमी से बचें", "सहनशील किस्में उगाएं", "मिट्टी में जैविक कार्बन बनाए रखें", "संतुलित उर्वरीकरण", "अनाज फसलों के साथ फसल चक्र"],
+    "source": "ICAR-Indian Institute of Soybean Research"
+  },
+  {
+    "name": "Stem Borer of Rice",
+    "nameHi": "धान का तना छेदक",
+    "scientificName": "Scirpophaga incertulas",
+    "type": "pest",
+    "affectedCrops": ["Rice"],
+    "symptoms": ["Dead heart in vegetative stage - central shoot dries and can be pulled out", "White ear (chaffy panicle) at reproductive stage", "Bore holes at base of tillers", "Frass inside the stem"],
+    "symptomsHi": ["शाकीय अवस्था में डेड हार्ट - केंद्रीय तना सूखकर खिंच जाता है", "प्रजनन अवस्था में सफेद बाली (खाली बाली)", "कल्लों के आधार पर छेद", "तने के अंदर कीट मल"],
+    "causativeAgent": "Scirpophaga incertulas (Yellow stem borer) - most damaging; also Chilo suppressalis (Striped stem borer)",
+    "favorableConditions": "High nitrogen levels, continuous flooding, close spacing, staggered planting dates in vicinity",
+    "treatments": {
+      "mechanical": ["Clip leaf tips while transplanting to remove egg masses", "Light traps for moth trapping", "Remove and destroy stubbles after harvest"],
+      "physical": ["Flood fields for 1-2 days to kill pupae"],
+      "chemical": [
+        {"name": "Cartap hydrochloride 4% G", "dosage": "7.5 kg/acre", "applicationMethod": "Broadcast in standing water", "frequency": "At ETL (5% dead hearts or 2% white ears)"},
+        {"name": "Chlorantraniliprole 0.4% GR", "dosage": "4 kg/acre", "applicationMethod": "Broadcast in paddy water", "frequency": "At tillering/booting stage"},
+        {"name": "Fipronil 0.3% GR", "dosage": "7.5 kg/acre", "applicationMethod": "Broadcast", "frequency": "At pest initiation"}
+      ],
+      "biological": ["Release Trichogramma japonicum at 50,000/acre at weekly intervals", "Conservation of natural enemies (spiders, dragonflies)"]
+    },
+    "preventionTips": ["Timely and synchronous transplanting", "Remove stubbles after harvest", "Avoid excessive nitrogen", "Use light traps for monitoring", "Maintain field sanitation"],
+    "preventionTipsHi": ["समय पर एक साथ रोपाई करें", "कटाई के बाद ठूंठ हटाएं", "अधिक नाइट्रोजन से बचें", "निगरानी के लिए प्रकाश जाल लगाएं", "खेत की सफाई रखें"],
+    "source": "ICAR-Indian Institute of Rice Research"
+  },
+  {
+    "name": "Fruit and Shoot Borer of Brinjal",
+    "nameHi": "बैंगन का फल एवं तना छेदक",
+    "scientificName": "Leucinodes orbonalis",
+    "type": "pest",
+    "affectedCrops": ["Brinjal"],
+    "symptoms": ["Wilting of young shoots (shoot boring) with bore holes", "Entry holes on fruits plugged with frass", "Internal feeding damage in fruits", "Yield loss up to 70%"],
+    "symptomsHi": ["छेदों के साथ नई टहनियों का मुरझाना (तना छेदन)", "फलों पर कीट मल से भरे प्रवेश छेद", "फलों में आंतरिक खाने से नुकसान", "70% तक उपज हानि"],
+    "causativeAgent": "Leucinodes orbonalis (Guenee) - Lepidoptera: Crambidae",
+    "favorableConditions": "Warm humid weather, continuous brinjal cultivation, lack of crop rotation",
+    "treatments": {
+      "mechanical": ["Remove and destroy wilted shoots weekly", "Use pheromone traps (Lucilure) at 5/acre", "Netting of individual fruits"],
+      "physical": [],
+      "chemical": [
+        {"name": "Emamectin benzoate 5% SG", "dosage": "0.4g/L", "applicationMethod": "Foliar spray", "frequency": "At ETL, repeat at 10-day intervals"},
+        {"name": "Spinosad 45% SC", "dosage": "0.3ml/L", "applicationMethod": "Foliar spray", "frequency": "At fruit formation stage"},
+        {"name": "Chlorantraniliprole 18.5% SC", "dosage": "0.3ml/L", "applicationMethod": "Foliar spray", "frequency": "At 50% flowering"}
+      ],
+      "biological": ["Release Trichogramma chilonis at 1 lakh/acre", "Bt spray (Bacillus thuringiensis var kurstaki) at 1g/L", "Neem oil 5ml/L spray"]
+    },
+    "preventionTips": ["Remove and destroy infested shoots weekly", "Pheromone traps for mass trapping", "Avoid continuous brinjal cultivation", "Use neem-based products at regular intervals", "Clip and destroy wilted shoots"],
+    "preventionTipsHi": ["संक्रमित टहनियों को साप्ताहिक हटाएं और नष्ट करें", "सामूहिक जाल के लिए फेरोमोन जाल लगाएं", "लगातार बैंगन की खेती से बचें", "नियमित रूप से नीम आधारित उत्पाद उपयोग करें", "मुरझाई टहनियाँ काटकर नष्ट करें"],
+    "source": "ICAR-Indian Institute of Vegetable Research"
+  },
+  {
+    "name": "Purple Blotch of Onion",
+    "nameHi": "प्याज का बैंगनी धब्बा रोग",
+    "scientificName": "Alternaria porri",
+    "type": "fungal",
+    "affectedCrops": ["Onion"],
+    "symptoms": ["Small water-soaked lesions that turn purple with yellow margin", "Lesions enlarge with concentric rings", "Leaves dry from tip downward", "Bulb infection during storage"],
+    "symptomsHi": ["छोटे पानी भरे घाव जो पीली किनारी के साथ बैंगनी हो जाते हैं", "छल्लेदार वृत्तों के साथ घाव बढ़ते हैं", "पत्तियाँ ऊपर से नीचे सूखती हैं", "भंडारण में बल्ब संक्रमण"],
+    "causativeAgent": "Alternaria porri",
+    "favorableConditions": "Temperature 21-30°C, relative humidity >80%, warm wet weather, thrips injury provides entry",
+    "treatments": {
+      "mechanical": ["Remove infected leaves", "Proper curing before storage"],
+      "physical": [],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-15 days starting 30 days after transplanting"},
+        {"name": "Chlorothalonil 75% WP", "dosage": "2g/L", "applicationMethod": "Foliar spray", "frequency": "Alternating with Mancozeb"},
+        {"name": "Tebuconazole 25.9% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease appearance"}
+      ],
+      "biological": ["Trichoderma viride at 5g/L spray"]
+    },
+    "preventionTips": ["Use resistant varieties", "Control thrips which create entry wounds", "Proper spacing", "Balanced nutrition", "Crop rotation"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में उगाएं", "थ्रिप्स को नियंत्रित करें जो प्रवेश घाव बनाते हैं", "उचित दूरी रखें", "संतुलित पोषण", "फसल चक्र अपनाएं"],
+    "source": "ICAR-Directorate of Onion and Garlic Research"
+  },
+  {
+    "name": "Tikka Disease of Groundnut",
+    "nameHi": "मूँगफली का टिक्का रोग",
+    "scientificName": "Cercospora arachidicola / Cercosporidium personatum",
+    "type": "fungal",
+    "affectedCrops": ["Groundnut"],
+    "symptoms": ["Small circular brown spots on upper leaf surface (early leaf spot)", "Dark brown to black spots on lower leaf surface (late leaf spot)", "Severe defoliation", "Reduced pod filling", "Spots may appear on petioles and stems"],
+    "symptomsHi": ["ऊपरी पत्ती सतह पर छोटे गोल भूरे धब्बे (अगेती पत्ती धब्बा)", "निचली पत्ती सतह पर गहरे भूरे से काले धब्बे (पछेती पत्ती धब्बा)", "गंभीर पत्ती गिरावट", "फली भरने में कमी", "डंठलों और तनों पर भी धब्बे"],
+    "causativeAgent": "Cercospora arachidicola (early leaf spot), Phaeoisariopsis personata (late leaf spot)",
+    "favorableConditions": "Temperature 25-30°C, high humidity (>80%), frequent rains, continuous groundnut cultivation",
+    "treatments": {
+      "mechanical": ["Remove crop residues after harvest"],
+      "physical": [],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Starting 30 DAS at 15-day intervals"},
+        {"name": "Chlorothalonil 75% WP", "dosage": "2g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-14 days during rainy season"},
+        {"name": "Hexaconazole 5% EC", "dosage": "2ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease appearance"}
+      ],
+      "biological": ["Trichoderma viride seed treatment"]
+    },
+    "preventionTips": ["Use resistant varieties (GPBD-4, TAG-24)", "Seed treatment", "Crop rotation with cereals", "Balanced fertilization", "Timely sowing"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में उगाएं (GPBD-4, TAG-24)", "बीज उपचार करें", "अनाज फसलों के साथ फसल चक्र", "संतुलित उर्वरीकरण", "समय पर बुवाई"],
+    "source": "ICAR-Directorate of Groundnut Research"
+  },
+  {
+    "name": "Rust of Groundnut",
+    "nameHi": "मूँगफली का गेरुआ रोग",
+    "scientificName": "Puccinia arachidis",
+    "type": "fungal",
+    "affectedCrops": ["Groundnut"],
+    "symptoms": ["Small orange-brown pustules on lower leaf surface", "Corresponding brown necrotic spots on upper surface", "Severe defoliation", "Reduced pod yield and oil content"],
+    "symptomsHi": ["निचली पत्ती सतह पर छोटी नारंगी-भूरी फुंसियाँ", "ऊपरी सतह पर भूरे सूखे धब्बे", "गंभीर पत्ती गिरावट", "फली उपज और तेल सामग्री में कमी"],
+    "causativeAgent": "Puccinia arachidis",
+    "favorableConditions": "Temperature 20-25°C, continuous moisture, high humidity, late planted crops more susceptible",
+    "treatments": {
+      "mechanical": ["Remove crop residues"],
+      "physical": [],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-15 days from 45 DAS"},
+        {"name": "Hexaconazole 5% EC", "dosage": "2ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease onset, 2-3 sprays at 10-day intervals"},
+        {"name": "Chlorothalonil 75% WP", "dosage": "2g/L", "applicationMethod": "Foliar spray", "frequency": "Every 14 days"}
+      ],
+      "biological": []
+    },
+    "preventionTips": ["Use resistant varieties (GPBD-4, ICGV 86590)", "Early sowing", "Crop rotation", "Remove volunteer groundnut plants", "Combined spray for rust and leaf spot"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में उगाएं", "जल्दी बुवाई करें", "फसल चक्र अपनाएं", "स्वयंजात मूँगफली पौधे हटाएं", "गेरुआ और पत्ती धब्बा के लिए संयुक्त छिड़काव"],
+    "source": "ICAR-Directorate of Groundnut Research"
+  },
+  {
+    "name": "Soybean Rust",
+    "nameHi": "सोयाबीन का गेरुआ रोग",
+    "scientificName": "Phakopsora pachyrhizi",
+    "type": "fungal",
+    "affectedCrops": ["Soybean"],
+    "symptoms": ["Small tan to reddish-brown lesions on lower leaves", "Raised pustules on underside of leaves", "Premature defoliation", "Reduced pod formation and seed filling", "Yield losses up to 80%"],
+    "symptomsHi": ["निचली पत्तियों पर छोटे भूरे से लाल-भूरे घाव", "पत्तियों की निचली सतह पर उभरी फुंसियाँ", "समय से पहले पत्ती गिरना", "फली बनने और दाने भरने में कमी", "80% तक उपज हानि"],
+    "causativeAgent": "Phakopsora pachyrhizi",
+    "favorableConditions": "Temperature 15-28°C (optimal 20-25°C), prolonged leaf wetness, high humidity, continuous rainfall",
+    "treatments": {
+      "mechanical": ["Remove alternate weed hosts"],
+      "physical": [],
+      "chemical": [
+        {"name": "Propiconazole 25% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease appearance, repeat after 15 days"},
+        {"name": "Hexaconazole 5% EC", "dosage": "2ml/L", "applicationMethod": "Foliar spray", "frequency": "At first pustule appearance"},
+        {"name": "Trifloxystrobin 25% + Tebuconazole 50% WG", "dosage": "0.7g/L", "applicationMethod": "Foliar spray", "frequency": "At disease initiation"}
+      ],
+      "biological": []
+    },
+    "preventionTips": ["Use resistant/tolerant varieties (JS 20-34, JS 20-98)", "Early sowing to escape disease", "Monitor fields regularly from R3 stage", "Prophylactic spray in endemic areas"],
+    "preventionTipsHi": ["प्रतिरोधी/सहनशील किस्में उगाएं", "रोग से बचने के लिए जल्दी बुवाई करें", "R3 अवस्था से नियमित निगरानी करें", "स्थानिक क्षेत्रों में निवारक छिड़काव करें"],
+    "source": "ICAR-Indian Institute of Soybean Research"
+  },
+  {
+    "name": "Leaf Blight of Turmeric",
+    "nameHi": "हल्दी का पत्ती अंगमारी रोग",
+    "scientificName": "Taphrina maculans",
+    "type": "fungal",
+    "affectedCrops": ["Turmeric"],
+    "symptoms": ["Small oval to irregular brown spots on both leaf surfaces", "Spots appear as pairs on either side of leaf", "Spots turn dark brown with yellow halo", "Severe cases cause complete drying of leaves"],
+    "symptomsHi": ["दोनों पत्ती सतहों पर छोटे अंडाकार से अनियमित भूरे धब्बे", "पत्ती के दोनों तरफ जोड़े में धब्बे", "धब्बे पीले घेरे के साथ गहरे भूरे हो जाते हैं", "गंभीर स्थिति में पत्तियों का पूरा सूखना"],
+    "causativeAgent": "Taphrina maculans",
+    "favorableConditions": "High humidity, intermittent rains, temperature 25-30°C",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected leaves"],
+      "physical": [],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 15 days during rainy season"},
+        {"name": "Bordeaux mixture 1%", "dosage": "10g CuSO4 + 10g lime/L", "applicationMethod": "Foliar spray", "frequency": "2-3 sprays during monsoon"}
+      ],
+      "biological": []
+    },
+    "preventionTips": ["Use disease-free rhizomes", "Proper spacing", "Good drainage", "Removal of crop debris", "Crop rotation"],
+    "preventionTipsHi": ["रोगमुक्त प्रकंद उपयोग करें", "उचित दूरी रखें", "अच्छी जल निकासी", "फसल अवशेष हटाएं", "फसल चक्र अपनाएं"],
+    "source": "ICAR-Indian Institute of Spices Research"
+  },
+  {
+    "name": "Black Scurf of Potato",
+    "nameHi": "आलू का काला दाद रोग",
+    "scientificName": "Rhizoctonia solani",
+    "type": "fungal",
+    "affectedCrops": ["Potato"],
+    "symptoms": ["Black sclerotia on tuber surface (black hard masses)", "Sunken lesions on sprouts causing poor emergence", "Aerial tubers on stems in severe cases", "Cracking of tubers", "Stolon canker"],
+    "symptomsHi": ["कंद की सतह पर काले स्क्लेरोशिया (काले कठोर पिंड)", "अंकुरों पर धँसे घाव जिससे खराब उगाव", "गंभीर स्थिति में तनों पर हवाई कंद", "कंदों का फटना", "स्टोलन कैंकर"],
+    "causativeAgent": "Rhizoctonia solani AG-3",
+    "favorableConditions": "Cool wet soils (12-18°C), heavy soils, delayed emergence conditions, infected seed tubers",
+    "treatments": {
+      "mechanical": ["Use disease-free seed tubers", "Avoid deep planting"],
+      "physical": [],
+      "chemical": [
+        {"name": "Boric acid 3%", "dosage": "30g/L", "applicationMethod": "Seed tuber dip for 30 minutes", "frequency": "Before planting"},
+        {"name": "Pencycuron 22.9% SC", "dosage": "1.25ml/L", "applicationMethod": "Seed tuber dip", "frequency": "Before planting"},
+        {"name": "Carbendazim 50% WP", "dosage": "1g/L", "applicationMethod": "Seed tuber treatment", "frequency": "Before planting"}
+      ],
+      "biological": ["Trichoderma viride at 4g/kg seed tuber", "Trichoderma harzianum soil application"]
+    },
+    "preventionTips": ["Use certified disease-free seed tubers", "3-year crop rotation", "Timely planting", "Avoid waterlogging", "Harvest tubers at maturity"],
+    "preventionTipsHi": ["प्रमाणित रोगमुक्त बीज कंद उपयोग करें", "3 साल का फसल चक्र", "समय पर बुवाई", "जलभराव से बचें", "परिपक्वता पर कंद खोदें"],
+    "source": "ICAR-Central Potato Research Institute"
+  },
+  {
+    "name": "Leaf Curl of Chili",
+    "nameHi": "मिर्च का पत्ती मोड़ रोग",
+    "scientificName": "Chili Leaf Curl Virus (ChiLCV)",
+    "type": "viral",
+    "affectedCrops": ["Chili", "Capsicum"],
+    "symptoms": ["Severe upward curling and puckering of leaves", "Thickening and leathery texture of leaves", "Stunted plant growth", "Bushy appearance due to shortened internodes", "Poor fruit set"],
+    "symptomsHi": ["पत्तियों का गंभीर ऊपर की ओर मुड़ना और सिकुड़ना", "पत्तियों का मोटा और चमड़े जैसा होना", "पौधों की वृद्धि रुकना", "छोटे इंटरनोड से झाड़ीनुमा दिखना", "फल कम लगना"],
+    "causativeAgent": "Chili Leaf Curl Virus (ChiLCV), transmitted by whitefly (Bemisia tabaci)",
+    "favorableConditions": "Hot dry weather, high whitefly population, summer season, proximity to infected hosts",
+    "treatments": {
+      "mechanical": ["Uproot and destroy infected plants", "Use yellow sticky traps for whitefly", "Insect-proof nursery nets"],
+      "physical": [],
+      "chemical": [
+        {"name": "Imidacloprid 17.8% SL", "dosage": "0.3ml/L", "applicationMethod": "Foliar spray", "frequency": "At 15-day intervals for whitefly control"},
+        {"name": "Fipronil 5% SC", "dosage": "1.5ml/L", "applicationMethod": "Foliar spray", "frequency": "At pest appearance"},
+        {"name": "Thiamethoxam 25% WG", "dosage": "0.3g/L", "applicationMethod": "Foliar spray or soil drench", "frequency": "Every 15 days"}
+      ],
+      "biological": ["Neem oil 5ml/L spray", "Release Encarsia formosa parasitoid"]
+    },
+    "preventionTips": ["Use tolerant varieties", "Raise seedlings under insect-proof nets", "Border cropping with tall cereals", "Remove weed hosts", "Early planting"],
+    "preventionTipsHi": ["सहनशील किस्में लगाएं", "कीट-रोधी जाली में पौध तैयार करें", "लंबे अनाज फसलों की बॉर्डर फसल लगाएं", "खरपतवार हटाएं", "जल्दी बुवाई करें"],
+    "source": "ICAR-Indian Institute of Vegetable Research"
+  },
+  {
+    "name": "Sigatoka Leaf Spot of Banana",
+    "nameHi": "केले का सिगाटोका पत्ती धब्बा रोग",
+    "scientificName": "Mycosphaerella musicola / Mycosphaerella fijiensis",
+    "type": "fungal",
+    "affectedCrops": ["Banana"],
+    "symptoms": ["Light yellow-green streaks on leaves parallel to veins", "Streaks enlarge to oval spots with grey center and dark border", "Leaves dry and wither prematurely", "Reduced fruit size and delayed maturity", "Severe defoliation"],
+    "symptomsHi": ["पत्तियों पर नसों के समानांतर हल्की पीली-हरी धारियाँ", "धारियाँ बढ़कर धूसर केंद्र और गहरी किनारी वाले अंडाकार धब्बे", "पत्तियाँ समय से पहले सूखकर मुरझा जाती हैं", "फल आकार में कमी और पकने में देरी", "गंभीर पत्ती गिरावट"],
+    "causativeAgent": "Mycosphaerella musicola (Yellow Sigatoka), Mycosphaerella fijiensis (Black Sigatoka)",
+    "favorableConditions": "Temperature 25-30°C, high humidity (>80%), heavy rainfall, poor air circulation in dense plantations",
+    "treatments": {
+      "mechanical": ["Remove and destroy affected leaves regularly", "Proper spacing for air movement"],
+      "physical": [],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 14-21 days during monsoon"},
+        {"name": "Propiconazole 25% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease initiation"},
+        {"name": "Carbendazim 50% WP", "dosage": "1g/L", "applicationMethod": "Foliar spray", "frequency": "At disease appearance"}
+      ],
+      "biological": ["Pseudomonas fluorescens foliar spray"]
+    },
+    "preventionTips": ["Use resistant varieties (Poovan, Karpuravalli)", "Maintain proper spacing (1.8 x 1.8 m)", "Remove old dried leaves regularly", "Adequate nutrition", "Avoid dense planting"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में लगाएं (पूवन, कर्पूरवल्ली)", "उचित दूरी बनाए रखें (1.8 x 1.8 मीटर)", "पुरानी सूखी पत्तियाँ नियमित हटाएं", "पर्याप्त पोषण दें", "घनी बुवाई से बचें"],
+    "source": "ICAR-National Research Centre for Banana"
+  },
+  {
+    "name": "Die-back of Chili",
+    "nameHi": "मिर्च का डाई-बैक रोग",
+    "scientificName": "Colletotrichum capsici",
+    "type": "fungal",
+    "affectedCrops": ["Chili"],
+    "symptoms": ["Progressive drying of twigs from tip downward", "Blackening and shriveling of fruits on affected branches", "Internal browning of stem pith", "Premature leaf fall", "Entire branch dies back"],
+    "symptomsHi": ["टहनियों का ऊपर से नीचे की ओर सूखना", "प्रभावित शाखाओं पर फलों का काला पड़ना और सिकुड़ना", "तने के गूदे का आंतरिक भूरापन", "समय से पहले पत्ती गिरना", "पूरी शाखा सूख जाती है"],
+    "causativeAgent": "Colletotrichum capsici, Alternaria alternata",
+    "favorableConditions": "Warm humid weather (25-30°C), frequent rains, wounded plants, stressed plants",
+    "treatments": {
+      "mechanical": ["Prune and destroy affected branches below the infection point", "Field sanitation"],
+      "physical": [],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-15 days"},
+        {"name": "Carbendazim 50% WP", "dosage": "1g/L", "applicationMethod": "Foliar spray", "frequency": "At disease initiation"},
+        {"name": "Copper oxychloride 50% WP", "dosage": "3g/L", "applicationMethod": "Foliar spray", "frequency": "Every 15 days during rainy season"}
+      ],
+      "biological": ["Trichoderma viride at 5g/L spray"]
+    },
+    "preventionTips": ["Use disease-free seeds", "Seed treatment with Carbendazim at 2g/kg", "Balanced nutrition", "Avoid injuries during harvesting", "Crop rotation"],
+    "preventionTipsHi": ["रोगमुक्त बीज उपयोग करें", "कार्बेंडाजिम 2 ग्राम/किग्रा से बीज उपचार", "संतुलित पोषण", "तुड़ाई के दौरान चोट से बचें", "फसल चक्र अपनाएं"],
+    "source": "ICAR-Indian Institute of Spices Research"
+  },
+  {
+    "name": "Bacterial Blight of Cotton",
+    "nameHi": "कपास का जीवाणु अंगमारी",
+    "scientificName": "Xanthomonas citri pv. malvacearum",
+    "type": "bacterial",
+    "affectedCrops": ["Cotton"],
+    "symptoms": ["Angular water-soaked spots on leaves that turn brown (angular leaf spot)", "Black arm lesions on stems and branches", "Boll rot with slimy bacterial ooze", "Premature boll opening and lint discoloration"],
+    "symptomsHi": ["पत्तियों पर कोणीय पानी भरे धब्बे जो भूरे हो जाते हैं", "तनों और शाखाओं पर काले हाथ जैसे घाव", "चिपचिपे जीवाणु स्राव के साथ गुलर सड़न", "समय से पहले गुलर खुलना और रेशे का रंग बदलना"],
+    "causativeAgent": "Xanthomonas citri pv. malvacearum",
+    "favorableConditions": "Heavy rainfall, temperature 30-35°C, wounds from insects, wind-driven rain, contaminated seeds",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected plants parts"],
+      "physical": ["Delinting acid treatment of seeds (for seed-borne infection)"],
+      "chemical": [
+        {"name": "Streptocycline", "dosage": "0.5g/10L (50 ppm)", "applicationMethod": "Foliar spray", "frequency": "At disease appearance, 2-3 sprays at 10-day intervals"},
+        {"name": "Copper oxychloride 50% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-15 days during rainy season"}
+      ],
+      "biological": ["Pseudomonas fluorescens at 5g/L spray"]
+    },
+    "preventionTips": ["Use resistant varieties", "Seed treatment with Streptocycline (100 ppm) for 2 hours", "Avoid overhead irrigation", "Remove crop residues", "Use acid-delinted seeds"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में लगाएं", "स्ट्रेप्टोसाइक्लिन (100 पीपीएम) से 2 घंटे बीज उपचार", "ऊपर से सिंचाई न करें", "फसल अवशेष हटाएं", "एसिड डिलिंटेड बीज उपयोग करें"],
+    "source": "ICAR-Central Institute for Cotton Research"
+  },
+  {
+    "name": "Ergot (Sugary Disease) of Bajra",
+    "nameHi": "बाजरे का अरगट (शर्करा) रोग",
+    "scientificName": "Claviceps fusiformis",
+    "type": "fungal",
+    "affectedCrops": ["Bajra"],
+    "symptoms": ["Creamy-pink honeydew droplets on earheads at flowering", "Honeydew later hardens into dark brown sclerotia", "Sclerotia replace grains in earhead", "Secondary infection by Cerebella pollen molds (black sooty mass)"],
+    "symptomsHi": ["फूल आने पर बालियों पर मलाई-गुलाबी मधु बूँदें", "मधु बाद में गहरे भूरे स्क्लेरोशिया में कठोर हो जाता है", "बाली में दानों की जगह स्क्लेरोशिया", "सेरेबेला फफूंद का द्वितीयक संक्रमण (काला कालिखयुक्त पिंड)"],
+    "causativeAgent": "Claviceps fusiformis",
+    "favorableConditions": "High humidity during flowering, temperatures 20-30°C, cloudy weather, poor pollination conditions",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected earheads", "Deep burial of sclerotia"],
+      "physical": ["Salt water flotation to separate sclerotia from seed (1.2 specific gravity)"],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray at boot leaf stage and flowering", "frequency": "2 sprays - at boot and 50% flowering"},
+        {"name": "Thiram 75% DS", "dosage": "3g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"}
+      ],
+      "biological": []
+    },
+    "preventionTips": ["Use sclerotia-free seeds", "Grow resistant varieties (HHB 67 Improved, Pusa 23)", "Salt water treatment of seeds to remove sclerotia", "Avoid late sowing", "Deep ploughing after harvest"],
+    "preventionTipsHi": ["स्क्लेरोशिया-मुक्त बीज उपयोग करें", "प्रतिरोधी किस्में उगाएं", "नमक के पानी से बीज उपचार कर स्क्लेरोशिया अलग करें", "देर से बुवाई से बचें", "कटाई के बाद गहरी जुताई"],
+    "source": "ICAR-All India Coordinated Research Project on Pearl Millet"
+  },
+  {
+    "name": "Grain Smut of Jowar",
+    "nameHi": "ज्वार का दाना कंड रोग",
+    "scientificName": "Sporisorium sorghi",
+    "type": "fungal",
+    "affectedCrops": ["Jowar"],
+    "symptoms": ["Individual grains replaced by oval sori filled with black spore mass covered by peridium", "Sori may rupture releasing dark brown spores", "Characteristic foul smell", "Affected earheads partially affected - some grains normal"],
+    "symptomsHi": ["दाने अंडाकार बीजाणु पुंजों से बदल जाते हैं जो काले बीजाणुओं से भरे होते हैं", "बीजाणु पुंज फटकर गहरे भूरे बीजाणु छोड़ सकते हैं", "विशिष्ट दुर्गंध", "प्रभावित बालियाँ आंशिक रूप से प्रभावित - कुछ दाने सामान्य"],
+    "causativeAgent": "Sporisorium sorghi (Sphacelotheca sorghi)",
+    "favorableConditions": "Seed-borne infection, moderate temperature at flowering, soil moisture at sowing",
+    "treatments": {
+      "mechanical": ["Remove smutted earheads before spore dispersal"],
+      "physical": ["Hot water seed treatment at 52°C for 30 minutes"],
+      "chemical": [
+        {"name": "Carboxin 75% WP", "dosage": "2g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"},
+        {"name": "Thiram 75% DS", "dosage": "3g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"},
+        {"name": "Carbendazim 50% WP", "dosage": "2g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"}
+      ],
+      "biological": ["Trichoderma viride seed treatment at 4g/kg"]
+    },
+    "preventionTips": ["Use smut-free certified seeds", "Seed treatment is essential", "Grow resistant varieties (CSV 15, SPV 462)", "Crop rotation", "Deep ploughing after harvest"],
+    "preventionTipsHi": ["कंड-मुक्त प्रमाणित बीज उपयोग करें", "बीज उपचार आवश्यक है", "प्रतिरोधी किस्में उगाएं", "फसल चक्र अपनाएं", "कटाई के बाद गहरी जुताई"],
+    "source": "ICAR-Indian Institute of Millets Research"
+  },
+  {
+    "name": "Wilt of Arhar (Pigeon Pea)",
+    "nameHi": "अरहर का उकठा रोग",
+    "scientificName": "Fusarium udum",
+    "type": "fungal",
+    "affectedCrops": ["Arhar"],
+    "symptoms": ["Gradual wilting and yellowing of plants", "Brown-black discoloration of xylem vessels", "Purple band on stem visible externally", "Partial wilting on one side initially", "Complete plant death before maturity"],
+    "symptomsHi": ["पौधों का धीरे-धीरे मुरझाना और पीला पड़ना", "जाइलम वाहिकाओं का भूरा-काला रंग", "तने पर बाहर से बैंगनी पट्टी दिखना", "शुरू में एक तरफ आंशिक मुरझान", "परिपक्वता से पहले पूरे पौधे की मृत्यु"],
+    "causativeAgent": "Fusarium udum Butler",
+    "favorableConditions": "Temperature 25-30°C, waterlogged soils, continuous pigeon pea cultivation, acidic soils",
+    "treatments": {
+      "mechanical": ["Remove and destroy wilted plants", "Deep summer ploughing"],
+      "physical": ["Soil solarization"],
+      "chemical": [
+        {"name": "Carbendazim 50% WP", "dosage": "2g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"},
+        {"name": "Carboxin + Thiram", "dosage": "3g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"}
+      ],
+      "biological": ["Trichoderma viride seed treatment at 4g/kg", "Trichoderma harzianum enriched FYM application at 2.5 kg/ha", "Pseudomonas fluorescens seed treatment at 10g/kg"]
+    },
+    "preventionTips": ["Use resistant varieties (Asha-ICPL 87119, Maruti, BDN 708)", "Crop rotation with cereals", "Seed treatment mandatory", "Mixed cropping with sorghum or castor", "Lime application in acidic soils"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में उगाएं (आशा-ICPL 87119, मारुति, BDN 708)", "अनाज फसलों के साथ फसल चक्र", "बीज उपचार अनिवार्य है", "ज्वार या अरंडी के साथ मिश्रित खेती", "अम्लीय मिट्टी में चूना डालें"],
+    "source": "ICAR-Indian Institute of Pulses Research"
+  },
+  {
+    "name": "Damping Off",
+    "nameHi": "आर्द्र गलन रोग",
+    "scientificName": "Pythium spp. / Rhizoctonia solani / Phytophthora spp.",
+    "type": "fungal",
+    "affectedCrops": ["Tomato", "Chili", "Brinjal", "Capsicum", "Cauliflower", "Cabbage", "Onion"],
+    "symptoms": ["Pre-emergence: Seeds rot before germination", "Post-emergence: Seedlings topple over at ground level", "Water-soaked constriction at collar region", "Rapid mortality of seedlings in patches", "Seedbed shows circular patches of dead seedlings"],
+    "symptomsHi": ["उगाव पूर्व: बीज अंकुरण से पहले सड़ जाते हैं", "उगाव पश्चात: पौधे जमीन की सतह पर गिर जाते हैं", "कॉलर क्षेत्र में पानी भरा संकुचन", "गोल समूहों में पौधों की तेजी से मृत्यु", "पौधशाला में मरे पौधों के गोल धब्बे"],
+    "causativeAgent": "Pythium aphanidermatum, Rhizoctonia solani, Phytophthora spp.",
+    "favorableConditions": "Excess soil moisture, poor drainage, dense sowing, cloudy weather, heavy soils, temperature 25-30°C",
+    "treatments": {
+      "mechanical": ["Raise nursery beds 15-20 cm high", "Improve drainage", "Reduce sowing density"],
+      "physical": ["Soil solarization of nursery beds for 4-6 weeks before sowing"],
+      "chemical": [
+        {"name": "Captan 75% WP", "dosage": "2-3g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"},
+        {"name": "Metalaxyl + Mancozeb 68% WP", "dosage": "2g/L", "applicationMethod": "Soil drench in nursery", "frequency": "At sowing and 10 days after germination"},
+        {"name": "Copper oxychloride 50% WP", "dosage": "3g/L", "applicationMethod": "Soil drench", "frequency": "Before sowing"}
+      ],
+      "biological": ["Trichoderma viride at 5g/kg seed + soil application at 2.5 kg/ha", "Pseudomonas fluorescens at 10g/kg seed"]
+    },
+    "preventionTips": ["Raise beds for good drainage", "Avoid overwatering", "Thin sowing", "Treat seeds before sowing", "Soil solarization of nursery beds", "Use sterilized growing media"],
+    "preventionTipsHi": ["अच्छी जल निकासी के लिए ऊँची क्यारियाँ बनाएं", "अधिक पानी देने से बचें", "पतली बुवाई करें", "बुवाई से पहले बीज उपचार करें", "नर्सरी क्यारियों का सौर उपचार करें", "कीटाणुरहित बढ़ने वाला माध्यम उपयोग करें"],
+    "source": "ICAR-Indian Institute of Vegetable Research"
+  },
+  {
+    "name": "Cercospora Leaf Spot of Mung",
+    "nameHi": "मूँग का सर्कोस्पोरा पत्ती धब्बा रोग",
+    "scientificName": "Cercospora canescens",
+    "type": "fungal",
+    "affectedCrops": ["Moong", "Urad"],
+    "symptoms": ["Small circular reddish-brown spots on leaves", "Spots enlarge with grey center", "Severe defoliation in susceptible varieties", "Spots also appear on pods"],
+    "symptomsHi": ["पत्तियों पर छोटे गोल लाल-भूरे धब्बे", "धब्बे बढ़कर धूसर केंद्र वाले होते हैं", "संवेदनशील किस्मों में गंभीर पत्ती गिरावट", "फलियों पर भी धब्बे"],
+    "causativeAgent": "Cercospora canescens",
+    "favorableConditions": "Warm humid weather (25-30°C), frequent rains, continuous pulse cultivation",
+    "treatments": {
+      "mechanical": ["Remove crop residues"],
+      "physical": [],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-15 days from disease appearance"},
+        {"name": "Carbendazim 50% WP", "dosage": "1g/L", "applicationMethod": "Foliar spray", "frequency": "At disease initiation"}
+      ],
+      "biological": ["Trichoderma viride seed treatment"]
+    },
+    "preventionTips": ["Use resistant varieties", "Crop rotation", "Clean cultivation", "Timely sowing", "Balanced nutrition"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में उगाएं", "फसल चक्र अपनाएं", "साफ खेती", "समय पर बुवाई", "संतुलित पोषण"],
+    "source": "ICAR-Indian Institute of Pulses Research"
+  },
+  {
+    "name": "Stemphylium Blight of Onion",
+    "nameHi": "प्याज का स्टेम्फीलियम अंगमारी",
+    "scientificName": "Stemphylium vesicarium",
+    "type": "fungal",
+    "affectedCrops": ["Onion"],
+    "symptoms": ["Small yellowish-brown water-soaked spots on leaves", "Spots elongate and turn dark olive brown", "Affected leaves bend and dry from tip", "Rapid blight under warm moist conditions"],
+    "symptomsHi": ["पत्तियों पर छोटे पीले-भूरे पानी भरे धब्बे", "धब्बे बढ़कर गहरे जैतूनी भूरे हो जाते हैं", "प्रभावित पत्तियाँ मुड़कर ऊपर से सूखती हैं", "गर्म नम स्थिति में तेजी से अंगमारी"],
+    "causativeAgent": "Stemphylium vesicarium",
+    "favorableConditions": "Temperature 25-30°C, high humidity, wet weather, thrips damage provides entry",
+    "treatments": {
+      "mechanical": ["Remove infected plant debris"],
+      "physical": [],
+      "chemical": [
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-14 days"},
+        {"name": "Hexaconazole 5% EC", "dosage": "2ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease initiation"},
+        {"name": "Tebuconazole 25.9% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At severe infection"}
+      ],
+      "biological": []
+    },
+    "preventionTips": ["Control thrips to prevent entry wounds", "Use resistant varieties", "Proper spacing", "Balanced nutrition", "Avoid excessive irrigation"],
+    "preventionTipsHi": ["प्रवेश घाव रोकने के लिए थ्रिप्स नियंत्रित करें", "प्रतिरोधी किस्में लगाएं", "उचित दूरी", "संतुलित पोषण", "अधिक सिंचाई से बचें"],
+    "source": "ICAR-Directorate of Onion and Garlic Research"
+  },
+  {
+    "name": "Papaya Ring Spot",
+    "nameHi": "पपीते का रिंग स्पॉट रोग",
+    "scientificName": "Papaya Ring Spot Virus (PRSV)",
+    "type": "viral",
+    "affectedCrops": ["Papaya"],
+    "symptoms": ["Ring-shaped spots on fruits", "Mosaic and mottling on leaves", "Leaf distortion and shoe-string leaves", "Oily streaks on stems and petioles", "Reduced fruit quality and size"],
+    "symptomsHi": ["फलों पर छल्ले के आकार के धब्बे", "पत्तियों पर मोजेक और चित्ती", "पत्तियों का विकृत होना और जूते की फीते जैसी पत्तियाँ", "तनों और डंठलों पर तैलीय धारियाँ", "फल की गुणवत्ता और आकार में कमी"],
+    "causativeAgent": "Papaya Ring Spot Virus (PRSV-P type), transmitted by aphids (Myzus persicae, Aphis gossypii)",
+    "favorableConditions": "High aphid population, proximity to infected plants, warm weather",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected plants immediately", "Use reflective mulches to repel aphids"],
+      "physical": [],
+      "chemical": [
+        {"name": "Imidacloprid 17.8% SL", "dosage": "0.3ml/L", "applicationMethod": "Foliar spray for aphid control", "frequency": "At aphid appearance"},
+        {"name": "Dimethoate 30% EC", "dosage": "1.5ml/L", "applicationMethod": "Foliar spray", "frequency": "At pest incidence"}
+      ],
+      "biological": ["Neem oil 5ml/L as aphid repellent", "Cross-protection with mild PRSV strains (research stage)"]
+    },
+    "preventionTips": ["Use tolerant varieties (Arka Prabhath, Arka Surya)", "Raise seedlings in aphid-proof nursery", "Barrier crops of maize around papaya field", "Rogue out infected plants", "Avoid planting near cucurbits"],
+    "preventionTipsHi": ["सहनशील किस्में लगाएं (अर्का प्रभात, अर्का सूर्या)", "माहू-रोधी नर्सरी में पौध तैयार करें", "पपीते के खेत के चारों ओर मक्का की बॉर्डर फसल", "संक्रमित पौधे उखाड़ें", "कद्दूवर्गीय फसलों के पास न लगाएं"],
+    "source": "ICAR-Indian Institute of Horticultural Research"
+  },
+  {
+    "name": "Wilt of Guava",
+    "nameHi": "अमरूद का उकठा रोग",
+    "scientificName": "Fusarium oxysporum f.sp. psidii",
+    "type": "fungal",
+    "affectedCrops": ["Guava"],
+    "symptoms": ["Yellowing and wilting of leaves, usually starting from one branch", "Leaves dry but remain attached to tree", "Brown discoloration of vascular tissue", "Trees die gradually over months", "Bark peeling at collar region"],
+    "symptomsHi": ["पत्तियों का पीला पड़ना और मुरझाना, आमतौर पर एक शाखा से शुरू", "पत्तियाँ सूख जाती हैं लेकिन पेड़ से जुड़ी रहती हैं", "संवहन ऊतकों का भूरा पड़ना", "पेड़ धीरे-धीरे महीनों में मर जाते हैं", "कॉलर क्षेत्र में छाल का उतरना"],
+    "causativeAgent": "Fusarium oxysporum f.sp. psidii, often associated with root-knot nematode (Meloidogyne spp.)",
+    "favorableConditions": "Waterlogged soils, heavy soils, poor drainage, nematode infestation, temperature 25-30°C",
+    "treatments": {
+      "mechanical": ["Remove and destroy dead trees along with root system", "Soil fumigation of pits before replanting"],
+      "physical": ["Soil solarization of planting pits"],
+      "chemical": [
+        {"name": "Carbendazim 50% WP", "dosage": "2g/L", "applicationMethod": "Soil drench around tree base - 10L/tree", "frequency": "3-4 times at 2-month intervals"},
+        {"name": "Carbofuran 3% CG", "dosage": "50g/tree", "applicationMethod": "Soil application for nematode control", "frequency": "Twice a year"}
+      ],
+      "biological": ["Trichoderma viride at 50g/tree mixed with 5 kg FYM", "Pseudomonas fluorescens soil application", "Paecilomyces lilacinus for nematode biocontrol"]
+    },
+    "preventionTips": ["Use resistant rootstock (Psidium molle)", "Maintain good drainage", "Manage root-knot nematode", "Apply organic matter regularly", "Avoid waterlogging around tree base"],
+    "preventionTipsHi": ["प्रतिरोधी मूलवृंत का उपयोग करें", "अच्छी जल निकासी बनाए रखें", "जड़ गाँठ सूत्रकृमि का प्रबंधन करें", "नियमित जैविक खाद डालें", "पेड़ के आधार के पास जलभराव से बचें"],
+    "source": "ICAR-Central Institute for Subtropical Horticulture"
+  },
+  {
+    "name": "Club Root of Cabbage/Cauliflower",
+    "nameHi": "पत्तागोभी/फूलगोभी का गदा जड़ रोग",
+    "scientificName": "Plasmodiophora brassicae",
+    "type": "fungal",
+    "affectedCrops": ["Cabbage", "Cauliflower"],
+    "symptoms": ["Swollen, distorted roots resembling clubs or spindles", "Yellowing and wilting of leaves especially on hot days", "Stunted growth", "Small or no head formation", "Plants revive at night in early stages"],
+    "symptomsHi": ["गदा या तकली जैसी सूजी और विकृत जड़ें", "विशेषकर गर्म दिनों में पत्तियों का पीला पड़ना और मुरझाना", "वृद्धि रुकना", "छोटा या कोई शीर्ष नहीं बनना", "प्रारंभिक अवस्था में रात को पौधे वापस आ जाते हैं"],
+    "causativeAgent": "Plasmodiophora brassicae (soil-borne obligate parasite)",
+    "favorableConditions": "Acidic soils (pH < 6.5), high soil moisture, cool temperatures (18-25°C), contaminated soil/seedlings",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected plants with roots", "Do not compost infected plant material"],
+      "physical": ["Soil solarization for 6-8 weeks"],
+      "chemical": [
+        {"name": "Lime application", "dosage": "2-4 tons/ha to raise soil pH above 7.2", "applicationMethod": "Broadcast and incorporate before planting", "frequency": "3-4 weeks before transplanting"}
+      ],
+      "biological": ["Trichoderma viride soil application"]
+    },
+    "preventionTips": ["Maintain soil pH above 7.2 with lime", "Long crop rotation (7 years without crucifers)", "Use disease-free transplants", "Improve drainage", "Avoid movement of soil from infected fields"],
+    "preventionTipsHi": ["चूना डालकर मिट्टी का pH 7.2 से ऊपर रखें", "लंबा फसल चक्र (7 साल बिना क्रूसीफर)", "रोगमुक्त पौध उपयोग करें", "जल निकासी सुधारें", "संक्रमित खेतों से मिट्टी का परिवहन न करें"],
+    "source": "ICAR-Indian Institute of Vegetable Research"
+  },
+  {
+    "name": "Sclerotinia Rot (White Mold) of Mustard",
+    "nameHi": "सरसों का स्क्लेरोटीनिया सड़न (सफेद फफूंद) रोग",
+    "scientificName": "Sclerotinia sclerotiorum",
+    "type": "fungal",
+    "affectedCrops": ["Mustard", "Soybean", "Sunflower"],
+    "symptoms": ["Water-soaked lesions on stems that turn white", "White cottony mycelial growth on stems", "Stem lodging at affected point", "Black sclerotia (2-5 mm) inside hollow stems", "Premature wilting and drying"],
+    "symptomsHi": ["तनों पर पानी भरे घाव जो सफेद हो जाते हैं", "तनों पर सफेद रुई जैसी कवकजाल वृद्धि", "प्रभावित स्थान पर तने का गिरना", "खोखले तनों के अंदर काले स्क्लेरोशिया (2-5 मिमी)", "समय से पहले मुरझाना और सूखना"],
+    "causativeAgent": "Sclerotinia sclerotiorum",
+    "favorableConditions": "Cool wet weather (15-20°C), dense canopy, waterlogged conditions, continuous mustard cultivation",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected plants", "Avoid dense sowing"],
+      "physical": ["Deep summer ploughing to bury sclerotia"],
+      "chemical": [
+        {"name": "Carbendazim 50% WP", "dosage": "1g/L", "applicationMethod": "Foliar spray at stem base", "frequency": "At disease onset, repeat after 15 days"},
+        {"name": "Tebuconazole 25.9% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease appearance"}
+      ],
+      "biological": ["Trichoderma viride at 2.5 kg/ha soil application", "Coniothyrium minitans (mycoparasitic on sclerotia)"]
+    },
+    "preventionTips": ["Avoid excessive nitrogen and dense sowing", "Crop rotation with non-host crops", "Deep summer ploughing", "Balanced fertilization", "Well-drained fields"],
+    "preventionTipsHi": ["अधिक नाइट्रोजन और घनी बुवाई से बचें", "गैर-होस्ट फसलों के साथ फसल चक्र", "गर्मियों में गहरी जुताई", "संतुलित उर्वरीकरण", "अच्छी जल निकासी वाले खेत"],
+    "source": "ICAR-Directorate of Rapeseed-Mustard Research"
+  },
+  {
+    "name": "Blast of Ragi (Finger Millet)",
+    "nameHi": "रागी का ब्लास्ट रोग",
+    "scientificName": "Magnaporthe grisea",
+    "type": "fungal",
+    "affectedCrops": ["Ragi"],
+    "symptoms": ["Diamond/spindle-shaped spots on leaves", "Neck blast causing panicle breakage", "Finger blast causing incomplete grain filling", "Dark brown lesions on nodes"],
+    "symptomsHi": ["पत्तियों पर हीरे/तकली आकार के धब्बे", "गर्दन ब्लास्ट जिससे बाली टूट जाती है", "उंगली ब्लास्ट जिससे दाने अधूरे भरते हैं", "गाँठों पर गहरे भूरे घाव"],
+    "causativeAgent": "Magnaporthe grisea (Pyricularia grisea)",
+    "favorableConditions": "High humidity, temperature 22-28°C, excessive nitrogen, prolonged leaf wetness, cloudy weather",
+    "treatments": {
+      "mechanical": ["Remove crop residues"],
+      "physical": [],
+      "chemical": [
+        {"name": "Tricyclazole 75% WP", "dosage": "0.6g/L", "applicationMethod": "Foliar spray", "frequency": "At disease onset and at boot leaf stage"},
+        {"name": "Carbendazim 50% WP", "dosage": "1g/L", "applicationMethod": "Seed treatment + foliar spray", "frequency": "Seed treatment: 2g/kg; foliar at disease appearance"},
+        {"name": "Edifenphos 50% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease initiation"}
+      ],
+      "biological": ["Pseudomonas fluorescens seed treatment"]
+    },
+    "preventionTips": ["Use resistant varieties (GPU-28, ML-365)", "Avoid excessive nitrogen", "Timely sowing", "Seed treatment", "Split application of nitrogen"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में उगाएं (GPU-28, ML-365)", "अधिक नाइट्रोजन से बचें", "समय पर बुवाई", "बीज उपचार", "नाइट्रोजन का विभाजित उपयोग"],
+    "source": "ICAR-Indian Institute of Millets Research"
+  },
+  {
+    "name": "Jute Stem Rot",
+    "nameHi": "जूट का तना सड़न रोग",
+    "scientificName": "Macrophomina phaseolina",
+    "type": "fungal",
+    "affectedCrops": ["Jute"],
+    "symptoms": ["Dark brown lesions at stem base", "Affected bark shreds into fibers", "Premature wilting and drying", "Black microsclerotia on affected tissue", "Plants break easily at base"],
+    "symptomsHi": ["तने के आधार पर गहरे भूरे घाव", "प्रभावित छाल रेशों में उधड़ जाती है", "समय से पहले मुरझाना और सूखना", "प्रभावित ऊतक पर काले सूक्ष्म स्क्लेरोशिया", "पौधे आधार से आसानी से टूट जाते हैं"],
+    "causativeAgent": "Macrophomina phaseolina",
+    "favorableConditions": "High temperature (30-35°C), drought stress, sandy soils, low soil organic matter",
+    "treatments": {
+      "mechanical": ["Remove infected plant debris", "Deep ploughing"],
+      "physical": ["Soil solarization"],
+      "chemical": [
+        {"name": "Carbendazim 50% WP", "dosage": "2g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"},
+        {"name": "Thiram 75% DS", "dosage": "3g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"}
+      ],
+      "biological": ["Trichoderma viride seed treatment at 4g/kg", "Application of organic matter"]
+    },
+    "preventionTips": ["Seed treatment", "Maintain adequate soil moisture", "Organic matter application", "Crop rotation", "Timely sowing"],
+    "preventionTipsHi": ["बीज उपचार करें", "पर्याप्त मिट्टी नमी बनाए रखें", "जैविक पदार्थ डालें", "फसल चक्र अपनाएं", "समय पर बुवाई"],
+    "source": "ICAR-Central Research Institute for Jute and Allied Fibres"
+  },
+  {
+    "name": "Bacterial Soft Rot of Potato",
+    "nameHi": "आलू का जीवाणु मृदु सड़न",
+    "scientificName": "Pectobacterium carotovorum",
+    "type": "bacterial",
+    "affectedCrops": ["Potato", "Onion", "Ginger"],
+    "symptoms": ["Soft water-soaked lesions on tubers", "Foul-smelling cream-colored bacterial ooze", "Internal tissue becomes mushy and collapses", "Tubers become completely rotten in storage", "Blackleg symptoms in field (stem rot at base)"],
+    "symptomsHi": ["कंदों पर मुलायम पानी भरे घाव", "दुर्गंधयुक्त मलाई रंग का जीवाणु स्राव", "आंतरिक ऊतक गूदेदार होकर ढह जाता है", "भंडारण में कंद पूरी तरह सड़ जाते हैं", "खेत में ब्लैकलेग लक्षण (आधार पर तना सड़न)"],
+    "causativeAgent": "Pectobacterium carotovorum (formerly Erwinia carotovora)",
+    "favorableConditions": "High temperature (28-35°C), high humidity, wounds during harvesting, poor ventilation in storage, waterlogging",
+    "treatments": {
+      "mechanical": ["Careful harvesting to avoid wounds", "Proper curing of tubers before storage", "Good ventilation in storage"],
+      "physical": ["Cold storage at 2-4°C with 90% RH"],
+      "chemical": [
+        {"name": "Streptocycline", "dosage": "200 ppm (2g/10L)", "applicationMethod": "Dip treatment of seed tubers", "frequency": "Before planting"},
+        {"name": "Copper oxychloride 50% WP", "dosage": "3g/L", "applicationMethod": "Pre-harvest spray", "frequency": "7 days before haulm cutting"}
+      ],
+      "biological": ["Pseudomonas fluorescens tuber treatment"]
+    },
+    "preventionTips": ["Avoid injuries during harvesting", "Proper curing for 10-14 days", "Cold storage at 2-4°C", "Good drainage in fields", "Avoid excess irrigation near harvest"],
+    "preventionTipsHi": ["खुदाई के दौरान चोट से बचें", "10-14 दिन उचित क्योरिंग", "2-4°C पर शीत भंडारण", "खेतों में अच्छी जल निकासी", "कटाई के पास अधिक सिंचाई से बचें"],
+    "source": "ICAR-Central Potato Research Institute"
+  },
+  {
+    "name": "Sugarcane Mosaic",
+    "nameHi": "गन्ने का मोजेक रोग",
+    "scientificName": "Sugarcane Mosaic Virus (SCMV)",
+    "type": "viral",
+    "affectedCrops": ["Sugarcane", "Maize"],
+    "symptoms": ["Alternating light and dark green patches on young leaves (mosaic)", "Chlorotic streaks parallel to veins", "Reddening of midrib in some varieties", "Reduced cane weight and sugar content", "Stunted growth"],
+    "symptomsHi": ["नई पत्तियों पर बारी-बारी हल्के और गहरे हरे धब्बे (मोजेक)", "नसों के समानांतर पीली धारियाँ", "कुछ किस्मों में मध्य शिरा का लाल होना", "गन्ने के वजन और चीनी सामग्री में कमी", "वृद्धि रुकना"],
+    "causativeAgent": "Sugarcane Mosaic Virus (SCMV), transmitted by aphids (Rhopalosiphum maidis, Aphis maidis)",
+    "favorableConditions": "Infected seed cane, high aphid population, warm weather, ratooning from infected crop",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected plants", "Use virus-free seed cane"],
+      "physical": ["Hot water treatment of setts at 52°C for 30 minutes"],
+      "chemical": [
+        {"name": "Imidacloprid 17.8% SL", "dosage": "0.3ml/L", "applicationMethod": "Foliar spray for aphid control", "frequency": "At aphid incidence"}
+      ],
+      "biological": ["Neem oil 5ml/L for aphid management"]
+    },
+    "preventionTips": ["Use healthy seed cane from indexed nurseries", "Grow resistant varieties (Co 86032, CoJ 64)", "Hot water treatment of setts", "Control aphid vectors", "Avoid ratooning from infected crop"],
+    "preventionTipsHi": ["सूचीबद्ध नर्सरी से स्वस्थ बीज गन्ना उपयोग करें", "प्रतिरोधी किस्में उगाएं", "पेड़ी का गर्म पानी उपचार", "माहू कीट नियंत्रित करें", "संक्रमित फसल से पेड़ी न लें"],
+    "source": "ICAR-Sugarcane Breeding Institute"
+  },
+  {
+    "name": "Sunflower Downy Mildew",
+    "nameHi": "सूरजमुखी का मृदुरोमिल आसिता रोग",
+    "scientificName": "Plasmopara halstedii",
+    "type": "fungal",
+    "affectedCrops": ["Sunflower"],
+    "symptoms": ["Stunting of entire plant with thick upright growth", "Chlorosis of leaves along veins", "White cottony growth on underside of leaves", "Heads remain small with no seed set", "Dwarfing of internodes"],
+    "symptomsHi": ["मोटी सीधी वृद्धि के साथ पूरे पौधे का बौनापन", "नसों के साथ पत्तियों का पीला पड़ना", "पत्तियों की निचली सतह पर सफेद रुई जैसी वृद्धि", "शीर्ष छोटे रहते हैं बिना बीज बनाव", "गाँठों के बीच का बौनापन"],
+    "causativeAgent": "Plasmopara halstedii",
+    "favorableConditions": "Cool wet weather, seed-borne and soil-borne, waterlogged conditions, temperature 15-22°C",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected plants"],
+      "physical": [],
+      "chemical": [
+        {"name": "Metalaxyl 35% WS", "dosage": "6g/kg seed", "applicationMethod": "Seed treatment", "frequency": "Before sowing"},
+        {"name": "Mancozeb 75% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "At disease appearance"}
+      ],
+      "biological": []
+    },
+    "preventionTips": ["Use resistant varieties", "Seed treatment with Metalaxyl", "3-4 year crop rotation", "Well-drained soils", "Avoid waterlogging"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में उगाएं", "मेटालैक्सिल से बीज उपचार", "3-4 साल का फसल चक्र", "अच्छी जल निकासी वाली मिट्टी", "जलभराव से बचें"],
+    "source": "ICAR-Indian Institute of Oilseeds Research"
+  },
+  {
+    "name": "Powdery Mildew of Wheat",
+    "nameHi": "गेहूँ का चूर्णिल आसिता रोग",
+    "scientificName": "Blumeria graminis f.sp. tritici (Erysiphe graminis)",
+    "type": "fungal",
+    "affectedCrops": ["Wheat"],
+    "symptoms": ["White to grey powdery patches on leaves and leaf sheaths", "Patches gradually turn grey-brown", "Affected leaves turn yellow and dry", "Reduced grain filling", "Small black cleistothecia visible in old lesions"],
+    "symptomsHi": ["पत्तियों और पत्ती आवरण पर सफेद से धूसर चूर्णी धब्बे", "धब्बे धीरे-धीरे धूसर-भूरे हो जाते हैं", "प्रभावित पत्तियाँ पीली होकर सूख जाती हैं", "दाने भरने में कमी", "पुराने घावों में छोटे काले क्लीस्टोथीसिया दिखते हैं"],
+    "causativeAgent": "Blumeria graminis f.sp. tritici",
+    "favorableConditions": "Cool humid weather (15-22°C), high nitrogen, dense canopy, cloudy conditions",
+    "treatments": {
+      "mechanical": ["Avoid excessive nitrogen", "Proper spacing"],
+      "physical": [],
+      "chemical": [
+        {"name": "Propiconazole 25% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease appearance"},
+        {"name": "Sulphur 80% WP", "dosage": "3g/L", "applicationMethod": "Foliar spray", "frequency": "Every 10-15 days"},
+        {"name": "Tebuconazole 25.9% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At disease initiation"}
+      ],
+      "biological": []
+    },
+    "preventionTips": ["Grow resistant varieties", "Balanced fertilization", "Avoid late sowing", "Proper plant spacing", "Avoid excessive irrigation"],
+    "preventionTipsHi": ["प्रतिरोधी किस्में उगाएं", "संतुलित उर्वरीकरण", "देर से बुवाई से बचें", "उचित पौध दूरी", "अधिक सिंचाई से बचें"],
+    "source": "ICAR-Indian Institute of Wheat and Barley Research"
+  },
+  {
+    "name": "False Smut of Rice",
+    "nameHi": "धान का मिथ्या कंड रोग",
+    "scientificName": "Ustilaginoidea virens",
+    "type": "fungal",
+    "affectedCrops": ["Rice"],
+    "symptoms": ["Individual grains transformed into large velvety green to orange-yellow ball-shaped spore masses", "Spore balls 2-5 times larger than normal grain", "Usually 1-5 grains affected per panicle", "Not all panicles affected in a field"],
+    "symptomsHi": ["दाने बड़े मखमली हरे से नारंगी-पीले गेंद आकार के बीजाणु पिंडों में बदल जाते हैं", "बीजाणु गेंद सामान्य दाने से 2-5 गुना बड़ी", "आमतौर पर प्रति बाली 1-5 दाने प्रभावित", "खेत में सभी बालियाँ प्रभावित नहीं होतीं"],
+    "causativeAgent": "Ustilaginoidea virens (Villosiclava virens)",
+    "favorableConditions": "High nitrogen, cloudy weather during heading, temperature 25-30°C, high humidity, rain at flowering",
+    "treatments": {
+      "mechanical": ["Remove smut balls from panicles before they mature"],
+      "physical": [],
+      "chemical": [
+        {"name": "Propiconazole 25% EC", "dosage": "1ml/L", "applicationMethod": "Foliar spray", "frequency": "At booting stage (prophylactic)"},
+        {"name": "Copper oxychloride 50% WP", "dosage": "2.5g/L", "applicationMethod": "Foliar spray", "frequency": "At boot leaf emergence"}
+      ],
+      "biological": []
+    },
+    "preventionTips": ["Avoid excessive nitrogen", "Grow less susceptible varieties", "Prophylactic spray at booting", "Clean seed", "Balanced nutrition"],
+    "preventionTipsHi": ["अधिक नाइट्रोजन से बचें", "कम संवेदनशील किस्में उगाएं", "बूटिंग पर निवारक छिड़काव", "साफ बीज उपयोग करें", "संतुलित पोषण"],
+    "source": "ICAR-Indian Institute of Rice Research"
+  },
+  {
+    "name": "Bacterial Stalk Rot of Maize",
+    "nameHi": "मक्का का जीवाणु तना सड़न",
+    "scientificName": "Dickeya zeae (Erwinia chrysanthemi pv. zeae)",
+    "type": "bacterial",
+    "affectedCrops": ["Maize"],
+    "symptoms": ["Water-soaked lesions at stem base", "Foul-smelling soft rot of lower internodes", "Plant topples over due to weakened stem", "Internal tissue becomes slimy brown mush", "Rapid spread during monsoon"],
+    "symptomsHi": ["तने के आधार पर पानी भरे घाव", "निचले गाँठों के बीच की दुर्गंधयुक्त मुलायम सड़न", "कमजोर तने से पौधा गिर जाता है", "आंतरिक ऊतक चिपचिपा भूरा गूदा बन जाता है", "मानसून में तेजी से फैलाव"],
+    "causativeAgent": "Dickeya zeae (formerly Erwinia chrysanthemi pv. zeae)",
+    "favorableConditions": "Waterlogging, high temperature (35-40°C), injury to stem base, monsoon season, dense planting",
+    "treatments": {
+      "mechanical": ["Remove and destroy infected plants", "Improve drainage", "Avoid waterlogging"],
+      "physical": [],
+      "chemical": [
+        {"name": "Bleaching powder", "dosage": "10-12 kg/acre", "applicationMethod": "Broadcast in standing water", "frequency": "At disease appearance"},
+        {"name": "Streptocycline", "dosage": "0.5g/10L", "applicationMethod": "Spray at stem base", "frequency": "At disease initiation"}
+      ],
+      "biological": ["Pseudomonas fluorescens soil drench"]
+    },
+    "preventionTips": ["Ensure proper drainage", "Avoid waterlogging", "Balanced nitrogen fertilization", "Treat seeds before sowing", "Avoid injuries to stem base during intercultural operations"],
+    "preventionTipsHi": ["उचित जल निकासी सुनिश्चित करें", "जलभराव से बचें", "संतुलित नाइट्रोजन उर्वरीकरण", "बुवाई से पहले बीज उपचार", "अंतरफसल कार्यों के दौरान तने को चोट से बचाएं"],
+    "source": "ICAR-Indian Institute of Maize Research"
+  }
+]

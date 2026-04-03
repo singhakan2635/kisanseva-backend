@@ -1,0 +1,401 @@
+[
+  {
+    "name": "Nitrogen Deficiency",
+    "nameHi": "नाइट्रोजन की कमी",
+    "nutrient": "nitrogen",
+    "symbol": "N",
+    "category": "macronutrient",
+    "affectedCrops": ["Rice", "Wheat", "Maize", "Sugarcane", "Cotton", "Tomato", "Potato", "Banana"],
+    "symptoms": ["Uniform yellowing (chlorosis) of older/lower leaves first", "Stunted plant growth", "Pale green color of entire plant", "Thin and spindly stems", "Reduced tillering in cereals", "Premature leaf senescence"],
+    "symptomsHi": ["पुरानी/निचली पत्तियों का समान पीला पड़ना (हरिमाहीनता)", "पौधों की वृद्धि रुकना", "पूरे पौधे का हल्का हरा रंग", "पतले और कमजोर तने", "अनाज फसलों में कम कल्ले", "पत्तियों का समय से पहले बूढ़ा होना"],
+    "cropSpecificSymptoms": {
+      "Rice": "Leaves turn pale yellow-green, reduced tillering, small panicles with fewer grains",
+      "Wheat": "Lower leaves yellow from tip, thin stems, poor tillering, small ears",
+      "Maize": "V-shaped yellowing from leaf tip on lower leaves, thin stalks, small cobs"
+    },
+    "treatments": {
+      "organic": ["Farm Yard Manure (FYM) at 10-15 tons/ha", "Green manuring with Dhaincha (Sesbania) or Sunhemp", "Vermicompost at 5 tons/ha", "Neem cake at 250 kg/ha", "Bio-fertilizer: Azospirillum at 2 kg/ha for cereals"],
+      "chemical": [
+        {"name": "Urea (46% N)", "dosage": "50-60 kg/acre in 2-3 split doses", "applicationMethod": "Broadcasting or top dressing in standing crop"},
+        {"name": "Ammonium Sulphate (20.6% N)", "dosage": "100-120 kg/acre", "applicationMethod": "Basal or top dressing (preferred for sulphur-deficient soils)"},
+        {"name": "DAP (18% N + 46% P2O5)", "dosage": "50 kg/acre", "applicationMethod": "Basal application at sowing"},
+        {"name": "Urea foliar spray", "dosage": "2% solution (20g/L)", "applicationMethod": "Foliar spray for quick correction", "frequency": "2-3 sprays at 10-day intervals"}
+      ]
+    },
+    "preventionTips": ["Regular soil testing before each season", "Balanced NPK fertilization based on soil test", "Include legumes in crop rotation for biological N fixation", "Apply nitrogen in 2-3 split doses for efficiency", "Green manuring before rice transplanting"],
+    "preventionTipsHi": ["प्रत्येक मौसम से पहले नियमित मिट्टी परीक्षण", "मिट्टी परीक्षण के आधार पर संतुलित NPK उर्वरीकरण", "जैविक नाइट्रोजन स्थिरीकरण के लिए फसल चक्र में दालें शामिल करें", "कुशलता के लिए 2-3 भागों में नाइट्रोजन डालें", "धान रोपाई से पहले हरी खाद"],
+    "soilTestRange": {
+      "deficient": "< 280 kg/ha available nitrogen (KMnO4 extractable)",
+      "adequate": "280-560 kg/ha",
+      "sufficient": "> 560 kg/ha"
+    },
+    "source": "ICAR Soil Science Division / Fertilizer Recommendation Guide for Indian States"
+  },
+  {
+    "name": "Phosphorus Deficiency",
+    "nameHi": "फास्फोरस की कमी",
+    "nutrient": "phosphorus",
+    "symbol": "P",
+    "category": "macronutrient",
+    "affectedCrops": ["Rice", "Wheat", "Maize", "Chana", "Arhar", "Tomato", "Potato"],
+    "symptoms": ["Dark green to purplish discoloration of older leaves", "Restricted root development", "Delayed maturity and flowering", "Poor seed and fruit development", "Stunted growth with erect small dark green leaves", "Reduced tillering in rice and wheat"],
+    "symptomsHi": ["पुरानी पत्तियों का गहरा हरा से बैंगनी रंग", "जड़ विकास में रुकावट", "परिपक्वता और फूल आने में देरी", "खराब बीज और फल विकास", "छोटी गहरी हरी खड़ी पत्तियों के साथ बौनापन", "धान और गेहूँ में कम कल्ले"],
+    "cropSpecificSymptoms": {
+      "Rice": "Dark green leaves with reddish-purple tinge, reduced tillering, delayed maturity",
+      "Wheat": "Dark green stunted plants, purpling of lower leaves, poor root system",
+      "Maize": "Purple or reddish coloration on lower leaves and stems, poor ear development"
+    },
+    "treatments": {
+      "organic": ["Rock phosphate at 200-250 kg/ha (for acidic soils)", "Bone meal at 500 kg/ha", "FYM at 10-15 tons/ha", "Vermicompost at 5 tons/ha", "Bio-fertilizer: PSB (Phosphate Solubilizing Bacteria) at 2 kg/ha"],
+      "chemical": [
+        {"name": "Single Super Phosphate (SSP - 16% P2O5)", "dosage": "100-150 kg/acre", "applicationMethod": "Basal application at sowing/transplanting"},
+        {"name": "DAP (46% P2O5 + 18% N)", "dosage": "50 kg/acre", "applicationMethod": "Basal application, band placement near seed row"},
+        {"name": "NP/NPK complex fertilizers", "dosage": "As per soil test", "applicationMethod": "Basal application"}
+      ]
+    },
+    "preventionTips": ["Apply phosphorus as basal dose (entire amount at sowing)", "Band placement increases efficiency over broadcasting", "Use PSB inoculants to increase P availability", "Maintain soil pH 6.0-7.0 for optimal P availability", "Organic matter application increases P availability"],
+    "preventionTipsHi": ["फास्फोरस को बेसल खुराक के रूप में दें (बुवाई पर पूरी मात्रा)", "प्रसारण की तुलना में पट्टी में रखना कुशलता बढ़ाता है", "P उपलब्धता बढ़ाने के लिए PSB टीका लगाएं", "इष्टतम P उपलब्धता के लिए मिट्टी pH 6.0-7.0 रखें", "जैविक खाद P उपलब्धता बढ़ाती है"],
+    "soilTestRange": {
+      "deficient": "< 10 kg/ha available P2O5 (Olsen's method)",
+      "adequate": "10-25 kg/ha",
+      "sufficient": "> 25 kg/ha"
+    },
+    "source": "ICAR Soil Science Division / Indian Institute of Soil Science"
+  },
+  {
+    "name": "Potassium Deficiency",
+    "nameHi": "पोटैशियम की कमी",
+    "nutrient": "potassium",
+    "symbol": "K",
+    "category": "macronutrient",
+    "affectedCrops": ["Rice", "Wheat", "Banana", "Potato", "Sugarcane", "Cotton", "Tomato", "Grapes"],
+    "symptoms": ["Marginal scorching (browning) of older leaf tips and edges", "Older leaves show interveinal chlorosis followed by necrosis", "Weak stalks and lodging in cereals", "Poor fruit quality and storage life", "Increased susceptibility to diseases", "Reduced drought tolerance"],
+    "symptomsHi": ["पुरानी पत्तियों की नोक और किनारों का भूरा (जलना) होना", "पुरानी पत्तियों में नसों के बीच पीलापन फिर मृत्यु", "अनाज फसलों में कमजोर तने और गिरना", "खराब फल गुणवत्ता और भंडारण जीवन", "रोगों के प्रति बढ़ी संवेदनशीलता", "सूखा सहनशीलता में कमी"],
+    "cropSpecificSymptoms": {
+      "Rice": "Brown scorching of leaf tips and margins, rusty brown spots, lodging",
+      "Banana": "Orange-yellow discoloration of older leaves from margin, premature leaf drying, small fruits",
+      "Potato": "Bronzing of leaves, die-back of shoot tips, small and poor quality tubers"
+    },
+    "treatments": {
+      "organic": ["Wood ash at 500 kg/ha (rich in K)", "Banana stalk compost", "FYM at 15-20 tons/ha", "Coconut husk compost"],
+      "chemical": [
+        {"name": "Muriate of Potash (MOP - 60% K2O)", "dosage": "30-50 kg/acre", "applicationMethod": "Basal or split application (50% basal + 50% top dressing)"},
+        {"name": "Sulphate of Potash (SOP - 50% K2O)", "dosage": "40-60 kg/acre", "applicationMethod": "Basal application (preferred for potato, fruits, tobacco)"},
+        {"name": "Potassium Nitrate (13-0-46)", "dosage": "5-10g/L", "applicationMethod": "Foliar spray for quick correction"}
+      ]
+    },
+    "preventionTips": ["Regular soil testing for K status", "Apply K based on soil test values", "Use SOP for fruits and vegetables (chloride-sensitive)", "Do not ignore K application even in high-K soils under intensive cropping", "Organic matter application helps maintain K availability"],
+    "preventionTipsHi": ["K स्थिति के लिए नियमित मिट्टी परीक्षण", "मिट्टी परीक्षण मूल्यों के आधार पर K दें", "फल और सब्जियों के लिए SOP उपयोग करें (क्लोराइड-संवेदनशील)", "गहन खेती में K उपयोग की अनदेखी न करें", "जैविक खाद K उपलब्धता बनाए रखने में सहायक"],
+    "soilTestRange": {
+      "deficient": "< 108 kg/ha available K2O (Ammonium acetate extractable)",
+      "adequate": "108-280 kg/ha",
+      "sufficient": "> 280 kg/ha"
+    },
+    "source": "ICAR Soil Science Division / Indian Institute of Soil Science"
+  },
+  {
+    "name": "Sulphur Deficiency",
+    "nameHi": "गंधक (सल्फर) की कमी",
+    "nutrient": "sulphur",
+    "symbol": "S",
+    "category": "secondary_nutrient",
+    "affectedCrops": ["Mustard", "Groundnut", "Soybean", "Chana", "Onion", "Rice", "Wheat"],
+    "symptoms": ["Uniform yellowing of younger/newer leaves (unlike N deficiency which affects older leaves)", "Stunted growth", "Delayed maturity", "Reduced oil content in oilseeds", "Light green to yellow appearance of entire plant", "Poor nodulation in legumes"],
+    "symptomsHi": ["नई/जवान पत्तियों का समान पीला पड़ना (N कमी के विपरीत जो पुरानी पत्तियों को प्रभावित करती है)", "वृद्धि रुकना", "परिपक्वता में देरी", "तिलहन में तेल सामग्री में कमी", "पूरे पौधे का हल्का हरा से पीला दिखना", "दालों में कमजोर गाँठ बनाव"],
+    "cropSpecificSymptoms": {
+      "Mustard": "Cupping of young leaves, stunted growth, reduced oil content, pale flowers",
+      "Groundnut": "Yellow-green foliage, reduced nodulation, poor kernel development",
+      "Onion": "Stunted growth, thick neck, delayed maturity"
+    },
+    "treatments": {
+      "organic": ["Gypsum (CaSO4) is natural mined mineral - 200 kg/ha", "Elemental sulphur at 20-40 kg/ha"],
+      "chemical": [
+        {"name": "Gypsum (CaSO4.2H2O - 18% S)", "dosage": "200-250 kg/ha", "applicationMethod": "Basal application and incorporated into soil"},
+        {"name": "Single Super Phosphate (SSP - 12% S)", "dosage": "As per P recommendation", "applicationMethod": "Basal application (provides both P and S)"},
+        {"name": "Ammonium Sulphate (24% S)", "dosage": "50-75 kg/acre", "applicationMethod": "Basal or top dressing"},
+        {"name": "Bentonite sulphur (90% S)", "dosage": "20 kg/ha", "applicationMethod": "Basal application"}
+      ]
+    },
+    "preventionTips": ["Use SSP instead of DAP to provide sulphur along with phosphorus", "Apply gypsum in oilseed and pulse crops", "Soil testing for sulphur status", "Organic matter application", "Sulphur is often overlooked - include in fertilizer plan"],
+    "preventionTipsHi": ["फास्फोरस के साथ सल्फर प्रदान करने के लिए DAP के बजाय SSP उपयोग करें", "तिलहन और दलहन फसलों में जिप्सम डालें", "सल्फर स्थिति के लिए मिट्टी परीक्षण", "जैविक खाद उपयोग", "सल्फर अक्सर अनदेखा रहता है - उर्वरक योजना में शामिल करें"],
+    "soilTestRange": {
+      "deficient": "< 10 ppm available S (0.15% CaCl2 extractable)",
+      "adequate": "10-20 ppm",
+      "sufficient": "> 20 ppm"
+    },
+    "source": "ICAR-Indian Institute of Soil Science / The Sulphur Institute"
+  },
+  {
+    "name": "Calcium Deficiency",
+    "nameHi": "कैल्शियम की कमी",
+    "nutrient": "calcium",
+    "symbol": "Ca",
+    "category": "secondary_nutrient",
+    "affectedCrops": ["Tomato", "Capsicum", "Groundnut", "Potato", "Cauliflower", "Cabbage", "Banana"],
+    "symptoms": ["Distortion and death of growing tips (apical meristem)", "Blossom end rot in tomato and capsicum", "Hooked leaf tips in young leaves", "Poor root development", "Hollow stem in cauliflower", "Internal brown spot in potato (hollow heart)"],
+    "symptomsHi": ["बढ़ती नोक (शीर्ष विभज्या) का विकृत होना और मरना", "टमाटर और शिमला मिर्च में ब्लॉसम एंड रॉट", "नई पत्तियों की नोक का मुड़ना", "खराब जड़ विकास", "फूलगोभी में खोखला तना", "आलू में आंतरिक भूरा धब्बा (खोखला हृदय)"],
+    "cropSpecificSymptoms": {
+      "Tomato": "Blossom end rot - dark water-soaked area at fruit bottom turning black",
+      "Groundnut": "Empty pods (pops), unfilled kernels due to poor Ca supply in pegging zone",
+      "Cauliflower": "Internal browning of curd, hollow stem"
+    },
+    "treatments": {
+      "organic": ["Lime application (CaCO3) at 2-4 tons/ha for acidic soils", "Dolomite (CaMg(CO3)2) at 2-3 tons/ha"],
+      "chemical": [
+        {"name": "Gypsum (CaSO4)", "dosage": "400-500 kg/ha for groundnut at pegging", "applicationMethod": "Apply in pegging zone of groundnut"},
+        {"name": "Calcium Chloride", "dosage": "0.5% (5g/L)", "applicationMethod": "Foliar spray for quick correction", "frequency": "2-3 sprays at weekly intervals"},
+        {"name": "Lime (CaCO3)", "dosage": "2-4 tons/ha based on soil pH and lime requirement", "applicationMethod": "Broadcast and incorporate 3-4 weeks before sowing"}
+      ]
+    },
+    "preventionTips": ["Maintain soil pH 6.0-7.0 with liming in acidic soils", "Gypsum application in groundnut at pegging", "Avoid excessive use of ammonium fertilizers (they acidify soil)", "Regular irrigation to maintain Ca mobility", "Calcium nitrate foliar spray for tomato blossom end rot"],
+    "preventionTipsHi": ["अम्लीय मिट्टी में चूना डालकर pH 6.0-7.0 बनाए रखें", "मूँगफली में खूंटी बनते समय जिप्सम डालें", "अमोनियम उर्वरकों का अधिक उपयोग न करें (मिट्टी अम्लीय करते हैं)", "Ca गतिशीलता के लिए नियमित सिंचाई", "टमाटर ब्लॉसम एंड रॉट के लिए कैल्शियम नाइट्रेट पर्णीय छिड़काव"],
+    "soilTestRange": {
+      "deficient": "< 1.5 meq/100g exchangeable Ca",
+      "adequate": "1.5-5.0 meq/100g",
+      "sufficient": "> 5.0 meq/100g"
+    },
+    "source": "ICAR-Indian Institute of Soil Science"
+  },
+  {
+    "name": "Magnesium Deficiency",
+    "nameHi": "मैग्नीशियम की कमी",
+    "nutrient": "magnesium",
+    "symbol": "Mg",
+    "category": "secondary_nutrient",
+    "affectedCrops": ["Tomato", "Potato", "Banana", "Citrus", "Grapes", "Chili", "Cotton"],
+    "symptoms": ["Interveinal chlorosis of older leaves (veins remain green, areas between turn yellow)", "Leaves may develop reddish-purple tinge", "Leaf margins may curl upward", "Premature leaf fall", "Reduced chlorophyll content"],
+    "symptomsHi": ["पुरानी पत्तियों में नसों के बीच पीलापन (नसें हरी रहती हैं)", "पत्तियों पर लाल-बैंगनी रंग आ सकता है", "पत्तियों के किनारे ऊपर मुड़ सकते हैं", "समय से पहले पत्ती गिरना", "क्लोरोफिल सामग्री में कमी"],
+    "cropSpecificSymptoms": {
+      "Tomato": "Interveinal yellowing starting from lower leaves, brittle leaves",
+      "Citrus": "Bronze-colored inverted V pattern on leaves from base",
+      "Banana": "Marginal chlorosis of older leaves, purple discoloration"
+    },
+    "treatments": {
+      "organic": ["Dolomite (CaMg(CO3)2) at 2-3 tons/ha", "Wood ash application"],
+      "chemical": [
+        {"name": "Magnesium Sulphate (MgSO4 - Epsom salt - 10% Mg)", "dosage": "25 kg/acre soil application or 1% foliar spray (10g/L)", "applicationMethod": "Soil or foliar application"},
+        {"name": "Dolomitic lime", "dosage": "2-3 tons/ha", "applicationMethod": "Basal application in acidic soils"}
+      ]
+    },
+    "preventionTips": ["Use dolomite instead of limestone for liming acidic soils (provides both Ca and Mg)", "Apply MgSO4 in Mg-deficient soils", "Avoid excessive K application (K-Mg antagonism)", "Soil testing for Mg status", "Organic matter helps maintain Mg availability"],
+    "preventionTipsHi": ["अम्लीय मिट्टी में चूने की जगह डोलोमाइट उपयोग करें (Ca और Mg दोनों देता है)", "Mg-कमी वाली मिट्टी में MgSO4 डालें", "अधिक K उपयोग से बचें (K-Mg विरोध)", "Mg स्थिति के लिए मिट्टी परीक्षण", "जैविक खाद Mg उपलब्धता बनाए रखती है"],
+    "soilTestRange": {
+      "deficient": "< 0.5 meq/100g exchangeable Mg",
+      "adequate": "0.5-1.5 meq/100g",
+      "sufficient": "> 1.5 meq/100g"
+    },
+    "source": "ICAR-Indian Institute of Soil Science"
+  },
+  {
+    "name": "Iron Deficiency",
+    "nameHi": "लौह (आयरन) की कमी",
+    "nutrient": "iron",
+    "symbol": "Fe",
+    "category": "micronutrient",
+    "affectedCrops": ["Rice", "Groundnut", "Soybean", "Sorghum", "Citrus", "Grapes", "Banana"],
+    "symptoms": ["Interveinal chlorosis of younger/newer leaves (veins green, lamina yellow)", "In severe cases, entire leaf becomes white/bleached", "Necrotic spots on severely chlorotic leaves", "Stunted growth", "Reduced flowering and fruiting"],
+    "symptomsHi": ["नई/जवान पत्तियों में नसों के बीच पीलापन (नसें हरी, पत्ती पीली)", "गंभीर स्थिति में पूरी पत्ती सफेद/विरंजित हो जाती है", "गंभीर पीली पत्तियों पर मृत धब्बे", "वृद्धि रुकना", "फूल आने और फल लगने में कमी"],
+    "cropSpecificSymptoms": {
+      "Rice": "Interveinal chlorosis of young leaves, entire leaf becomes bleached white in severe cases (common in calcareous soils)",
+      "Groundnut": "Interveinal chlorosis, stunted growth, chlorosis appears early in calcareous soils",
+      "Citrus": "Fine network of green veins on yellow background on young leaves"
+    },
+    "treatments": {
+      "organic": ["FYM application at 10-15 tons/ha (improves Fe availability)", "Acidifying organic materials in alkaline soils"],
+      "chemical": [
+        {"name": "Ferrous Sulphate (FeSO4 - 19% Fe)", "dosage": "25 kg/ha soil application or 0.5% foliar spray (5g/L)", "applicationMethod": "Soil (with organic matter) or foliar application"},
+        {"name": "Fe-EDTA (chelated iron - 12% Fe)", "dosage": "0.5% foliar spray (5g/L)", "applicationMethod": "Foliar spray for quick correction", "frequency": "2-3 sprays at 10-day intervals"},
+        {"name": "Ferrous sulphate + Citric acid", "dosage": "FeSO4 0.5% + Citric acid 0.1%", "applicationMethod": "Foliar spray (citric acid improves Fe uptake)"}
+      ]
+    },
+    "preventionTips": ["Apply organic matter to improve Fe availability in calcareous/alkaline soils", "Foliar application is more effective than soil application in high-pH soils", "Avoid over-liming", "Soil test for Fe status especially in calcareous soils", "Use Fe-efficient varieties where available"],
+    "preventionTipsHi": ["चूनेदार/क्षारीय मिट्टी में Fe उपलब्धता सुधारने के लिए जैविक खाद डालें", "उच्च pH मिट्टी में पर्णीय उपयोग मिट्टी उपयोग से अधिक प्रभावी", "अधिक चूना डालने से बचें", "विशेषकर चूनेदार मिट्टी में Fe स्थिति का मिट्टी परीक्षण", "जहाँ उपलब्ध हो Fe-कुशल किस्में उपयोग करें"],
+    "soilTestRange": {
+      "deficient": "< 4.5 ppm DTPA-extractable Fe",
+      "adequate": "4.5-9.0 ppm",
+      "sufficient": "> 9.0 ppm"
+    },
+    "source": "ICAR-Indian Institute of Soil Science"
+  },
+  {
+    "name": "Zinc Deficiency",
+    "nameHi": "जस्ता (जिंक) की कमी",
+    "nutrient": "zinc",
+    "symbol": "Zn",
+    "category": "micronutrient",
+    "affectedCrops": ["Rice", "Wheat", "Maize", "Citrus", "Cotton", "Soybean", "Groundnut"],
+    "symptoms": ["Interveinal chlorosis on younger leaves", "Khaira disease in rice (dusty brown spots on leaves)", "Reduced leaf size (little leaf)", "Shortened internodes (rosetting)", "White bud in maize", "Delayed maturity"],
+    "symptomsHi": ["नई पत्तियों में नसों के बीच पीलापन", "धान में खैरा रोग (पत्तियों पर धूसर भूरे धब्बे)", "पत्तियों का आकार कम होना (छोटी पत्ती)", "गाँठों के बीच की दूरी कम होना (रोजेटिंग)", "मक्का में सफेद कली", "परिपक्वता में देरी"],
+    "cropSpecificSymptoms": {
+      "Rice": "Khaira disease - dusty brown spots on leaves 15-20 days after transplanting, stunted growth, delayed maturity",
+      "Wheat": "Middle leaves show light yellow patches between veins, delayed maturity",
+      "Maize": "White bud - bleached young leaves, broad white bands on young leaves, stunted growth",
+      "Citrus": "Little leaf, mottled chlorosis, reduced fruit size"
+    },
+    "treatments": {
+      "organic": ["Zinc-enriched compost", "FYM application"],
+      "chemical": [
+        {"name": "Zinc Sulphate (ZnSO4 - 21% Zn for monohydrate, 33% for heptahydrate)", "dosage": "25 kg/ha soil application or 0.5% foliar spray (5g/L)", "applicationMethod": "Soil application at sowing or foliar spray for correction"},
+        {"name": "Zinc EDTA (12% Zn)", "dosage": "0.5% foliar spray", "applicationMethod": "Foliar spray for quick correction", "frequency": "2-3 sprays at 10-day intervals"},
+        {"name": "Zinc-coated urea", "dosage": "As per N recommendation", "applicationMethod": "Basal or top dressing"}
+      ]
+    },
+    "preventionTips": ["Soil application of ZnSO4 at 25 kg/ha once in 3 crops", "Nursery dip treatment for rice seedlings in 2% ZnO suspension", "Avoid excessive phosphorus which induces Zn deficiency", "Zinc is the most deficient micronutrient in Indian soils (about 50% soils are Zn deficient)", "Include Zn in regular fertilizer schedule"],
+    "preventionTipsHi": ["3 फसलों में एक बार ZnSO4 25 किग्रा/हे मिट्टी में डालें", "धान की पौध को 2% ZnO में डुबोएं", "अधिक फास्फोरस से बचें जो Zn कमी पैदा करता है", "भारतीय मिट्टी में सबसे कम पाया जाने वाला सूक्ष्म पोषक तत्व (लगभग 50% मिट्टी में कमी)", "नियमित उर्वरक कार्यक्रम में Zn शामिल करें"],
+    "soilTestRange": {
+      "deficient": "< 0.6 ppm DTPA-extractable Zn",
+      "adequate": "0.6-1.2 ppm",
+      "sufficient": "> 1.2 ppm"
+    },
+    "source": "ICAR-Indian Institute of Soil Science / ICAR-Indian Institute of Rice Research"
+  },
+  {
+    "name": "Boron Deficiency",
+    "nameHi": "बोरॉन की कमी",
+    "nutrient": "boron",
+    "symbol": "B",
+    "category": "micronutrient",
+    "affectedCrops": ["Cauliflower", "Sunflower", "Mustard", "Groundnut", "Cotton", "Sugarcane", "Grapes"],
+    "symptoms": ["Hollow stem and browning of curd in cauliflower", "Death of terminal growing point", "Thick and brittle leaves", "Poor fruit/seed set", "Flower drop", "Cracked and corky fruits"],
+    "symptomsHi": ["फूलगोभी में खोखला तना और गदे का भूरा होना", "शीर्ष बढ़ती नोक का मरना", "मोटी और भंगुर पत्तियाँ", "खराब फल/बीज बनाव", "फूल गिरना", "फटे और कॉर्की फल"],
+    "cropSpecificSymptoms": {
+      "Cauliflower": "Hollow stem, brown/water-soaked areas in curd, stunted curd, bitter taste",
+      "Sunflower": "Poor seed set in center of head, distorted and thick stems, brittle leaves",
+      "Cotton": "Petiole brackets (swollen petiole), reduced boll setting, ring-like bands on petioles"
+    },
+    "treatments": {
+      "organic": ["Organic matter application improves B availability"],
+      "chemical": [
+        {"name": "Borax (11% B)", "dosage": "10-15 kg/ha soil application", "applicationMethod": "Basal application (mix with soil before sowing)"},
+        {"name": "Boric acid (17% B)", "dosage": "0.2-0.3% foliar spray (2-3g/L)", "applicationMethod": "Foliar spray", "frequency": "2-3 sprays at flowering and fruiting stage"},
+        {"name": "Solubor (20% B)", "dosage": "0.2% foliar spray (2g/L)", "applicationMethod": "Foliar spray"}
+      ]
+    },
+    "preventionTips": ["Apply boron based on soil test (narrow range between deficiency and toxicity)", "Foliar spray is more efficient than soil application", "Do not over-apply (toxicity range is narrow)", "Essential for flowering and fruit set", "Sandy soils and high pH soils more prone to B deficiency"],
+    "preventionTipsHi": ["मिट्टी परीक्षण के आधार पर बोरॉन दें (कमी और विषाक्तता का अंतर कम)", "मिट्टी उपयोग की तुलना में पर्णीय छिड़काव अधिक कुशल", "अधिक मात्रा न दें (विषाक्तता सीमा संकीर्ण)", "फूल और फल लगने के लिए आवश्यक", "रेतीली और उच्च pH मिट्टी में B कमी अधिक"],
+    "soilTestRange": {
+      "deficient": "< 0.5 ppm hot water extractable B",
+      "adequate": "0.5-1.0 ppm",
+      "sufficient": "> 1.0 ppm (>5 ppm is toxic)"
+    },
+    "source": "ICAR-Indian Institute of Soil Science"
+  },
+  {
+    "name": "Manganese Deficiency",
+    "nameHi": "मैंगनीज की कमी",
+    "nutrient": "manganese",
+    "symbol": "Mn",
+    "category": "micronutrient",
+    "affectedCrops": ["Wheat", "Rice", "Soybean", "Oat", "Potato", "Citrus"],
+    "symptoms": ["Interveinal chlorosis on younger leaves (similar to Fe but less uniform)", "Grey speck disease in oats", "Marsh spot in peas (brown spot on cotyledons)", "Necrotic spots between veins", "Reduced lignin formation causing weak stems"],
+    "symptomsHi": ["नई पत्तियों में नसों के बीच पीलापन (Fe जैसा लेकिन कम समान)", "जई में धूसर धब्बा रोग", "मटर में दलदली धब्बा (बीजपत्रों पर भूरा धब्बा)", "नसों के बीच मृत धब्बे", "कमजोर तने (कम लिग्निन बनना)"],
+    "cropSpecificSymptoms": {
+      "Wheat": "Pale green interveinal chlorosis on middle leaves, grey-brown necrotic spots",
+      "Rice": "Interveinal chlorosis, brown necrotic spots, poor root oxidizing power",
+      "Soybean": "Interveinal chlorosis giving leaves a checkered appearance"
+    },
+    "treatments": {
+      "organic": ["Apply acidifying organic materials in alkaline soils", "FYM application"],
+      "chemical": [
+        {"name": "Manganese Sulphate (MnSO4 - 30.5% Mn)", "dosage": "25 kg/ha soil application or 0.5% foliar spray (5g/L)", "applicationMethod": "Soil or foliar application"},
+        {"name": "Mn-EDTA (chelated manganese - 12% Mn)", "dosage": "0.5% foliar spray", "applicationMethod": "Foliar spray for quick correction"}
+      ]
+    },
+    "preventionTips": ["Soil testing for Mn status", "Foliar application more effective in high-pH soils", "Avoid over-liming", "Include Mn in micronutrient mixture", "Organic matter helps maintain Mn availability"],
+    "preventionTipsHi": ["Mn स्थिति के लिए मिट्टी परीक्षण", "उच्च pH मिट्टी में पर्णीय उपयोग अधिक प्रभावी", "अधिक चूना डालने से बचें", "सूक्ष्म पोषक मिश्रण में Mn शामिल करें", "जैविक खाद Mn उपलब्धता बनाए रखती है"],
+    "soilTestRange": {
+      "deficient": "< 2.0 ppm DTPA-extractable Mn",
+      "adequate": "2.0-4.0 ppm",
+      "sufficient": "> 4.0 ppm"
+    },
+    "source": "ICAR-Indian Institute of Soil Science"
+  },
+  {
+    "name": "Copper Deficiency",
+    "nameHi": "तांबा (कॉपर) की कमी",
+    "nutrient": "copper",
+    "symbol": "Cu",
+    "category": "micronutrient",
+    "affectedCrops": ["Wheat", "Rice", "Citrus", "Onion", "Sunflower"],
+    "symptoms": ["Wilting of young leaves (pendula/drooping tips)", "Light green to yellow color of young leaves", "Reclamation disease in newly reclaimed organic/peaty soils", "White tip/die-back of leaf tips in cereals", "Reduced pollen viability causing poor grain set"],
+    "symptomsHi": ["नई पत्तियों का मुरझाना (नोक लटकना)", "नई पत्तियों का हल्का हरा से पीला रंग", "नई जोती जैविक/पीटी मिट्टी में पुनर्वास रोग", "अनाज में पत्ती की नोक का सफेद होना/मरना", "कम पराग व्यवहार्यता जिससे खराब दाना बनाव"],
+    "cropSpecificSymptoms": {
+      "Wheat": "Ears may fail to emerge or be malformed, poor grain filling, white tip die-back",
+      "Rice": "Chlorosis of young leaves, bluish-green color, poor panicle exsertion",
+      "Citrus": "S-shaped twigs, gummosis, dieback of terminal shoots"
+    },
+    "treatments": {
+      "organic": [],
+      "chemical": [
+        {"name": "Copper Sulphate (CuSO4 - 24% Cu)", "dosage": "5-10 kg/ha soil application or 0.2% foliar spray (2g/L)", "applicationMethod": "Soil application once in 5 years or foliar spray"},
+        {"name": "Cu-EDTA (chelated copper)", "dosage": "0.1% foliar spray (1g/L)", "applicationMethod": "Foliar spray for quick correction"}
+      ]
+    },
+    "preventionTips": ["Cu deficiency is common in sandy, peaty, and highly leached soils", "One soil application lasts 5 years", "Avoid excessive phosphorus and nitrogen", "Soil testing for Cu status", "Include Cu in micronutrient spray schedule"],
+    "preventionTipsHi": ["रेतीली, पीटी और अधिक धुली मिट्टी में Cu कमी आम", "एक मिट्टी उपयोग 5 साल चलता है", "अधिक फास्फोरस और नाइट्रोजन से बचें", "Cu स्थिति के लिए मिट्टी परीक्षण", "सूक्ष्म पोषक छिड़काव में Cu शामिल करें"],
+    "soilTestRange": {
+      "deficient": "< 0.2 ppm DTPA-extractable Cu",
+      "adequate": "0.2-1.0 ppm",
+      "sufficient": "> 1.0 ppm"
+    },
+    "source": "ICAR-Indian Institute of Soil Science"
+  },
+  {
+    "name": "Molybdenum Deficiency",
+    "nameHi": "मॉलिब्डेनम की कमी",
+    "nutrient": "molybdenum",
+    "symbol": "Mo",
+    "category": "micronutrient",
+    "affectedCrops": ["Cauliflower", "Cabbage", "Chana", "Soybean", "Groundnut", "Moong"],
+    "symptoms": ["Whiptail in cauliflower (thin strap-like leaves without leaf blade)", "Marginal scorch of older leaves", "Cup-shaped leaves that fail to expand", "Poor nodulation in legumes (Mo needed for nitrogenase enzyme)", "Chlorosis resembling nitrogen deficiency in legumes"],
+    "symptomsHi": ["फूलगोभी में व्हिपटेल (पत्ती फलक बिना पतली पट्टी जैसी पत्तियाँ)", "पुरानी पत्तियों के किनारों का जलना", "कप आकार की पत्तियाँ जो फैलती नहीं", "दालों में खराब गाँठ बनाव (नाइट्रोजनेज एंजाइम के लिए Mo आवश्यक)", "दालों में नाइट्रोजन कमी जैसा पीलापन"],
+    "cropSpecificSymptoms": {
+      "Cauliflower": "Whiptail - leaves reduced to midrib, no curd formation in severe cases",
+      "Legumes": "Poor nodulation and nitrogen fixation, plants appear N-deficient despite adequate N in soil"
+    },
+    "treatments": {
+      "organic": ["Liming acidic soils increases Mo availability"],
+      "chemical": [
+        {"name": "Sodium Molybdate (Na2MoO4 - 39% Mo)", "dosage": "0.5-1.0 kg/ha soil application or 0.05% foliar spray (0.5g/L)", "applicationMethod": "Seed treatment (3g/kg seed) or foliar spray"},
+        {"name": "Ammonium Molybdate (54% Mo)", "dosage": "0.5 kg/ha", "applicationMethod": "Soil application or seed treatment"}
+      ]
+    },
+    "preventionTips": ["Mo deficiency is most common in acidic soils (pH < 5.5)", "Liming acidic soils dramatically increases Mo availability", "Very small quantity needed - seed treatment is often sufficient", "Essential for nitrogen fixation in legumes", "Include in micronutrient schedule for brassica crops"],
+    "preventionTipsHi": ["Mo कमी अम्लीय मिट्टी (pH < 5.5) में सबसे आम", "अम्लीय मिट्टी में चूना डालने से Mo उपलब्धता बहुत बढ़ती है", "बहुत कम मात्रा चाहिए - बीज उपचार अक्सर पर्याप्त", "दालों में नाइट्रोजन स्थिरीकरण के लिए आवश्यक", "ब्रासिका फसलों के लिए सूक्ष्म पोषक कार्यक्रम में शामिल करें"],
+    "soilTestRange": {
+      "deficient": "< 0.1 ppm ammonium oxalate extractable Mo",
+      "adequate": "0.1-0.3 ppm",
+      "sufficient": "> 0.3 ppm"
+    },
+    "source": "ICAR-Indian Institute of Soil Science"
+  },
+  {
+    "name": "Chlorine Deficiency",
+    "nameHi": "क्लोरीन की कमी",
+    "nutrient": "chlorine",
+    "symbol": "Cl",
+    "category": "micronutrient",
+    "affectedCrops": ["Coconut", "Oil Palm", "Rice", "Wheat"],
+    "symptoms": ["Wilting of leaf tips", "Chlorosis and bronzing of leaves", "Reduced leaf size", "Stubby roots", "Increased susceptibility to leaf diseases (take-all of wheat)"],
+    "symptomsHi": ["पत्ती की नोक का मुरझाना", "पत्तियों का पीला पड़ना और कांस्य रंग", "पत्ती के आकार में कमी", "छोटी मोटी जड़ें", "पत्ती रोगों के प्रति बढ़ी संवेदनशीलता"],
+    "cropSpecificSymptoms": {
+      "Coconut": "Chlorosis and wilting of fronds, reduced nut size and copra yield",
+      "Rice": "Wilting despite adequate moisture, chlorosis"
+    },
+    "treatments": {
+      "organic": [],
+      "chemical": [
+        {"name": "Muriate of Potash (KCl - 47% Cl)", "dosage": "Standard K fertilizer dose provides adequate Cl", "applicationMethod": "Soil application"},
+        {"name": "Common salt (NaCl)", "dosage": "10-20 kg/ha", "applicationMethod": "Soil application in severely deficient soils"}
+      ]
+    },
+    "preventionTips": ["Cl deficiency is rare as it is supplied through irrigation water and KCl fertilizer", "Mostly seen in sandy leached soils with heavy rainfall", "Regular use of MOP provides adequate Cl", "Do not confuse with salt damage (excess Cl)"],
+    "preventionTipsHi": ["Cl कमी दुर्लभ है क्योंकि यह सिंचाई पानी और KCl उर्वरक से मिलती है", "ज्यादातर भारी वर्षा वाली रेतीली धुली मिट्टी में", "MOP का नियमित उपयोग पर्याप्त Cl देता है", "नमक क्षति (अधिक Cl) से भ्रमित न हों"],
+    "soilTestRange": {
+      "deficient": "< 2 ppm water extractable Cl",
+      "adequate": "2-10 ppm",
+      "sufficient": "> 10 ppm"
+    },
+    "source": "ICAR-Indian Institute of Soil Science"
+  }
+]

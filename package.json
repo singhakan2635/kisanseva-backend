@@ -10,12 +10,17 @@
     "test": "jest --forceExit --detectOpenHandles",
     "test:ci": "jest --forceExit --detectOpenHandles --ci",
     "lint": "npx tsc --noEmit",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "seed:data": "tsx scripts/seedData.ts"
   },
   "engines": {
     "node": "22.x"
   },
-  "keywords": ["agriculture", "farming", "kisanseva"],
+  "keywords": [
+    "agriculture",
+    "farming",
+    "kisanseva"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -45,6 +50,7 @@
     "@types/node": "^25.2.2",
     "@types/supertest": "^7.2.0",
     "jest": "^30.3.0",
+    "mongodb-memory-server": "^11.0.1",
     "supertest": "^7.2.2",
     "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",
