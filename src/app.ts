@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
-import rateLimit from 'express-rate-limit';
+import rateLimit, { ipKeyGenerator } from 'express-rate-limit';
 import { env } from './config/env';
 import { authMiddleware } from './middleware/auth';
 import { errorHandler } from './middleware/errorHandler';
@@ -60,7 +60,7 @@ app.use(requestLogger);
 // Rate limiting
 const rateLimitingEnabled = process.env.NODE_ENV !== 'test' && process.env.DISABLE_RATE_LIMIT !== 'true';
 if (rateLimitingEnabled) {
-  const ipKey = (req: express.Request) => (req.ip || '').replace(/^::ffff:/, '');
+  const ipKey = (req: express.Request) => ipKeyGenerator(req.ip ?? '127.0.0.1');
 
   const authLimiter = rateLimit({
     windowMs: 60 * 1000,
