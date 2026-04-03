@@ -20,6 +20,7 @@ export const env = {
   WHATSAPP_VERIFY_TOKEN: process.env.WHATSAPP_VERIFY_TOKEN || '',
   WHATSAPP_APP_SECRET: process.env.WHATSAPP_APP_SECRET || '',
   WHATSAPP_WABA_ID: process.env.WHATSAPP_WABA_ID || '',
+  WHATSAPP_APP_ID: process.env.WHATSAPP_APP_ID || '',
 
   // Sarvam AI (Indian language support)
   SARVAM_API_KEY: process.env.SARVAM_API_KEY || '',

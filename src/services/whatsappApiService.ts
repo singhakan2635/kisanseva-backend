@@ -1,4 +1,5 @@
 import { env } from '../config/env';
+import { getAccessToken } from './whatsappTokenService';
 import logger from '../utils/logger';
 import type {
   WhatsAppButton,
@@ -10,11 +11,12 @@ const GRAPH_API_URL = 'https://graph.facebook.com/v21.0';
 
 async function sendRequest(body: Record<string, unknown>): Promise<void> {
   const url = `${GRAPH_API_URL}/${env.WHATSAPP_PHONE_NUMBER_ID}/messages`;
+  const token = await getAccessToken();
 
   const res = await fetch(url, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${env.WHATSAPP_ACCESS_TOKEN}`,
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(body),
@@ -110,11 +112,12 @@ export async function sendInteractiveList(
 
 export async function markAsRead(messageId: string): Promise<void> {
   const url = `${GRAPH_API_URL}/${env.WHATSAPP_PHONE_NUMBER_ID}/messages`;
+  const token = await getAccessToken();
 
   const res = await fetch(url, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${env.WHATSAPP_ACCESS_TOKEN}`,
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({

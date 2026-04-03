@@ -12,6 +12,7 @@ import marketRoutes from './routes/markets';
 import diagnosisRoutes from './routes/diagnosis';
 import languageRoutes from './routes/language';
 import whatsappRoutes from './routes/whatsapp';
+import whatsappTokenRoutes from './routes/whatsappToken';
 
 const app = express();
 
@@ -96,6 +97,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/markets', marketRoutes);
 app.use('/api/diagnosis', diagnosisRoutes);
 app.use('/api/language', languageRoutes);
+app.use('/api/whatsapp-token', whatsappTokenRoutes);
 
 // Error handler
 app.use(errorHandler);
