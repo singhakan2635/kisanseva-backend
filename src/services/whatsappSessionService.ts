@@ -97,6 +97,18 @@ export async function setDiagnosisId(
   );
 }
 
+export async function setContext(
+  phoneNumber: string,
+  key: string,
+  value: string
+): Promise<IWhatsAppSession | null> {
+  return WhatsAppSession.findOneAndUpdate(
+    { phoneNumber },
+    { $set: { [`context.${key}`]: value, lastActive: new Date() } },
+    { new: true }
+  );
+}
+
 export async function clearSession(phoneNumber: string): Promise<void> {
   await WhatsAppSession.findOneAndUpdate(
     { phoneNumber },

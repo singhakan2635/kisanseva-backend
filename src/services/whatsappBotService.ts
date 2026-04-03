@@ -78,6 +78,92 @@ const SEVERITY_EMOJI: Record<string, string> = {
   critical: '🔴',
 };
 
+// ── Multilingual messages ──
+type MsgKey = 'sendPhotoOrText' | 'langChanged' | 'welcome' | 'help' | 'photoReceived' |
+  'photoError' | 'errorGeneric' | 'settingsMenu' | 'cropAsk' | 'sendNewPhoto' |
+  'shopInfo' | 'expertInfo' | 'comingSoon' | 'firstContact';
+
+interface LangData { code: string; name: string; nameNative: string }
+
+const MESSAGES: Record<string, Record<MsgKey, string | ((d: LangData) => string)>> = {
+  'en-IN': {
+    sendPhotoOrText: 'Please send a text message or a photo of your plant. 📸',
+    langChanged: (d: LangData) => `✅ Language changed to: ${d.nameNative} (${d.name})\n\nNow send a photo of your plant! 📸`,
+    firstContact:
+      '🌾 *Welcome to KisanSeva!*\n\nPlease choose your language to get started:\n\nकृपया अपनी भाषा चुनें:',
+    welcome:
+      'Hello! 🌾 Welcome to *KisanSeva*\n\n' +
+      'Send a *photo of your plant* to identify diseases. 📸\n\n' +
+      '🔍 We will tell you:\n  • Disease name\n  • Severity level\n  • Treatment options\n  • Which pesticide to use\n\n' +
+      '━━━━━━━━━━━━━━━\n' +
+      '📋 *Menu:* Type "menu"\n🌐 *Language:* Type "language"\n❓ *Help:* Type "help"\n' +
+      '━━━━━━━━━━━━━━━',
+    help:
+      '📖 *KisanSeva Help*\n\n' +
+      '1️⃣ *Send a photo* — We identify the disease\n' +
+      '2️⃣ *Type crop name* — e.g., "rice", "tomato"\n' +
+      '3️⃣ *"menu"* — Open settings menu\n' +
+      '4️⃣ *"language"* — Change language\n' +
+      '5️⃣ *"help"* — Show this help\n\n' +
+      '━━━━━━━━━━━━━━━\n' +
+      '💡 *Photo tips:*\n  • Close-up of affected leaf/part\n  • Good lighting\n  • One leaf/fruit per photo\n\n' +
+      '📞 *KisanCall Center:* 1800-180-1551\n━━━━━━━━━━━━━━━',
+    settingsMenu: '⚙️ *Settings Menu*',
+    photoReceived: '📸 Photo received! 🔍 Analyzing...\nPlease wait 10-15 seconds.',
+    photoError: '❌ Could not analyze the photo.\nPlease send a clear close-up of the affected leaf/part.',
+    errorGeneric: '❌ Something went wrong. Please try again.',
+    cropAsk: '🌱 You mentioned *{{crop}}*!\n\nWhat would you like to know?',
+    sendNewPhoto: '📸 Send a new photo of your plant.',
+    shopInfo:
+      '🏪 *Nearest Agricultural Shop*\n\nSearch "agricultural shop near me" on Google Maps.\n\n💡 Show the pesticide names from the diagnosis to the shopkeeper.',
+    expertInfo:
+      '👨‍🌾 *Contact Agricultural Expert*\n\n📞 KisanCall Center: 1800-180-1551 (Toll-free)\n🌐 kisansuvidha.gov.in\n\nThis service will soon be available in the KisanSeva app!',
+    comingSoon: '📋 This feature is coming soon!\n\nFor now, send a photo of your plant and we will diagnose it! 📸',
+  },
+  'hi-IN': {
+    sendPhotoOrText: 'कृपया टेक्स्ट संदेश या पौधे की फोटो भेजें। 📸',
+    langChanged: (d: LangData) => `✅ भाषा बदल दी गई: ${d.nameNative} (${d.name})\n\nअब अपने पौधे की फोटो भेजें! 📸`,
+    firstContact:
+      '🌾 *KisanSeva में आपका स्वागत है!*\n\nकृपया अपनी भाषा चुनें:\n\nPlease choose your language:',
+    welcome:
+      'नमस्ते! 🌾 *KisanSeva* में आपका स्वागत है।\n\n' +
+      'अपने पौधे की बीमारी जानने के लिए *फोटो भेजें*। 📸\n\n' +
+      '🔍 हम बताएंगे:\n  • बीमारी का नाम\n  • कितनी गंभीर है\n  • इलाज कैसे करें\n  • कौन सी दवाई लगाएँ\n\n' +
+      '━━━━━━━━━━━━━━━\n' +
+      '📋 *मेनू:* "मेनू" लिखें\n🌐 *भाषा:* "भाषा" लिखें\n❓ *मदद:* "मदद" लिखें\n' +
+      '━━━━━━━━━━━━━━━',
+    help:
+      '📖 *KisanSeva मदद मेनू*\n\n' +
+      '1️⃣ *फोटो भेजें* — पौधे की फोटो भेजें, हम बीमारी बताएंगे\n' +
+      '2️⃣ *फसल का नाम* — "धान", "टमाटर", "गेहूं" आदि लिखें\n' +
+      '3️⃣ *"मेनू"* — सेटिंग्स खोलें\n' +
+      '4️⃣ *"भाषा"* — अपनी भाषा बदलें\n' +
+      '5️⃣ *"मदद"* — यह मेनू दोबारा देखें\n\n' +
+      '━━━━━━━━━━━━━━━\n' +
+      '💡 *फोटो लेने के सुझाव:*\n  • प्रभावित पत्ती/हिस्से की करीबी फोटो\n  • अच्छी रोशनी में फोटो लें\n  • एक बार में एक पत्ती/फल की फोटो\n\n' +
+      '📞 *KisanCall Center:* 1800-180-1551\n━━━━━━━━━━━━━━━',
+    settingsMenu: '⚙️ *सेटिंग्स मेनू*',
+    photoReceived: '📸 फोटो मिल गई! 🔍 जाँच हो रही है...\nकृपया 10-15 सेकंड रुकें।',
+    photoError: '❌ फोटो की जाँच में समस्या हुई।\nकृपया एक साफ़ फोटो दोबारा भेजें।\n\n💡 सुझाव: पत्ती या प्रभावित हिस्से की करीबी फोटो भेजें।',
+    errorGeneric: '❌ कुछ गड़बड़ हो गई। कृपया दोबारा कोशिश करें।',
+    cropAsk: '🌱 अच्छा! *{{crop}}* के बारे में जानकारी चाहिए?',
+    sendNewPhoto: '📸 अपने पौधे की नई फोटो भेजें।',
+    shopInfo:
+      '🏪 *नज़दीकी कृषि दवाई दुकान*\n\nGoogle Maps पर "agricultural shop near me" खोजें।\n\n💡 ऊपर बताई गई दवाइयों का नाम दुकानदार को दिखाएँ।',
+    expertInfo:
+      '👨‍🌾 *कृषि विशेषज्ञ से संपर्क*\n\n📞 KisanCall Center: 1800-180-1551 (टोल-फ्री)\n🌐 kisansuvidha.gov.in\n\nयह सेवा जल्द ही KisanSeva ऐप में उपलब्ध होगी!',
+    comingSoon: '📋 यह सुविधा जल्द आ रही है।\n\nअभी के लिए, अपने पौधे की फोटो भेजें! 📸',
+  },
+};
+
+/** Get a localized message. Falls back to Hindi, then English. */
+function getMsg(lang: string, key: MsgKey, data?: LangData): string {
+  const msgs = MESSAGES[lang] || MESSAGES['hi-IN'] || MESSAGES['en-IN'];
+  const val = msgs[key];
+  if (typeof val === 'function') return data ? val(data) : val({ code: lang, name: lang, nameNative: lang });
+  return (val as string) || '';
+}
+
 // ── Main entry point ──
 
 export async function handleIncomingMessage(message: WhatsAppIncomingMessage): Promise<void> {
@@ -92,6 +178,30 @@ export async function handleIncomingMessage(message: WhatsAppIncomingMessage): P
   const session = await sessionService.getOrCreateSession(phone);
 
   try {
+    // ── First-time user: prompt language selection ──
+    if (session.state === ConversationState.IDLE && session.language === 'hi-IN' && !session.context?.get('languageSet')) {
+      await sendLanguageSelectionOnFirstContact(phone);
+      await sessionService.setState(phone, ConversationState.AWAITING_LANGUAGE);
+      return;
+    }
+
+    // ── Language selection from interactive list (priority) ──
+    if (session.state === ConversationState.AWAITING_LANGUAGE) {
+      const inputLower = (input || '').toLowerCase().trim();
+      const lang = LANGUAGE_MAP[inputLower];
+      if (lang) {
+        await sessionService.setLanguage(phone, lang.code);
+        await sessionService.setState(phone, ConversationState.IDLE);
+        await sessionService.setContext(phone, 'languageSet', 'true');
+        await api.sendTextMessage(phone, getMsg(lang.code, 'langChanged', lang));
+        await sendWelcomeMessage(phone, lang.code);
+        return;
+      }
+      // If they sent something else during language selection, still show the list
+      await sendLanguageSelectionOnFirstContact(phone);
+      return;
+    }
+
     // ── Handle image messages (photo of plant) ──
     if (message.type === 'image' && message.image) {
       await handlePhotoMessage(phone, message.image.id, message.image.caption, session.language);
@@ -100,7 +210,7 @@ export async function handleIncomingMessage(message: WhatsAppIncomingMessage): P
 
     // No text content to process
     if (!input) {
-      await api.sendTextMessage(phone, 'कृपया टेक्स्ट संदेश या पौधे की फोटो भेजें। 📸');
+      await api.sendTextMessage(phone, getMsg(session.language, 'sendPhotoOrText'));
       return;
     }
 
@@ -114,22 +224,14 @@ export async function handleIncomingMessage(message: WhatsAppIncomingMessage): P
 
     // ── Help command ──
     if (inputLower === 'मदद' || inputLower === 'help' || inputLower === 'sahayata') {
-      await sendHelpMenu(phone);
+      await sendHelpMenu(phone, session.language);
       return;
     }
 
-    // ── Language selection from interactive list ──
-    if (session.state === ConversationState.AWAITING_LANGUAGE || LANGUAGE_MAP[inputLower]) {
-      const lang = LANGUAGE_MAP[inputLower];
-      if (lang) {
-        await sessionService.setLanguage(phone, lang.code);
-        await sessionService.setState(phone, ConversationState.IDLE);
-        await api.sendTextMessage(
-          phone,
-          `✅ भाषा बदल दी गई: ${lang.nameNative} (${lang.name})\n\nअब अपने पौधे की फोटो भेजें। 📸`
-        );
-        return;
-      }
+    // ── Menu / Settings command ──
+    if (inputLower === 'menu' || inputLower === 'मेनू' || inputLower === 'settings' || inputLower === 'सेटिंग') {
+      await sendSettingsMenu(phone, session.language);
+      return;
     }
 
     // ── Interactive button replies ──
@@ -138,24 +240,30 @@ export async function handleIncomingMessage(message: WhatsAppIncomingMessage): P
       return;
     }
 
+    // ── Direct language name typed ──
+    if (LANGUAGE_MAP[inputLower]) {
+      const lang = LANGUAGE_MAP[inputLower];
+      await sessionService.setLanguage(phone, lang.code);
+      await sessionService.setContext(phone, 'languageSet', 'true');
+      await api.sendTextMessage(phone, getMsg(lang.code, 'langChanged', lang));
+      return;
+    }
+
     // ── Check if the input is a crop name ──
     const detectedCrop = detectCropName(inputLower);
     if (detectedCrop) {
-      await handleCropMention(phone, detectedCrop);
+      await handleCropMention(phone, detectedCrop, session.language);
       return;
     }
 
     // ── Default: send welcome message ──
-    await sendWelcomeMessage(phone);
+    await sendWelcomeMessage(phone, session.language);
   } catch (error) {
     logger.error('Error processing WhatsApp message', {
       phone: redactPhone(phone),
       error: (error as Error).message,
     });
-    await api.sendTextMessage(
-      phone,
-      '❌ कुछ गड़बड़ हो गई। कृपया दोबारा कोशिश करें।\nSomething went wrong. Please try again.'
-    ).catch((sendErr: Error) => {
+    await api.sendTextMessage(phone, getMsg(session.language, 'errorGeneric')).catch((sendErr: Error) => {
       logger.error('Failed to send error message to user', { error: sendErr.message });
     });
   }
@@ -192,10 +300,7 @@ async function handlePhotoMessage(
   // Update state to processing
   await sessionService.setState(phone, ConversationState.PROCESSING);
 
-  await api.sendTextMessage(
-    phone,
-    '📸 फोटो मिल गई! 🔍 जाँच हो रही है...\nकृपया 10-15 सेकंड रुकें।\n\nAnalyzing your plant photo...'
-  );
+  await api.sendTextMessage(phone, getMsg(language, 'photoReceived'));
 
   try {
     // Download image from WhatsApp
@@ -235,10 +340,7 @@ async function handlePhotoMessage(
       phone: redactPhone(phone),
       error: (error as Error).message,
     });
-    await api.sendTextMessage(
-      phone,
-      '❌ फोटो की जाँच में समस्या हुई।\nकृपया एक साफ़ फोटो दोबारा भेजें।\n\n💡 सुझाव: पत्ती या प्रभावित हिस्से की करीबी फोटो भेजें।'
-    );
+    await api.sendTextMessage(phone, getMsg(language, 'photoError'));
     await sessionService.setState(phone, ConversationState.IDLE);
   }
 }
@@ -248,48 +350,41 @@ async function handlePhotoMessage(
 async function handleInteractiveReply(
   phone: string,
   buttonId: string,
-  _language: string
+  language: string
 ): Promise<void> {
   switch (buttonId) {
     case 'action_retry':
-      await api.sendTextMessage(
-        phone,
-        '📸 अपने पौधे की नई फोटो भेजें।\nSend a new photo of your plant.'
-      );
+      await api.sendTextMessage(phone, getMsg(language, 'sendNewPhoto'));
       await sessionService.setState(phone, ConversationState.AWAITING_PHOTO);
       break;
 
     case 'action_shop':
-      await api.sendTextMessage(
-        phone,
-        '🏪 *नज़दीकी कृषि दवाई दुकान*\n\n' +
-        'अपनी जगह की कृषि दवाई की दुकान खोजने के लिए Google Maps पर "agricultural shop near me" खोजें।\n\n' +
-        '💡 ऊपर बताई गई दवाइयों का नाम दुकानदार को दिखाएँ।'
-      );
+      await api.sendTextMessage(phone, getMsg(language, 'shopInfo'));
       break;
 
     case 'action_expert':
-      await api.sendTextMessage(
-        phone,
-        '👨‍🌾 *कृषि विशेषज्ञ से संपर्क*\n\n' +
-        '📞 KisanCall Center: 1800-180-1551 (टोल-फ्री)\n' +
-        '🌐 मंडी भाव और सलाह: kisansuvidha.gov.in\n\n' +
-        'यह सेवा जल्द ही KisanSeva ऐप में उपलब्ध होगी!'
-      );
+      await api.sendTextMessage(phone, getMsg(language, 'expertInfo'));
       break;
 
     case 'crop_diseases':
-      await api.sendTextMessage(
-        phone,
-        '📋 फसल की आम बीमारियाँ देखने की सुविधा जल्द आ रही है।\n\nअभी के लिए, अपने पौधे की फोटो भेजें और हम जाँच करेंगे! 📸'
-      );
+      await api.sendTextMessage(phone, getMsg(language, 'comingSoon'));
       break;
 
     case 'crop_photo_check':
-      await api.sendTextMessage(
-        phone,
-        '📸 अपने पौधे की फोटो भेजें।\nSend a photo of your plant.'
-      );
+      await api.sendTextMessage(phone, getMsg(language, 'sendNewPhoto'));
+      await sessionService.setState(phone, ConversationState.AWAITING_PHOTO);
+      break;
+
+    case 'menu_language':
+      await handleLanguageRequest(phone);
+      break;
+
+    case 'menu_help':
+      await sendHelpMenu(phone, language);
+      break;
+
+    case 'menu_photo':
+      await api.sendTextMessage(phone, getMsg(language, 'sendNewPhoto'));
       await sessionService.setState(phone, ConversationState.AWAITING_PHOTO);
       break;
 
@@ -299,12 +394,10 @@ async function handleInteractiveReply(
         const lang = LANGUAGE_MAP[buttonId];
         await sessionService.setLanguage(phone, lang.code);
         await sessionService.setState(phone, ConversationState.IDLE);
-        await api.sendTextMessage(
-          phone,
-          `✅ भाषा बदल दी गई: ${lang.nameNative} (${lang.name})\n\nअब अपने पौधे की फोटो भेजें। 📸`
-        );
+        await sessionService.setContext(phone, 'languageSet', 'true');
+        await api.sendTextMessage(phone, getMsg(lang.code, 'langChanged', lang));
       } else {
-        await sendWelcomeMessage(phone);
+        await sendWelcomeMessage(phone, language);
       }
       break;
   }
@@ -328,19 +421,18 @@ function detectCropName(input: string): string | null {
   return null;
 }
 
-async function handleCropMention(phone: string, crop: string): Promise<void> {
+async function handleCropMention(phone: string, crop: string, language: string): Promise<void> {
   await sessionService.setCrop(phone, crop);
-
   const cropDisplay = crop.charAt(0).toUpperCase() + crop.slice(1);
 
   const buttons: WhatsAppButton[] = [
-    { type: 'reply', reply: { id: 'crop_diseases', title: '📋 आम बीमारियाँ' } },
-    { type: 'reply', reply: { id: 'crop_photo_check', title: '📸 फोटो से जाँच' } },
+    { type: 'reply', reply: { id: 'crop_diseases', title: language === 'en-IN' ? '📋 Common Diseases' : '📋 आम बीमारियाँ' } },
+    { type: 'reply', reply: { id: 'crop_photo_check', title: language === 'en-IN' ? '📸 Diagnose Photo' : '📸 फोटो से जाँच' } },
   ];
 
   await api.sendInteractiveButtons(
     phone,
-    `🌱 अच्छा! *${cropDisplay}* के बारे में जानकारी चाहिए?\n\nWhat would you like to know about *${cropDisplay}*?`,
+    getMsg(language, 'cropAsk').replace('{{crop}}', cropDisplay),
     buttons
   );
 }
@@ -371,42 +463,82 @@ async function handleLanguageRequest(phone: string): Promise<void> {
 
 // ── Welcome message ──
 
-async function sendWelcomeMessage(phone: string): Promise<void> {
-  await api.sendTextMessage(
-    phone,
-    'नमस्ते! 🌾 *KisanSeva* में आपका स्वागत है।\n\n' +
-    'अपने पौधे की बीमारी जानने के लिए *फोटो भेजें*। 📸\n\n' +
-    '🔍 हम बताएंगे:\n' +
-    '  • बीमारी का नाम\n' +
-    '  • कितनी गंभीर है\n' +
-    '  • इलाज कैसे करें\n' +
-    '  • कौन सी दवाई लगाएँ\n\n' +
-    '━━━━━━━━━━━━━━━\n' +
-    '📝 *कमांड:*\n' +
-    '  • "भाषा" — भाषा बदलें\n' +
-    '  • "मदद" — मदद मेनू\n' +
-    '  • फसल का नाम लिखें (जैसे: धान, टमाटर)\n' +
-    '━━━━━━━━━━━━━━━'
-  );
+async function sendWelcomeMessage(phone: string, language: string = 'hi-IN'): Promise<void> {
+  await api.sendTextMessage(phone, getMsg(language, 'welcome'));
 }
 
 // ── Help menu ──
 
-async function sendHelpMenu(phone: string): Promise<void> {
-  await api.sendTextMessage(
+async function sendHelpMenu(phone: string, language: string = 'hi-IN'): Promise<void> {
+  await api.sendTextMessage(phone, getMsg(language, 'help'));
+}
+
+// ── First contact: language selection with greeting ──
+
+async function sendLanguageSelectionOnFirstContact(phone: string): Promise<void> {
+  const sections = [
+    {
+      title: 'भाषा चुनें / Choose Language',
+      rows: Object.entries(LANGUAGE_MAP).map(([key, lang]) => ({
+        id: key,
+        title: lang.nameNative,
+        description: lang.name,
+      })),
+    },
+  ];
+
+  await api.sendInteractiveList(
     phone,
-    '📖 *KisanSeva मदद मेनू*\n\n' +
-    '1️⃣ *फोटो भेजें* — पौधे की फोटो भेजें, हम बीमारी बताएंगे\n' +
-    '2️⃣ *फसल का नाम* — "धान", "टमाटर", "गेहूं" आदि लिखें\n' +
-    '3️⃣ *"भाषा"* — अपनी भाषा बदलें\n' +
-    '4️⃣ *"मदद"* — यह मेनू दोबारा देखें\n\n' +
-    '━━━━━━━━━━━━━━━\n' +
-    '💡 *फोटो लेने के सुझाव:*\n' +
-    '  • प्रभावित पत्ती/हिस्से की करीबी फोटो\n' +
-    '  • अच्छी रोशनी में फोटो लें\n' +
-    '  • एक बार में एक पत्ती/फल की फोटो\n\n' +
-    '📞 *KisanCall Center:* 1800-180-1551\n' +
-    '━━━━━━━━━━━━━━━'
+    '🌾 *Welcome to KisanSeva!*\n*KisanSeva में आपका स्वागत है!*\n\n' +
+    'कृपया अपनी भाषा चुनें 👇\nPlease choose your language 👇',
+    'भाषा चुनें / Language',
+    sections
+  );
+}
+
+// ── Settings / Menu ──
+
+async function sendSettingsMenu(phone: string, language: string): Promise<void> {
+  const isEn = language === 'en-IN';
+
+  const sections = [
+    {
+      title: isEn ? 'Settings' : 'सेटिंग्स',
+      rows: [
+        {
+          id: 'menu_language',
+          title: isEn ? '🌐 Change Language' : '🌐 भाषा बदलें',
+          description: isEn ? 'Switch to Hindi, Tamil, Bengali...' : 'हिन्दी, तमिल, बंगाली...',
+        },
+        {
+          id: 'menu_help',
+          title: isEn ? '❓ Help & Tips' : '❓ मदद और सुझाव',
+          description: isEn ? 'How to use KisanSeva' : 'KisanSeva कैसे इस्तेमाल करें',
+        },
+        {
+          id: 'menu_photo',
+          title: isEn ? '📸 Diagnose Plant' : '📸 पौधे की जाँच करें',
+          description: isEn ? 'Send a photo for diagnosis' : 'फोटो भेजें, बीमारी जानें',
+        },
+        {
+          id: 'action_shop',
+          title: isEn ? '🏪 Find Agri Shop' : '🏪 दवाई की दुकान',
+          description: isEn ? 'Find pesticide shops near you' : 'नज़दीकी कृषि दवाई दुकान',
+        },
+        {
+          id: 'action_expert',
+          title: isEn ? '📞 Call Expert' : '📞 विशेषज्ञ से बात',
+          description: isEn ? 'KisanCall: 1800-180-1551' : 'KisanCall: 1800-180-1551',
+        },
+      ],
+    },
+  ];
+
+  await api.sendInteractiveList(
+    phone,
+    getMsg(language, 'settingsMenu'),
+    isEn ? 'Open Menu' : 'मेनू खोलें',
+    sections
   );
 }
 
