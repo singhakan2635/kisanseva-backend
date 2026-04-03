@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { env } from '../config/env';
 import {
   getTokenStatus,
   storeAndExchangeToken,
@@ -106,6 +107,70 @@ export async function setSystemUserToken(req: Request, res: Response): Promise<v
     });
   } catch (error) {
     logger.error('Failed to store system user token', { error: (error as Error).message });
+    res.status(500).json({ success: false, message: (error as Error).message });
+  }
+}
+
+/**
+ * GET /api/whatsapp-token/query
+ * Public endpoint to check token expiry. Secured by app_secret query param.
+ * Usage: /api/whatsapp-token/query?secret=YOUR_APP_SECRET
+ */
+export async function queryTokenExpiry(req: Request, res: Response): Promise<void> {
+  const secret = req.query.secret as string;
+
+  if (!secret || secret !== env.WHATSAPP_APP_SECRET) {
+    res.status(403).json({ success: false, message: 'Invalid secret' });
+    return;
+  }
+
+  try {
+    const status = await getTokenStatus();
+    res.json({ success: true, data: status });
+  } catch (error) {
+    logger.error('Failed to query token expiry', { error: (error as Error).message });
+    res.status(500).json({ success: false, message: 'Failed to check token status' });
+  }
+}
+
+/**
+ * GET /api/whatsapp-token/exchange-now
+ * Public endpoint to exchange current token for long-lived. Secured by app_secret.
+ * Usage: /api/whatsapp-token/exchange-now?secret=YOUR_APP_SECRET
+ * Optionally pass &token=NEW_SHORT_LIVED_TOKEN to exchange a specific token.
+ */
+export async function exchangeTokenNow(req: Request, res: Response): Promise<void> {
+  const secret = req.query.secret as string;
+
+  if (!secret || secret !== env.WHATSAPP_APP_SECRET) {
+    res.status(403).json({ success: false, message: 'Invalid secret' });
+    return;
+  }
+
+  try {
+    const tokenParam = req.query.token as string | undefined;
+    let result;
+
+    if (tokenParam) {
+      result = await storeAndExchangeToken(tokenParam);
+    } else {
+      result = await forceRefreshToken();
+    }
+
+    logger.info('WhatsApp token exchanged via public endpoint', { type: result.type });
+
+    res.json({
+      success: true,
+      data: {
+        type: result.type,
+        expiresAt: result.expiresAt,
+        expiresInDays: result.expiresAt
+          ? Math.round((result.expiresAt.getTime() - Date.now()) / (86400 * 1000))
+          : undefined,
+      },
+    });
+  } catch (error) {
+    logger.error('Token exchange via public endpoint failed', { error: (error as Error).message });
     res.status(500).json({ success: false, message: (error as Error).message });
   }
 }

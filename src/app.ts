@@ -89,6 +89,11 @@ app.get('/api/health', (_req, res) => {
 // WhatsApp webhook routes (before auth - Meta calls these directly)
 app.use('/api/whatsapp', whatsappRoutes);
 
+// Public token query endpoints (secured by app_secret param, not JWT)
+import { queryTokenExpiry, exchangeTokenNow } from './controllers/whatsappTokenController';
+app.get('/api/whatsapp-token/query', queryTokenExpiry);
+app.get('/api/whatsapp-token/exchange-now', exchangeTokenNow);
+
 // JWT auth - applied globally, exempts login/register internally
 app.use(authMiddleware);
 
