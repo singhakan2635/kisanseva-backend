@@ -669,27 +669,71 @@ function truncate(str: string, maxLen: number): string {
 
 // ── Diagnosis formatting ──
 
-function formatDiagnosisForWhatsApp(diagnosis: DiagnosisResult, _language: string): string {
+function formatDiagnosisForWhatsApp(diagnosis: DiagnosisResult, language: string): string {
   const primary = diagnosis.primaryDiagnosis;
   const severityEmoji = SEVERITY_EMOJI[primary.severity] || '⚪';
   const confidencePercent = Math.round(primary.confidence);
+  const isEn = language === 'en-IN';
+
+  // Language-aware labels
+  const L = isEn ? {
+    header: '🔬 *Diagnosis Report*',
+    disease: '🦠 *Disease:*',
+    type: '📊 *Type:*',
+    severity: '🎯 *Severity:*',
+    confidence: '🎯 *Confidence:*',
+    symptoms: '👁️ *Visible Symptoms:*',
+    affectedPart: '🌿 *Affected Part:*',
+    treatment: '💊 *Treatment:*',
+    mechanical: '🔧 *Mechanical:*',
+    physical: '☀️ *Physical:*',
+    chemical: '🧪 *Chemical Treatment:*',
+    biological: '🌿 *Biological:*',
+    pesticides: '🏷️ *Recommended Pesticides:*',
+    prevention: '🛡️ *Prevention Tips:*',
+    dosage: 'Dosage',
+    method: 'Method',
+    frequency: 'Frequency',
+    noTreatment: 'No specific treatment data available. Consult a local agricultural expert.',
+  } : {
+    header: '🔬 *जाँच रिपोर्ट*',
+    disease: '🦠 *बीमारी:*',
+    type: '📊 *प्रकार:*',
+    severity: '🎯 *गंभीरता:*',
+    confidence: '🎯 *सटीकता:*',
+    symptoms: '👁️ *दिखाई देने वाले लक्षण:*',
+    affectedPart: '🌿 *प्रभावित भाग:*',
+    treatment: '💊 *इलाज:*',
+    mechanical: '🔧 *यांत्रिक उपाय:*',
+    physical: '☀️ *भौतिक उपाय:*',
+    chemical: '🧪 *रासायनिक उपचार:*',
+    biological: '🌿 *जैविक उपाय:*',
+    pesticides: '🏷️ *सुझाई गई दवाइयाँ:*',
+    prevention: '🛡️ *बचाव के उपाय:*',
+    dosage: 'मात्रा',
+    method: 'तरीका',
+    frequency: 'कितनी बार',
+    noTreatment: 'उपचार की जानकारी उपलब्ध नहीं है। कृषि विशेषज्ञ से संपर्क करें।',
+  };
 
   let text = '';
 
   // Header
-  text += `🔬 *जाँच रिपोर्ट / Diagnosis Report*\n`;
+  text += `${L.header}\n`;
   text += `━━━━━━━━━━━━━━━\n\n`;
 
-  // Primary diagnosis
-  text += `🦠 *बीमारी:* ${primary.nameHi}\n`;
-  text += `    _${primary.name}_ (${primary.scientificName})\n`;
-  text += `📊 *प्रकार:* ${translateType(primary.type)}\n`;
-  text += `${severityEmoji} *गंभीरता:* ${translateSeverity(primary.severity)}\n`;
-  text += `🎯 *सटीकता:* ${confidencePercent}%\n\n`;
+  // Primary diagnosis — show name in selected language first
+  const diseaseName = isEn ? primary.name : (primary.nameHi || primary.name);
+  const diseaseAlt = isEn ? (primary.nameHi || '') : primary.name;
+  text += `${L.disease} ${diseaseName}\n`;
+  if (diseaseAlt) text += `    _${diseaseAlt}_ (${primary.scientificName})\n`;
+  text += `${L.type} ${translateType(primary.type, isEn)}\n`;
+  text += `${severityEmoji} ${L.severity} ${translateSeverity(primary.severity, isEn)}\n`;
+  text += `${L.confidence} ${confidencePercent}%\n\n`;
 
   // Symptoms
   if (diagnosis.visibleSymptoms.length > 0) {
-    text += `👁️ *दिखाई देने वाले लक्षण:*\n`;
+    text += `${L.symptoms}\n`;
     for (const symptom of diagnosis.visibleSymptoms) {
       text += `  • ${symptom}\n`;
     }
@@ -698,15 +742,18 @@ function formatDiagnosisForWhatsApp(diagnosis: DiagnosisResult, _language: strin
 
   // Affected part
   if (diagnosis.affectedPart) {
-    text += `🌿 *प्रभावित भाग:* ${diagnosis.affectedPart}\n\n`;
+    text += `${L.affectedPart} ${diagnosis.affectedPart}\n\n`;
   }
 
   // Treatments
   text += `━━━━━━━━━━━━━━━\n`;
-  text += `💊 *इलाज / Treatment:*\n\n`;
+  text += `${L.treatment}\n\n`;
+
+  let hasTreatment = false;
 
   if (diagnosis.treatments.mechanical.length > 0) {
-    text += `🔧 *यांत्रिक उपाय:*\n`;
+    hasTreatment = true;
+    text += `${L.mechanical}\n`;
     for (const t of diagnosis.treatments.mechanical) {
       text += `  • ${t}\n`;
     }
@@ -714,7 +761,8 @@ function formatDiagnosisForWhatsApp(diagnosis: DiagnosisResult, _language: strin
   }
 
   if (diagnosis.treatments.physical.length > 0) {
-    text += `☀️ *भौतिक उपाय:*\n`;
+    hasTreatment = true;
+    text += `${L.physical}\n`;
     for (const t of diagnosis.treatments.physical) {
       text += `  • ${t}\n`;
     }
@@ -722,35 +770,44 @@ function formatDiagnosisForWhatsApp(diagnosis: DiagnosisResult, _language: strin
   }
 
   if (diagnosis.treatments.chemical.length > 0) {
-    text += `🧪 *रासायनिक उपचार:*\n`;
+    hasTreatment = true;
+    text += `${L.chemical}\n`;
     for (const chem of diagnosis.treatments.chemical) {
       text += `  • *${chem.name}*\n`;
-      text += `    मात्रा: ${chem.dosage}\n`;
-      text += `    तरीका: ${chem.applicationMethod}\n`;
-      text += `    कितनी बार: ${chem.frequency}\n`;
+      text += `    ${L.dosage}: ${chem.dosage}\n`;
+      text += `    ${L.method}: ${chem.applicationMethod}\n`;
+      text += `    ${L.frequency}: ${chem.frequency}\n`;
     }
     text += `\n`;
   }
 
   if (diagnosis.treatments.biological.length > 0) {
-    text += `🌿 *जैविक उपाय:*\n`;
+    hasTreatment = true;
+    text += `${L.biological}\n`;
     for (const t of diagnosis.treatments.biological) {
       text += `  • ${t}\n`;
     }
     text += `\n`;
   }
 
+  // If no treatment data at all, show a helpful message
+  if (!hasTreatment) {
+    text += `${L.noTreatment}\n\n`;
+  }
+
   // Recommended pesticides
   if (diagnosis.recommendedPesticides.length > 0) {
     text += `━━━━━━━━━━━━━━━\n`;
-    text += `🏷️ *सुझाई गई दवाइयाँ:*\n\n`;
+    text += `${L.pesticides}\n\n`;
+    const perLiter = isEn ? '/liter' : '/लीटर';
+    const perAcre = isEn ? '/acre' : '/एकड़';
     for (const pest of diagnosis.recommendedPesticides) {
       text += `  • *${pest.name}*`;
       if (pest.tradeName.length > 0) {
         text += ` (${pest.tradeName.join(', ')})`;
       }
       text += `\n`;
-      text += `    ${pest.dosage.perLiter}/लीटर | ${pest.dosage.perAcre}/एकड़\n`;
+      text += `    ${pest.dosage.perLiter}${perLiter} | ${pest.dosage.perAcre}${perAcre}\n`;
     }
     text += `\n`;
   }
@@ -758,7 +815,7 @@ function formatDiagnosisForWhatsApp(diagnosis: DiagnosisResult, _language: strin
   // Prevention tips
   if (diagnosis.preventionTips.length > 0) {
     text += `━━━━━━━━━━━━━━━\n`;
-    text += `🛡️ *बचाव के उपाय:*\n`;
+    text += `${L.prevention}\n`;
     for (const tip of diagnosis.preventionTips) {
       text += `  • ${tip}\n`;
     }
@@ -766,25 +823,38 @@ function formatDiagnosisForWhatsApp(diagnosis: DiagnosisResult, _language: strin
   }
 
   // Disclaimer
+  const disclaimer = isEn
+    ? 'This is an AI-assisted diagnosis. Consult a local agricultural expert or KVK for confirmation.'
+    : 'यह AI-आधारित सुझाव है। अंतिम निर्णय के लिए कृषि विशेषज्ञ से सलाह लें।';
   text += `━━━━━━━━━━━━━━━\n`;
-  text += `⚠️ _${diagnosis.disclaimer}_`;
+  text += `⚠️ _${disclaimer}_`;
 
   return text;
 }
 
-function translateType(type: string): string {
+function translateType(type: string, isEn: boolean = false): string {
+  if (isEn) {
+    const map: Record<string, string> = {
+      fungal: 'Fungal', bacterial: 'Bacterial', viral: 'Viral',
+      deficiency: 'Deficiency', pest: 'Pest', unknown: 'Unknown',
+    };
+    return map[type] || type;
+  }
   const typeMap: Record<string, string> = {
-    fungal: 'फफूंद (Fungal)',
-    bacterial: 'जीवाणु (Bacterial)',
-    viral: 'वायरस (Viral)',
-    deficiency: 'कमी (Deficiency)',
-    pest: 'कीट (Pest)',
-    unknown: 'अज्ञात (Unknown)',
+    fungal: 'फफूंद (Fungal)', bacterial: 'जीवाणु (Bacterial)',
+    viral: 'वायरस (Viral)', deficiency: 'कमी (Deficiency)',
+    pest: 'कीट (Pest)', unknown: 'अज्ञात (Unknown)',
   };
   return typeMap[type] || type;
 }
 
-function translateSeverity(severity: string): string {
+function translateSeverity(severity: string, isEn: boolean = false): string {
+  if (isEn) {
+    const map: Record<string, string> = {
+      mild: 'Mild', moderate: 'Moderate', severe: 'Severe', critical: 'Critical',
+    };
+    return map[severity] || severity;
+  }
   const sevMap: Record<string, string> = {
     mild: 'हल्की (Mild)',
     moderate: 'मध्यम (Moderate)',
