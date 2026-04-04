@@ -9,6 +9,14 @@ export type SchemeCategory =
   | 'equipment'
   | 'other';
 
+export type SchemeApplicableFor =
+  | 'crop_disease'
+  | 'crop_loss'
+  | 'equipment'
+  | 'irrigation'
+  | 'organic'
+  | 'general';
+
 export interface IGovernmentScheme extends Document {
   name: string;
   nameHi?: string;
@@ -24,6 +32,28 @@ export interface IGovernmentScheme extends Document {
   category: SchemeCategory;
   active: boolean;
   source?: string;
+
+  // Region targeting (empty arrays = all India)
+  region: {
+    states: string[];
+    districts: string[];
+  };
+  applicableCrops: string[];
+  applicableFor: SchemeApplicableFor[];
+
+  // Dates
+  startDate?: Date;
+  endDate?: Date;
+  lastVerified?: Date;
+
+  // Additional metadata
+  sourceUrl?: string;
+  helpline?: string;
+  applicationProcess?: string;
+  applicationProcessHi?: string;
+  documentsRequired: string[];
+  maxBenefit?: string;
+
   createdAt: Date;
   updatedAt: Date;
 }
@@ -56,6 +86,30 @@ const governmentSchemeSchema = new Schema<IGovernmentScheme>(
     },
     active: { type: Boolean, default: true },
     source: { type: String },
+
+    // Region targeting
+    region: {
+      states: [{ type: String }],
+      districts: [{ type: String }],
+    },
+    applicableCrops: [{ type: String }],
+    applicableFor: [{
+      type: String,
+      enum: ['crop_disease', 'crop_loss', 'equipment', 'irrigation', 'organic', 'general'],
+    }],
+
+    // Dates
+    startDate: { type: Date },
+    endDate: { type: Date },
+    lastVerified: { type: Date },
+
+    // Additional metadata
+    sourceUrl: { type: String },
+    helpline: { type: String },
+    applicationProcess: { type: String },
+    applicationProcessHi: { type: String },
+    documentsRequired: [{ type: String }],
+    maxBenefit: { type: String },
   },
   {
     timestamps: true,
@@ -71,10 +125,14 @@ const governmentSchemeSchema = new Schema<IGovernmentScheme>(
 );
 
 // Indexes
-governmentSchemeSchema.index({ name: 'text' });
+governmentSchemeSchema.index({ name: 'text', nameHi: 'text', description: 'text' });
 governmentSchemeSchema.index({ category: 1 });
 governmentSchemeSchema.index({ active: 1 });
 governmentSchemeSchema.index({ states: 1 });
+governmentSchemeSchema.index({ 'region.states': 1 });
+governmentSchemeSchema.index({ applicableFor: 1 });
+governmentSchemeSchema.index({ applicableCrops: 1 });
+governmentSchemeSchema.index({ endDate: 1 });
 
 export const GovernmentScheme = mongoose.model<IGovernmentScheme>(
   'GovernmentScheme',

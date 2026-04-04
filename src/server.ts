@@ -2,6 +2,7 @@ import app from './app';
 import { connectDB } from './config/db';
 import { env } from './config/env';
 import logger from './utils/logger';
+import { startSchemeScheduler, stopSchemeScheduler } from './services/schemeScheduler';
 
 async function start() {
   await connectDB();
@@ -10,9 +11,13 @@ async function start() {
     logger.info(`KisanSeva server running on port ${env.PORT}`, { env: env.NODE_ENV });
   });
 
+  // Start the weekly scheme update scheduler
+  startSchemeScheduler();
+
   // Graceful shutdown
   const shutdown = () => {
     logger.info('Shutting down gracefully...');
+    stopSchemeScheduler();
     server.close(() => {
       logger.info('Server closed');
       process.exit(0);

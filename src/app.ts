@@ -13,6 +13,7 @@ import diagnosisRoutes from './routes/diagnosis';
 import languageRoutes from './routes/language';
 import whatsappRoutes from './routes/whatsapp';
 import whatsappTokenRoutes from './routes/whatsappToken';
+import schemeRoutes from './routes/schemes';
 
 const app = express();
 
@@ -93,6 +94,9 @@ app.use('/api/whatsapp', whatsappRoutes);
 import { queryTokenExpiry, exchangeTokenNow } from './controllers/whatsappTokenController';
 app.get('/api/whatsapp-token/query', queryTokenExpiry);
 app.get('/api/whatsapp-token/exchange-now', exchangeTokenNow);
+
+// Public scheme routes (GET endpoints are public, POST/PATCH/DELETE check auth internally via requireRole)
+app.use('/api/schemes', schemeRoutes);
 
 // JWT auth - applied globally, exempts login/register internally
 app.use(authMiddleware);
