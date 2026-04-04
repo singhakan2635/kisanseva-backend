@@ -77,6 +77,21 @@ export async function sendInteractiveButtons(
   bodyText: string,
   buttons: WhatsAppButton[]
 ): Promise<void> {
+  // WhatsApp allows max 3 buttons, each title max 20 chars
+  const sanitizedButtons = buttons.slice(0, 3).map(btn => ({
+    type: btn.type,
+    reply: {
+      id: btn.reply.id.slice(0, 256),
+      title: btn.reply.title.slice(0, 20),
+    },
+  }));
+
+  for (const btn of buttons) {
+    if (btn.reply.title.length > 20) {
+      logger.warn('Button title truncated', { id: btn.reply.id, original: btn.reply.title, length: btn.reply.title.length });
+    }
+  }
+
   await sendRequest({
     messaging_product: 'whatsapp',
     to,
@@ -84,7 +99,7 @@ export async function sendInteractiveButtons(
     interactive: {
       type: 'button',
       body: { text: bodyText },
-      action: { buttons },
+      action: { buttons: sanitizedButtons },
     },
   });
 }
@@ -95,6 +110,35 @@ export async function sendInteractiveList(
   buttonTitle: string,
   sections: WhatsAppListSection[]
 ): Promise<void> {
+  // Enforce WhatsApp interactive list limits to prevent error 131009
+  const sanitizedButton = buttonTitle.slice(0, 20);
+  const sanitizedSections = sections.slice(0, 10).map(section => ({
+    title: section.title.slice(0, 24),
+    rows: section.rows.slice(0, 10).map(row => ({
+      id: row.id.slice(0, 200),
+      title: row.title.slice(0, 24),
+      ...(row.description ? { description: row.description.slice(0, 72) } : {}),
+    })),
+  }));
+
+  // Log if any truncation happened
+  if (buttonTitle.length > 20) {
+    logger.warn('Interactive list button title truncated', { original: buttonTitle, length: buttonTitle.length });
+  }
+  for (const [i, section] of sections.entries()) {
+    if (section.title.length > 24) {
+      logger.warn('Interactive list section title truncated', { section: i, original: section.title, length: section.title.length });
+    }
+    for (const row of section.rows) {
+      if (row.title.length > 24) {
+        logger.warn('Interactive list row title truncated', { rowId: row.id, original: row.title, length: row.title.length });
+      }
+      if (row.description && row.description.length > 72) {
+        logger.warn('Interactive list row description truncated', { rowId: row.id, length: row.description.length });
+      }
+    }
+  }
+
   await sendRequest({
     messaging_product: 'whatsapp',
     to,
@@ -103,8 +147,8 @@ export async function sendInteractiveList(
       type: 'list',
       body: { text: bodyText },
       action: {
-        button: buttonTitle,
-        sections,
+        button: sanitizedButton,
+        sections: sanitizedSections,
       },
     },
   });

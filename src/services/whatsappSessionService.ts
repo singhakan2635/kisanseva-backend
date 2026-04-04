@@ -52,9 +52,10 @@ export async function setState(
   };
 
   if (context) {
-    update.context = context;
-  } else {
-    update.context = {};
+    // Merge provided context keys without wiping existing ones
+    for (const [key, value] of Object.entries(context)) {
+      update[`context.${key}`] = value;
+    }
   }
 
   return WhatsAppSession.findOneAndUpdate(

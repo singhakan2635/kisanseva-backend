@@ -5,6 +5,7 @@ import * as sessionService from './whatsappSessionService';
 import * as api from './whatsappApiService';
 import * as mediaService from './whatsappMediaService';
 import { analyzePlantImage } from './diseaseDetectionService';
+import { getRelevantSchemes } from './schemeService';
 import logger from '../utils/logger';
 
 // ── Known crop names (Hindi + English) for quick detection ──
@@ -314,18 +315,21 @@ async function handlePhotoMessage(
     const diagnosisMessage = formatDiagnosisForWhatsApp(diagnosis, language);
     await api.sendTextMessage(phone, diagnosisMessage);
 
-    // Send action buttons
+    // Send action buttons (titles must be <= 20 chars)
     const actionButtons: WhatsAppButton[] = [
-      { type: 'reply', reply: { id: 'action_retry', title: '🔄 दोबारा जाँचें' } },
-      { type: 'reply', reply: { id: 'action_shop', title: '💊 दवाई की दुकान' } },
-      { type: 'reply', reply: { id: 'action_expert', title: '📞 विशेषज्ञ से बात' } },
+      { type: 'reply', reply: { id: 'action_retry', title: 'दोबारा जाँचें' } },
+      { type: 'reply', reply: { id: 'action_shop', title: 'दवाई की दुकान' } },
+      { type: 'reply', reply: { id: 'action_expert', title: 'विशेषज्ञ/योजना' } },
     ];
 
     await api.sendInteractiveButtons(
       phone,
-      'और क्या मदद चाहिए? What else can I help with?',
+      'और क्या मदद चाहिए?',
       actionButtons
     );
+
+    // Store last diagnosis disease name for scheme lookups
+    await sessionService.setContext(phone, 'lastDisease', diagnosis.primaryDiagnosis.name);
 
     // Update session
     await sessionService.setState(phone, ConversationState.IDLE);
@@ -364,6 +368,8 @@ async function handleInteractiveReply(
 
     case 'action_expert':
       await api.sendTextMessage(phone, getMsg(language, 'expertInfo'));
+      // Also send relevant government scheme recommendations
+      await sendSchemeRecommendations(phone, language);
       break;
 
     case 'crop_diseases':
@@ -386,6 +392,10 @@ async function handleInteractiveReply(
     case 'menu_photo':
       await api.sendTextMessage(phone, getMsg(language, 'sendNewPhoto'));
       await sessionService.setState(phone, ConversationState.AWAITING_PHOTO);
+      break;
+
+    case 'menu_schemes':
+      await sendSchemeRecommendations(phone, language);
       break;
 
     default:
@@ -425,9 +435,10 @@ async function handleCropMention(phone: string, crop: string, language: string):
   await sessionService.setCrop(phone, crop);
   const cropDisplay = crop.charAt(0).toUpperCase() + crop.slice(1);
 
+  // Button titles must be <= 20 chars
   const buttons: WhatsAppButton[] = [
-    { type: 'reply', reply: { id: 'crop_diseases', title: language === 'en-IN' ? '📋 Common Diseases' : '📋 आम बीमारियाँ' } },
-    { type: 'reply', reply: { id: 'crop_photo_check', title: language === 'en-IN' ? '📸 Diagnose Photo' : '📸 फोटो से जाँच' } },
+    { type: 'reply', reply: { id: 'crop_diseases', title: language === 'en-IN' ? 'Common Diseases' : 'आम बीमारियाँ' } },
+    { type: 'reply', reply: { id: 'crop_photo_check', title: language === 'en-IN' ? 'Diagnose Photo' : 'फोटो से जाँच' } },
   ];
 
   await api.sendInteractiveButtons(
@@ -442,21 +453,23 @@ async function handleCropMention(phone: string, crop: string, language: string):
 async function handleLanguageRequest(phone: string): Promise<void> {
   await sessionService.setState(phone, ConversationState.AWAITING_LANGUAGE);
 
+  // Section title: max 24 chars; row title: max 24 chars; row desc: max 72 chars
+  // Button text: max 20 chars; max 10 rows per section
   const sections = [
     {
-      title: 'भाषा चुनें / Choose Language',
+      title: 'भाषा चुनें / Language',   // 21 chars
       rows: Object.entries(LANGUAGE_MAP).map(([key, lang]) => ({
         id: key,
-        title: lang.nameNative,
-        description: lang.name,
+        title: truncate(lang.nameNative, 24),
+        description: truncate(lang.name, 72),
       })),
     },
   ];
 
   await api.sendInteractiveList(
     phone,
-    '🌐 अपनी भाषा चुनें\nChoose your preferred language:',
-    'भाषा चुनें',
+    'अपनी भाषा चुनें\nChoose your language:',
+    'भाषा चुनें',       // 10 chars, under 20
     sections
   );
 }
@@ -476,22 +489,23 @@ async function sendHelpMenu(phone: string, language: string = 'hi-IN'): Promise<
 // ── First contact: language selection with greeting ──
 
 async function sendLanguageSelectionOnFirstContact(phone: string): Promise<void> {
+  // Section title: max 24 chars; button text: max 20 chars
   const sections = [
     {
-      title: 'भाषा चुनें / Choose Language',
+      title: 'भाषा चुनें / Language',   // 21 chars
       rows: Object.entries(LANGUAGE_MAP).map(([key, lang]) => ({
         id: key,
-        title: lang.nameNative,
-        description: lang.name,
+        title: truncate(lang.nameNative, 24),
+        description: truncate(lang.name, 72),
       })),
     },
   ];
 
   await api.sendInteractiveList(
     phone,
-    '🌾 *Welcome to KisanSeva!*\n*KisanSeva में आपका स्वागत है!*\n\n' +
-    'कृपया अपनी भाषा चुनें 👇\nPlease choose your language 👇',
-    'भाषा चुनें / Language',
+    '*KisanSeva में स्वागत है!*\n\n' +
+    'कृपया अपनी भाषा चुनें\nPlease choose your language',
+    'भाषा चुनें',       // 10 chars, under 20
     sections
   );
 }
@@ -501,34 +515,41 @@ async function sendLanguageSelectionOnFirstContact(phone: string): Promise<void>
 async function sendSettingsMenu(phone: string, language: string): Promise<void> {
   const isEn = language === 'en-IN';
 
+  // Section title: max 24 chars; row title: max 24 chars; row desc: max 72 chars
+  // Button text: max 20 chars
   const sections = [
     {
       title: isEn ? 'Settings' : 'सेटिंग्स',
       rows: [
         {
           id: 'menu_language',
-          title: isEn ? '🌐 Change Language' : '🌐 भाषा बदलें',
+          title: isEn ? 'Change Language' : 'भाषा बदलें',              // 15 / 10 chars
           description: isEn ? 'Switch to Hindi, Tamil, Bengali...' : 'हिन्दी, तमिल, बंगाली...',
         },
         {
           id: 'menu_help',
-          title: isEn ? '❓ Help & Tips' : '❓ मदद और सुझाव',
+          title: isEn ? 'Help & Tips' : 'मदद और सुझाव',              // 11 / 12 chars
           description: isEn ? 'How to use KisanSeva' : 'KisanSeva कैसे इस्तेमाल करें',
         },
         {
           id: 'menu_photo',
-          title: isEn ? '📸 Diagnose Plant' : '📸 पौधे की जाँच करें',
+          title: isEn ? 'Diagnose Plant' : 'पौधे की जाँच',            // 14 / 12 chars
           description: isEn ? 'Send a photo for diagnosis' : 'फोटो भेजें, बीमारी जानें',
         },
         {
           id: 'action_shop',
-          title: isEn ? '🏪 Find Agri Shop' : '🏪 दवाई की दुकान',
+          title: isEn ? 'Find Agri Shop' : 'दवाई की दुकान',           // 14 / 13 chars
           description: isEn ? 'Find pesticide shops near you' : 'नज़दीकी कृषि दवाई दुकान',
         },
         {
           id: 'action_expert',
-          title: isEn ? '📞 Call Expert' : '📞 विशेषज्ञ से बात',
+          title: isEn ? 'Call Expert' : 'विशेषज्ञ से बात',            // 11 / 14 chars
           description: isEn ? 'KisanCall: 1800-180-1551' : 'KisanCall: 1800-180-1551',
+        },
+        {
+          id: 'menu_schemes',
+          title: isEn ? 'Govt Schemes' : 'सरकारी योजनाएँ',            // 12 / 14 chars
+          description: isEn ? 'Insurance & subsidy schemes' : 'बीमा और सब्सिडी योजनाएँ',
         },
       ],
     },
@@ -537,9 +558,78 @@ async function sendSettingsMenu(phone: string, language: string): Promise<void> 
   await api.sendInteractiveList(
     phone,
     getMsg(language, 'settingsMenu'),
-    isEn ? 'Open Menu' : 'मेनू खोलें',
+    isEn ? 'Open Menu' : 'मेनू खोलें',    // 9 / 10 chars
     sections
   );
+}
+
+// ── Scheme recommendations ──
+
+async function sendSchemeRecommendations(phone: string, language: string): Promise<void> {
+  const isEn = language === 'en-IN';
+
+  try {
+    // Get the farmer's last diagnosed crop from session context
+    const session = await sessionService.getOrCreateSession(phone);
+    const crop = session.lastCropMentioned || undefined;
+
+    const schemes = await getRelevantSchemes(undefined, crop, 'disease');
+
+    if (!schemes || schemes.length === 0) {
+      const noSchemeMsg = isEn
+        ? 'No matching government schemes found at this time. Check back later or call KisanCall: 1800-180-1551.'
+        : 'अभी कोई मिलती-जुलती सरकारी योजना नहीं मिली। बाद में जाँचें या KisanCall: 1800-180-1551 पर कॉल करें।';
+      await api.sendTextMessage(phone, noSchemeMsg);
+      return;
+    }
+
+    // Format top 5 schemes as a message
+    const topSchemes = schemes.slice(0, 5);
+    let text = isEn
+      ? '*Relevant Government Schemes:*\n\n'
+      : '*सरकारी योजनाएँ:*\n\n';
+
+    for (const scheme of topSchemes) {
+      const name = isEn ? scheme.name : (scheme.nameHi || scheme.name);
+      text += `*${name}*\n`;
+      if (scheme.benefits || scheme.benefitsHi) {
+        const benefits = isEn ? scheme.benefits : (scheme.benefitsHi || scheme.benefits);
+        if (benefits) {
+          text += `  ${truncate(benefits, 120)}\n`;
+        }
+      }
+      if (scheme.applicationUrl) {
+        text += `  ${scheme.applicationUrl}\n`;
+      }
+      if (scheme.helpline) {
+        text += `  ${isEn ? 'Helpline' : 'हेल्पलाइन'}: ${scheme.helpline}\n`;
+      }
+      text += '\n';
+    }
+
+    text += isEn
+      ? '_More schemes at: pmkisan.gov.in_'
+      : '_अधिक जानकारी: pmkisan.gov.in_';
+
+    await api.sendTextMessage(phone, text);
+  } catch (error) {
+    logger.error('Failed to fetch scheme recommendations', {
+      phone: redactPhone(phone),
+      error: (error as Error).message,
+    });
+    // Don't fail silently - send a fallback
+    const fallback = isEn
+      ? 'Could not load schemes. Visit pmkisan.gov.in or call 1800-180-1551.'
+      : 'योजनाएँ लोड नहीं हो सकीं। pmkisan.gov.in पर जाएँ या 1800-180-1551 पर कॉल करें।';
+    await api.sendTextMessage(phone, fallback).catch(() => { /* swallow */ });
+  }
+}
+
+// ── Utility: truncate string to max length ──
+
+function truncate(str: string, maxLen: number): string {
+  if (str.length <= maxLen) return str;
+  return str.slice(0, maxLen - 1) + '…';
 }
 
 // ── Diagnosis formatting ──

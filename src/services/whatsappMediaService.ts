@@ -1,4 +1,4 @@
-import { env } from '../config/env';
+import { getAccessToken } from './whatsappTokenService';
 import logger from '../utils/logger';
 
 interface MediaDownloadResult {
@@ -13,7 +13,7 @@ interface MediaDownloadResult {
  * Step 2: Download the actual file bytes from that URL.
  */
 export async function downloadMedia(mediaId: string): Promise<MediaDownloadResult> {
-  const token = env.WHATSAPP_ACCESS_TOKEN;
+  const token = await getAccessToken();
 
   // Step 1: Get the media URL from the Graph API
   const metaRes = await fetch(`https://graph.facebook.com/v21.0/${mediaId}`, {
