@@ -24,6 +24,9 @@ export const env = {
 
   // Sarvam AI (Indian language support)
   SARVAM_API_KEY: process.env.SARVAM_API_KEY || '',
+
+  // ML Inference Service (Python FastAPI for plant disease CNN)
+  ML_SERVICE_URL: process.env.ML_SERVICE_URL || 'http://localhost:8000',
 };
 
 // Warn if refresh token secret is missing or same as JWT secret

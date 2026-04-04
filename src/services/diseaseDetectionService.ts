@@ -5,6 +5,8 @@ import { Deficiency, IDeficiency } from '../models/Deficiency';
 import { Pesticide } from '../models/Pesticide';
 import { Crop } from '../models/Crop';
 import logger from '../utils/logger';
+import { callMLService, isMLServiceHealthy } from './mlService';
+import type { MLPrediction } from './mlService';
 import type {
   DiagnosisResult,
   AIAnalysisResponse,
@@ -256,26 +258,98 @@ async function findRecommendedPesticides(
   }));
 }
 
+/**
+ * Convert a CNN prediction's disease name into an AIAnalysisResponse-compatible
+ * type string (fungal, bacterial, viral, pest, deficiency, unknown).
+ */
+function inferDiseaseType(
+  diseaseName: string
+): AIAnalysisResponse['primaryDiagnosis']['type'] {
+  const lower = diseaseName.toLowerCase();
+  if (lower.includes('virus') || lower.includes('viral') || lower.includes('curl'))
+    return 'viral';
+  if (lower.includes('blight') || lower.includes('rot') || lower.includes('scab') || lower.includes('mold') || lower.includes('mildew') || lower.includes('rust') || lower.includes('spot') || lower.includes('scorch'))
+    return 'fungal';
+  if (lower.includes('bacterial')) return 'bacterial';
+  if (lower.includes('spider') || lower.includes('mite')) return 'pest';
+  if (lower.includes('deficiency')) return 'deficiency';
+  if (lower.includes('healthy')) return 'unknown';
+  return 'unknown';
+}
+
+/**
+ * Convert CNN top predictions into the same AIAnalysisResponse shape
+ * that the rest of the pipeline expects.
+ */
+function cnnToAIResponse(predictions: MLPrediction[]): AIAnalysisResponse {
+  const top = predictions[0];
+  const confidence = Math.round(top.confidence * 100); // 0-100 scale
+
+  return {
+    primaryDiagnosis: {
+      name: top.healthy ? 'Healthy Plant' : top.disease,
+      scientificName: '',
+      type: inferDiseaseType(top.disease),
+      confidence,
+      severity:
+        confidence >= 90
+          ? 'severe'
+          : confidence >= 70
+            ? 'moderate'
+            : 'mild',
+    },
+    differentialDiagnoses: predictions.slice(1).map((p) => ({
+      name: p.healthy ? `${p.crop} - Healthy` : `${p.crop} - ${p.disease}`,
+      confidence: Math.round(p.confidence * 100),
+    })),
+    visibleSymptoms: [],
+    affectedPart: 'leaves',
+  };
+}
+
 export async function analyzePlantImage(
   imageBuffer: Buffer,
   cropName?: string
 ): Promise<DiagnosisResult> {
-  // Validate API key availability
-  if (!env.ANTHROPIC_API_KEY && !env.OPENAI_API_KEY) {
-    throw new Error(
-      'No AI API key configured. Set ANTHROPIC_API_KEY or OPENAI_API_KEY.'
-    );
+  let aiAnalysis: AIAnalysisResponse;
+  let usedCNN = false;
+
+  // Step 1: Try CNN model first (fast, high accuracy for known classes)
+  const mlHealthy = await isMLServiceHealthy();
+  if (mlHealthy) {
+    try {
+      const predictions = await callMLService(imageBuffer);
+      const topConfidence = predictions[0]?.confidence ?? 0;
+
+      if (topConfidence >= 0.7) {
+        logger.info('Using CNN model prediction', {
+          topClass: predictions[0].class_name,
+          confidence: topConfidence,
+          crop: predictions[0].crop,
+          disease: predictions[0].disease,
+        });
+        aiAnalysis = cnnToAIResponse(predictions);
+        usedCNN = true;
+      } else {
+        logger.info('CNN confidence too low, falling back to Claude Vision', {
+          topClass: predictions[0]?.class_name,
+          confidence: topConfidence,
+        });
+        aiAnalysis = await callClaudeVisionWithFallbackCheck(imageBuffer, cropName);
+      }
+    } catch (error: unknown) {
+      logger.warn('CNN inference failed, falling back to Claude Vision', {
+        error: error instanceof Error ? error.message : String(error),
+      });
+      aiAnalysis = await callClaudeVisionWithFallbackCheck(imageBuffer, cropName);
+    }
+  } else {
+    logger.info('ML service unavailable, using Claude Vision');
+    aiAnalysis = await callClaudeVisionWithFallbackCheck(imageBuffer, cropName);
   }
 
-  if (!env.ANTHROPIC_API_KEY) {
-    throw new Error(
-      'Only Anthropic Claude Vision is currently supported. Please set ANTHROPIC_API_KEY.'
-    );
-  }
-
-  // Step 1: Get AI analysis
-  const aiAnalysis = await callClaudeVision(imageBuffer, cropName);
-  logger.info('AI analysis complete', {
+  logger.info('Analysis complete', {
+    source: usedCNN ? 'CNN' : 'Claude Vision',
     diagnosis: aiAnalysis.primaryDiagnosis.name,
     confidence: aiAnalysis.primaryDiagnosis.confidence,
     type: aiAnalysis.primaryDiagnosis.type,
@@ -338,6 +412,21 @@ export async function analyzePlantImage(
   };
 
   return result;
+}
+
+/**
+ * Helper to call Claude Vision with proper validation checks.
+ */
+async function callClaudeVisionWithFallbackCheck(
+  imageBuffer: Buffer,
+  cropName?: string
+): Promise<AIAnalysisResponse> {
+  if (!env.ANTHROPIC_API_KEY) {
+    throw new Error(
+      'No AI API key configured and ML service unavailable. Set ANTHROPIC_API_KEY or start the ML service.'
+    );
+  }
+  return callClaudeVision(imageBuffer, cropName);
 }
 
 function buildTreatments(
