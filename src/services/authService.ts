@@ -46,7 +46,9 @@ export async function register(data: {
     }
   }
 
-  const role = data.role || 'farmer';
+  // SECURITY: Only allow farmer/expert roles via self-registration
+  const allowedRoles: string[] = ['farmer', 'expert'];
+  const role: string = (data.role && allowedRoles.includes(data.role)) ? data.role : 'farmer';
 
   const user = await User.create({
     email: data.email,
