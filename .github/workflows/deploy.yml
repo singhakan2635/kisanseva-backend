@@ -1,4 +1,4 @@
-# Deploy to Heroku after CI passes on main branch.
+# Deploy to Heroku after full CI pipeline passes on main branch.
 #
 # Required GitHub Secrets:
 #   HEROKU_API_KEY   - Your Heroku API key (Account Settings > API Key)
@@ -15,6 +15,7 @@ name: Deploy
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   ci:
@@ -23,6 +24,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: ci
+    if: github.ref == 'refs/heads/main'
+    environment: production
 
     steps:
       - name: Checkout repository
