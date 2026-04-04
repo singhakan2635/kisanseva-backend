@@ -28,6 +28,17 @@ router.post(
   authController.login
 );
 
+router.post(
+  '/firebase',
+  [
+    body('firebaseToken').notEmpty().withMessage('Firebase token is required'),
+    body('phone').notEmpty().withMessage('Phone number is required'),
+    body('role').optional().trim(),
+  ],
+  validate,
+  authController.firebaseAuth
+);
+
 router.post('/logout', authController.logout);
 router.post('/refresh', authController.refresh);
 router.get('/me', authController.getCurrentUser);

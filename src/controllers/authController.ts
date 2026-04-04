@@ -86,6 +86,20 @@ export async function refresh(req: Request, res: Response): Promise<void> {
   }
 }
 
+export async function firebaseAuth(req: Request, res: Response): Promise<void> {
+  try {
+    const { firebaseToken, phone, role } = req.body;
+    const result = await authService.authenticateWithFirebase(firebaseToken, phone, role);
+    sendAuthResponse(res, 200, result.user, result.accessToken, result.refreshToken, 'Authentication successful');
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Firebase authentication failed';
+    const isConfig = message.includes('not configured');
+    const status = isConfig ? 503 : 401;
+    logger.error('Firebase auth failed', { error: message });
+    res.status(status).json({ success: false, message });
+  }
+}
+
 export async function getCurrentUser(req: AuthRequest, res: Response): Promise<void> {
   try {
     if (!req.user) {

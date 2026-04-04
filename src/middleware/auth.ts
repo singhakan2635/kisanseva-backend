@@ -9,6 +9,7 @@ const PUBLIC_ROUTES: Array<{ method: string; path: string }> = [
   { method: 'POST', path: '/api/auth/register' },
   { method: 'POST', path: '/api/auth/refresh' },
   { method: 'POST', path: '/api/auth/logout' },
+  { method: 'POST', path: '/api/auth/firebase' },
 ];
 
 /**

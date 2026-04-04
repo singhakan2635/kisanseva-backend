@@ -4,6 +4,7 @@ import type { DiagnosisResult } from '../types/diagnosis';
 import * as sessionService from './whatsappSessionService';
 import * as api from './whatsappApiService';
 import * as mediaService from './whatsappMediaService';
+import { analyzePlantImage } from './diseaseDetectionService';
 import logger from '../utils/logger';
 
 // ── Known crop names (Hindi + English) for quick detection ──
@@ -306,9 +307,8 @@ async function handlePhotoMessage(
     // Download image from WhatsApp
     const { buffer } = await mediaService.downloadMedia(mediaId);
 
-    // Call disease detection service
-    // TODO: Replace with actual diseaseDetectionService.analyzePlantImage(buffer) once built
-    const diagnosis = await analyzePlantImageStub(buffer, caption);
+    // Call hybrid disease detection (CNN → Claude Vision fallback)
+    const diagnosis = await analyzePlantImage(buffer, caption);
 
     // Format and send diagnosis
     const diagnosisMessage = formatDiagnosisForWhatsApp(diagnosis, language);
@@ -547,7 +547,7 @@ async function sendSettingsMenu(phone: string, language: string): Promise<void> 
 function formatDiagnosisForWhatsApp(diagnosis: DiagnosisResult, _language: string): string {
   const primary = diagnosis.primaryDiagnosis;
   const severityEmoji = SEVERITY_EMOJI[primary.severity] || '⚪';
-  const confidencePercent = Math.round(primary.confidence * 100);
+  const confidencePercent = Math.round(primary.confidence);
 
   let text = '';
 
@@ -676,76 +676,3 @@ function redactPhone(phone: string): string {
   return '****' + phone.slice(-4);
 }
 
-// ── Stub for disease detection until the real service is built ──
-// TODO: Replace with actual diseaseDetectionService.analyzePlantImage()
-
-async function analyzePlantImageStub(
-  _buffer: Buffer,
-  _caption: string | undefined
-): Promise<DiagnosisResult> {
-  // Simulate processing delay
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-
-  return {
-    primaryDiagnosis: {
-      name: 'Late Blight',
-      nameHi: 'पछेती अंगमारी',
-      scientificName: 'Phytophthora infestans',
-      type: 'fungal',
-      confidence: 0.87,
-      severity: 'moderate',
-    },
-    differentialDiagnoses: [
-      { name: 'Early Blight', confidence: 0.08 },
-      { name: 'Septoria Leaf Spot', confidence: 0.03 },
-    ],
-    visibleSymptoms: [
-      'पत्तियों पर भूरे-काले धब्बे',
-      'पत्तियों के किनारे पीले पड़ रहे हैं',
-      'तने पर काले निशान',
-    ],
-    affectedPart: 'पत्तियाँ और तना (Leaves and stem)',
-    treatments: {
-      mechanical: [
-        'प्रभावित पत्तियों को तोड़कर जला दें',
-        'पौधों के बीच हवा का प्रवाह बढ़ाएँ',
-      ],
-      physical: [
-        'सिंचाई कम करें, ज़मीन सूखने दें',
-      ],
-      chemical: [
-        {
-          name: 'Mancozeb 75% WP',
-          dosage: '2.5 ग्राम/लीटर पानी',
-          applicationMethod: 'छिड़काव (Spray)',
-          frequency: 'हर 7-10 दिन में',
-        },
-        {
-          name: 'Metalaxyl 8% + Mancozeb 64% WP',
-          dosage: '2.5 ग्राम/लीटर पानी',
-          applicationMethod: 'छिड़काव (Spray)',
-          frequency: 'हर 10-14 दिन में',
-        },
-      ],
-      biological: [
-        'Trichoderma viride का प्रयोग करें',
-      ],
-    },
-    recommendedPesticides: [
-      {
-        name: 'Mancozeb',
-        tradeName: ['Dithane M-45', 'Indofil M-45'],
-        dosage: { perLiter: '2.5 ग्राम', perAcre: '500 ग्राम' },
-        safetyPrecautions: ['मास्क और दस्ताने पहनें', 'छिड़काव के बाद हाथ धोएँ'],
-      },
-    ],
-    preventionTips: [
-      'प्रतिरोधी किस्में लगाएँ',
-      'फसल चक्र अपनाएँ',
-      'खेत में जल-निकासी की व्यवस्था करें',
-      'बीज उपचार करें',
-    ],
-    sampleImages: [],
-    disclaimer: 'यह AI-आधारित सुझाव है। अंतिम निर्णय के लिए कृषि विशेषज्ञ से सलाह लें।',
-  };
-}
