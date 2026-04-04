@@ -316,15 +316,16 @@ async function handlePhotoMessage(
     await api.sendTextMessage(phone, diagnosisMessage);
 
     // Send action buttons (titles must be <= 20 chars)
+    const isEn = language === 'en-IN';
     const actionButtons: WhatsAppButton[] = [
-      { type: 'reply', reply: { id: 'action_retry', title: 'दोबारा जाँचें' } },
-      { type: 'reply', reply: { id: 'action_shop', title: 'दवाई की दुकान' } },
-      { type: 'reply', reply: { id: 'action_expert', title: 'विशेषज्ञ/योजना' } },
+      { type: 'reply', reply: { id: 'action_retry', title: isEn ? 'Scan Again' : 'दोबारा जाँचें' } },
+      { type: 'reply', reply: { id: 'action_shop', title: isEn ? 'Find Shop' : 'दवाई की दुकान' } },
+      { type: 'reply', reply: { id: 'action_expert', title: isEn ? 'Expert/Schemes' : 'विशेषज्ञ/योजना' } },
     ];
 
     await api.sendInteractiveButtons(
       phone,
-      'और क्या मदद चाहिए?',
+      isEn ? 'What else can I help with?' : 'और क्या मदद चाहिए?',
       actionButtons
     );
 
@@ -379,6 +380,10 @@ async function handleInteractiveReply(
     case 'crop_photo_check':
       await api.sendTextMessage(phone, getMsg(language, 'sendNewPhoto'));
       await sessionService.setState(phone, ConversationState.AWAITING_PHOTO);
+      break;
+
+    case 'open_menu':
+      await sendSettingsMenu(phone, language);
       break;
 
     case 'menu_language':
@@ -474,16 +479,46 @@ async function handleLanguageRequest(phone: string): Promise<void> {
   );
 }
 
-// ── Welcome message ──
+// ── Welcome message (with action buttons) ──
 
 async function sendWelcomeMessage(phone: string, language: string = 'hi-IN'): Promise<void> {
+  const isEn = language === 'en-IN';
+
   await api.sendTextMessage(phone, getMsg(language, 'welcome'));
+
+  // Follow up with quick action buttons (max 3 buttons, title max 20 chars)
+  const buttons: WhatsAppButton[] = [
+    { type: 'reply', reply: { id: 'menu_photo', title: isEn ? 'Scan Crop' : 'फोटो भेजें' } },
+    { type: 'reply', reply: { id: 'menu_language', title: isEn ? 'Language' : 'भाषा बदलें' } },
+    { type: 'reply', reply: { id: 'open_menu', title: isEn ? 'Menu' : 'मेनू' } },
+  ];
+
+  await api.sendInteractiveButtons(
+    phone,
+    isEn ? 'What would you like to do?' : 'आप क्या करना चाहेंगे?',
+    buttons
+  );
 }
 
-// ── Help menu ──
+// ── Help menu (with action buttons) ──
 
 async function sendHelpMenu(phone: string, language: string = 'hi-IN'): Promise<void> {
+  const isEn = language === 'en-IN';
+
   await api.sendTextMessage(phone, getMsg(language, 'help'));
+
+  // Follow up with action buttons
+  const buttons: WhatsAppButton[] = [
+    { type: 'reply', reply: { id: 'menu_photo', title: isEn ? 'Scan Crop' : 'फोटो भेजें' } },
+    { type: 'reply', reply: { id: 'open_menu', title: isEn ? 'Full Menu' : 'पूरा मेनू' } },
+    { type: 'reply', reply: { id: 'action_expert', title: isEn ? 'Call Expert' : 'विशेषज्ञ' } },
+  ];
+
+  await api.sendInteractiveButtons(
+    phone,
+    isEn ? 'Quick actions:' : 'त्वरित कार्य:',
+    buttons
+  );
 }
 
 // ── First contact: language selection with greeting ──
