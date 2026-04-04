@@ -100,6 +100,32 @@ export async function firebaseAuth(req: Request, res: Response): Promise<void> {
   }
 }
 
+export async function updateProfile(req: AuthRequest, res: Response): Promise<void> {
+  try {
+    if (!req.user) {
+      res.status(401).json({ success: false, message: 'Authentication required' });
+      return;
+    }
+    const { firstName, lastName, phone: newPhone } = req.body;
+    const update: Record<string, string> = {};
+    if (firstName !== undefined) update.firstName = firstName;
+    if (lastName !== undefined) update.lastName = lastName;
+    if (newPhone !== undefined) update.phone = newPhone;
+
+    const { User } = await import('../models/User');
+    const user = await User.findByIdAndUpdate(req.user.id, { $set: update }, { new: true }).select('-passwordHash');
+    if (!user) {
+      res.status(404).json({ success: false, message: 'User not found' });
+      return;
+    }
+    logger.info('Profile updated', { userId: req.user.id });
+    res.json({ success: true, data: user, message: 'Profile updated' });
+  } catch (error) {
+    logger.error('Profile update failed', { error: (error as Error).message });
+    res.status(500).json({ success: false, message: 'Failed to update profile' });
+  }
+}
+
 export async function getCurrentUser(req: AuthRequest, res: Response): Promise<void> {
   try {
     if (!req.user) {
