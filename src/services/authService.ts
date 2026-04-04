@@ -150,8 +150,8 @@ export async function authenticateWithFirebase(
 
   const newUser = await User.create({
     email,
-    firstName: 'Farmer',
-    lastName: normalizedPhone ? normalizedPhone.slice(-4) : firebaseUid.slice(0, 6),
+    firstName: '',
+    lastName: '',
     role: userRole,
     phone: normalizedPhone || undefined,
     firebaseUid,
