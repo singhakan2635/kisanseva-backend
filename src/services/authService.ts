@@ -113,13 +113,19 @@ export async function authenticateWithFirebase(
   if (!user && normalizedPhone) {
     user = await User.findOne({ phone: normalizedPhone });
     if (user) {
-      // Link existing phone account to Firebase
       user.firebaseUid = firebaseUid;
       await user.save();
-      logger.info('Linked existing phone account to Firebase', {
-        userId: user._id.toString(),
-        firebaseUid,
-      });
+      logger.info('Linked existing phone account to Firebase', { userId: user._id.toString(), firebaseUid });
+    }
+  }
+
+  // Try by email if not found by phone (Google sign-in)
+  if (!user && decoded.email) {
+    user = await User.findOne({ email: decoded.email });
+    if (user) {
+      user.firebaseUid = firebaseUid;
+      await user.save();
+      logger.info('Linked existing email account to Firebase', { userId: user._id.toString(), firebaseUid });
     }
   }
 
@@ -148,10 +154,16 @@ export async function authenticateWithFirebase(
 
   const email = decoded.email || `phone_${firebaseUid}@placeholder.local`;
 
+  // Extract name from Google profile if available
+  const displayName = decoded.name || '';
+  const nameParts = displayName.split(' ');
+  const firstName = nameParts[0] || '';
+  const lastName = nameParts.slice(1).join(' ') || '';
+
   const newUser = await User.create({
     email,
-    firstName: '',
-    lastName: '',
+    firstName,
+    lastName,
     role: userRole,
     phone: normalizedPhone || undefined,
     firebaseUid,
