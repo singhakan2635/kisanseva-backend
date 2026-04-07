@@ -25,6 +25,17 @@ export interface IAffectedCropEntry {
   severity: 'low' | 'medium' | 'high' | 'critical';
 }
 
+export interface IDiseaseTranslation {
+  name?: string;
+  symptoms: string[];
+  mechanical: string[];
+  physical: string[];
+  chemical: IChemicalTreatment[];
+  biological: string[];
+  preventionTips: string[];
+  disclaimer?: string;
+}
+
 export interface IDisease extends Document {
   name: string;
   nameHi?: string;
@@ -39,6 +50,7 @@ export interface IDisease extends Document {
   treatments: IDiseaseTreatments;
   preventionTips: string[];
   preventionTipsHi: string[];
+  translations: Map<string, IDiseaseTranslation>;
   source?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -98,6 +110,27 @@ const diseaseSchema = new Schema<IDisease>(
     },
     preventionTips: [{ type: String }],
     preventionTipsHi: [{ type: String }],
+    translations: {
+      type: Map,
+      of: {
+        name: { type: String },
+        symptoms: [{ type: String }],
+        mechanical: [{ type: String }],
+        physical: [{ type: String }],
+        chemical: [
+          {
+            name: { type: String, required: true },
+            dosage: { type: String, required: true },
+            applicationMethod: { type: String, required: true },
+            frequency: { type: String, required: true },
+          },
+        ],
+        biological: [{ type: String }],
+        preventionTips: [{ type: String }],
+        disclaimer: { type: String },
+      },
+      default: {},
+    },
     source: { type: String },
   },
   {

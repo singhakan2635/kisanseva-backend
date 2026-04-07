@@ -27,6 +27,14 @@ export const env = {
 
   // ML Inference Service (Python FastAPI for plant disease CNN)
   ML_SERVICE_URL: process.env.ML_SERVICE_URL || 'http://localhost:8000',
+
+  // Bhashini API (primary translation service for Indian languages)
+  BHASHINI_API_KEY: process.env.BHASHINI_API_KEY || '',
+  BHASHINI_USER_ID: process.env.BHASHINI_USER_ID || '',
+
+  // Azure Translator API (fallback translation service)
+  AZURE_TRANSLATOR_KEY: process.env.AZURE_TRANSLATOR_KEY || '',
+  AZURE_TRANSLATOR_REGION: process.env.AZURE_TRANSLATOR_REGION || 'centralindia',
 };
 
 // Warn if refresh token secret is missing or same as JWT secret
