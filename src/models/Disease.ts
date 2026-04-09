@@ -63,7 +63,7 @@ const diseaseSchema = new Schema<IDisease>(
     scientificName: { type: String, trim: true },
     type: {
       type: String,
-      enum: ['fungal', 'bacterial', 'viral', 'nematode', 'parasitic', 'other'],
+      enum: ['fungal', 'bacterial', 'viral', 'nematode', 'parasitic', 'pest', 'deficiency', 'other'],
       required: true,
     },
     affectedCrops: [
