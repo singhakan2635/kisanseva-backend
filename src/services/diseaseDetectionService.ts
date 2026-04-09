@@ -355,6 +355,104 @@ export async function analyzePlantImage(
     type: aiAnalysis.primaryDiagnosis.type,
   });
 
+  // Step 1b: Plant validation — if all top-5 predictions have <10% confidence, not a plant
+  if (usedCNN) {
+    // We can re-check from aiAnalysis which was built from CNN predictions
+    const allLowConfidence = aiAnalysis.differentialDiagnoses.every(
+      (d) => d.confidence < 10
+    ) && aiAnalysis.primaryDiagnosis.confidence < 10;
+
+    if (allLowConfidence) {
+      logger.warn('Non-plant image detected: all predictions below 10% confidence');
+      return {
+        primaryDiagnosis: {
+          name: 'Not a Plant',
+          nameHi: '',
+          scientificName: '',
+          type: 'unknown',
+          confidence: 0,
+          severity: 'mild',
+        },
+        isHealthy: false,
+        isPlantImage: false,
+        healthyMessage: undefined,
+        differentialDiagnoses: [],
+        visibleSymptoms: [],
+        affectedPart: 'unknown',
+        treatments: { mechanical: [], physical: [], chemical: [], biological: [] },
+        recommendedPesticides: [],
+        preventionTips: [],
+        sampleImages: [],
+        disclaimer: '',
+      };
+    }
+  } else {
+    // Claude Vision path: if confidence is very low (<20%), likely not a plant
+    if (
+      aiAnalysis.primaryDiagnosis.confidence < 20 &&
+      aiAnalysis.primaryDiagnosis.type === 'unknown'
+    ) {
+      logger.warn('Non-plant image detected via Claude Vision: low confidence + unknown type');
+      return {
+        primaryDiagnosis: {
+          name: 'Not a Plant',
+          nameHi: '',
+          scientificName: '',
+          type: 'unknown',
+          confidence: 0,
+          severity: 'mild',
+        },
+        isHealthy: false,
+        isPlantImage: false,
+        healthyMessage: undefined,
+        differentialDiagnoses: [],
+        visibleSymptoms: [],
+        affectedPart: 'unknown',
+        treatments: { mechanical: [], physical: [], chemical: [], biological: [] },
+        recommendedPesticides: [],
+        preventionTips: [],
+        sampleImages: [],
+        disclaimer: '',
+      };
+    }
+  }
+
+  // Step 1c: Healthy plant detection
+  const isHealthy =
+    aiAnalysis.primaryDiagnosis.name.toLowerCase().includes('healthy');
+
+  if (isHealthy) {
+    logger.info('Healthy plant detected', {
+      confidence: aiAnalysis.primaryDiagnosis.confidence,
+    });
+    return {
+      primaryDiagnosis: {
+        name: 'Healthy',
+        nameHi: 'स्वस्थ',
+        scientificName: '',
+        type: 'unknown',
+        confidence: aiAnalysis.primaryDiagnosis.confidence,
+        severity: 'healthy',
+      },
+      isHealthy: true,
+      isPlantImage: true,
+      healthyMessage: 'Your crop looks healthy! No disease detected. Keep monitoring your crops regularly for early signs of any issues.',
+      differentialDiagnoses: aiAnalysis.differentialDiagnoses || [],
+      visibleSymptoms: [],
+      affectedPart: aiAnalysis.affectedPart || 'leaves',
+      treatments: { mechanical: [], physical: [], chemical: [], biological: [] },
+      recommendedPesticides: [],
+      preventionTips: [
+        'Continue regular monitoring of your crops',
+        'Maintain proper irrigation and drainage',
+        'Follow recommended fertilizer schedule',
+        'Remove weeds regularly to prevent disease spread',
+      ],
+      sampleImages: [],
+      disclaimer: DISCLAIMER,
+    };
+  }
+
   // Step 2: Cross-reference with our database
   let dbDisease: IDisease | null = null;
   let dbDeficiency: IDeficiency | null = null;
@@ -401,6 +499,8 @@ export async function analyzePlantImage(
       confidence: aiAnalysis.primaryDiagnosis.confidence,
       severity: aiAnalysis.primaryDiagnosis.severity,
     },
+    isHealthy: false,
+    isPlantImage: true,
     differentialDiagnoses: aiAnalysis.differentialDiagnoses || [],
     visibleSymptoms: aiAnalysis.visibleSymptoms || [],
     affectedPart: aiAnalysis.affectedPart || 'unknown',

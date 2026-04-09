@@ -1,6 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { query } from 'express-validator';
 import { validate } from '../middleware/validate';
+import { scanRateLimit } from '../middleware/scanRateLimit';
 import * as diagnosisController from '../controllers/diagnosisController';
 import logger from '../utils/logger';
 
@@ -41,6 +42,7 @@ function handleMulterError(
 // POST /diagnosis/analyze - upload image, get AI diagnosis
 router.post(
   '/analyze',
+  scanRateLimit,
   diagnosisController.upload.single('image'),
   handleMulterError,
   diagnosisController.analyzeImage

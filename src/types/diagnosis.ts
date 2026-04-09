@@ -19,8 +19,11 @@ export interface DiagnosisResult {
     scientificName: string;
     type: 'fungal' | 'bacterial' | 'viral' | 'deficiency' | 'pest' | 'unknown';
     confidence: number;
-    severity: 'mild' | 'moderate' | 'severe' | 'critical';
+    severity: 'mild' | 'moderate' | 'severe' | 'critical' | 'healthy';
   };
+  isHealthy: boolean;
+  isPlantImage: boolean;
+  healthyMessage?: string;
   differentialDiagnoses: Array<{
     name: string;
     confidence: number;
