@@ -245,12 +245,60 @@ async function translateViaAzure(
 }
 
 // ---------------------------------------------------------------------------
-// Public API: translateText (Bhashini primary, Azure fallback, English last resort)
+// Sarvam AI (primary — best for Indian languages, cheapest)
+// ---------------------------------------------------------------------------
+
+async function translateViaSarvam(
+  text: string,
+  sourceLang: string,
+  targetLang: string
+): Promise<string> {
+  if (!env.SARVAM_API_KEY) {
+    throw new Error('Sarvam API key not configured');
+  }
+
+  // Sarvam uses BCP-47 with -IN suffix
+  const srcInfo = LANGUAGE_MAP.get(sourceLang);
+  const tgtInfo = LANGUAGE_MAP.get(targetLang);
+  const srcCode = srcInfo ? `${srcInfo.code}-IN` : `${sourceLang}-IN`;
+  const tgtCode = tgtInfo ? `${tgtInfo.code}-IN` : `${targetLang}-IN`;
+
+  const response = await fetch('https://api.sarvam.ai/translate', {
+    method: 'POST',
+    headers: {
+      'api-subscription-key': env.SARVAM_API_KEY,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      input: text,
+      source_language_code: srcCode,
+      target_language_code: tgtCode,
+      model: 'mayura:v1',
+    }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text().catch(() => 'Unknown error');
+    logger.error('Sarvam API error', { status: response.status, error: errorText, targetLang: tgtCode });
+    throw new Error(`Sarvam API error: ${response.status}`);
+  }
+
+  const data = await response.json() as { translated_text?: string };
+  if (!data.translated_text) {
+    throw new Error('Sarvam returned empty translation');
+  }
+
+  return data.translated_text;
+}
+
+// ---------------------------------------------------------------------------
+// Public API: translateText (Sarvam primary, Azure fallback, Bhashini tertiary)
 // ---------------------------------------------------------------------------
 
 /**
  * Translate text from source to target language.
- * Tries Bhashini first, falls back to Azure, returns original text on total failure.
+ * Tries Sarvam AI first (cheapest, best for Indian languages),
+ * falls back to Azure, then Bhashini, returns original text on total failure.
  */
 export async function translateText(
   text: string,
@@ -260,13 +308,13 @@ export async function translateText(
   if (!text.trim()) return '';
   if (sourceLang === targetLang) return text;
 
-  // Try Bhashini (primary)
+  // Try Sarvam AI (primary — cheapest, best for Indian languages)
   try {
-    const result = await translateViaBhashini(text, sourceLang, targetLang);
+    const result = await translateViaSarvam(text, sourceLang, targetLang);
     return result;
-  } catch (bhashiniErr) {
-    logger.warn('Bhashini translation failed, trying Azure fallback', {
-      error: (bhashiniErr as Error).message,
+  } catch (sarvamErr) {
+    logger.warn('Sarvam translation failed, trying Azure fallback', {
+      error: (sarvamErr as Error).message,
       targetLang,
     });
   }
@@ -276,13 +324,24 @@ export async function translateText(
     const result = await translateViaAzure(text, sourceLang, targetLang);
     return result;
   } catch (azureErr) {
-    logger.warn('Azure translation also failed, returning original English text', {
+    logger.warn('Azure translation failed, trying Bhashini', {
       error: (azureErr as Error).message,
       targetLang,
     });
   }
 
-  // Both failed - return original text
+  // Try Bhashini (tertiary)
+  try {
+    const result = await translateViaBhashini(text, sourceLang, targetLang);
+    return result;
+  } catch (bhashiniErr) {
+    logger.warn('All translation services failed, returning original English text', {
+      error: (bhashiniErr as Error).message,
+      targetLang,
+    });
+  }
+
+  // All failed - return original text
   return text;
 }
 
