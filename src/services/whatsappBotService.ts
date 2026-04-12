@@ -308,8 +308,12 @@ async function handlePhotoMessage(
     // Download image from WhatsApp
     const { buffer } = await mediaService.downloadMedia(mediaId);
 
+    // Fix 1C: Use session's remembered crop context, not just caption
+    const session = await sessionService.getOrCreateSession(phone);
+    const cropContext = session.lastCropMentioned || caption || undefined;
+
     // Call hybrid disease detection (CNN → Claude Vision fallback)
-    const diagnosis = await analyzePlantImage(buffer, caption);
+    const diagnosis = await analyzePlantImage(buffer, cropContext);
 
     // Format and send diagnosis
     const diagnosisMessage = formatDiagnosisForWhatsApp(diagnosis, language);

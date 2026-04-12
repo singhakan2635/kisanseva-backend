@@ -1,11 +1,12 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { env } from '../config/env';
-import { Disease, IDisease } from '../models/Disease';
+import { Disease, IDisease, type IChemicalTreatment } from '../models/Disease';
 import { Deficiency, IDeficiency } from '../models/Deficiency';
 import { Pesticide } from '../models/Pesticide';
 import { Crop } from '../models/Crop';
 import logger from '../utils/logger';
 import { callMLService, isMLServiceHealthy } from './mlService';
+import { translateDiseaseTreatments, translateText, batchTranslate } from './translationService';
 import type { MLPrediction } from './mlService';
 import type {
   DiagnosisResult,
@@ -16,6 +17,24 @@ import type {
 
 const DISCLAIMER =
   'This is an AI-assisted diagnosis. Please consult a local agricultural expert or Krishi Vigyan Kendra (KVK) for confirmation before applying any treatment.';
+
+/**
+ * Crops supported by the CNN model, extracted from class_names.json.
+ * Used for smart routing: skip CNN if the declared crop isn't in this set.
+ */
+const CNN_SUPPORTED_CROPS = new Set([
+  'apple', 'bael', 'banana', 'bean', 'bell pepper', 'blueberry',
+  'cabbage', 'cauliflower', 'celery', 'cherry', 'chinar',
+  'chinese cabbage', 'chinese toon', 'citrus', 'coffee', 'corn', 'maize',
+  'cotton', 'cowpea', 'cucumber', 'guava', 'ginger', 'grape', 'grapes',
+  'hawthorn', 'hops', 'jamun', 'jujube', 'kiwifruit', 'leek', 'lemon',
+  'lentil', 'lentils', 'mango', 'melon', 'millet', 'mulberry', 'mung bean',
+  'nectarine', 'okra', 'onion', 'orange', 'peach', 'peanut', 'groundnut',
+  'pepper', 'pomegranate', 'potato', 'pumpkin', 'radish', 'raspberry',
+  'rice', 'sesame', 'sorghum', 'soybean', 'soyabean', 'spinach', 'squash',
+  'strawberry', 'sugarcane', 'sunflower', 'sweet potato', 'tea', 'tobacco',
+  'tomato', 'walnut', 'wheat', 'zucchini',
+]);
 
 const VISION_PROMPT = `You are an expert agricultural plant pathologist with deep knowledge of crop diseases prevalent in India and South Asia. Analyze this plant image carefully and provide a structured diagnosis.
 
@@ -268,9 +287,10 @@ function inferDiseaseType(
   const lower = diseaseName.toLowerCase();
   if (lower.includes('virus') || lower.includes('viral') || lower.includes('curl'))
     return 'viral';
+  // Check bacterial BEFORE fungal keywords — "Bacterial Blight" should be bacterial, not fungal
+  if (lower.includes('bacterial')) return 'bacterial';
   if (lower.includes('blight') || lower.includes('rot') || lower.includes('scab') || lower.includes('mold') || lower.includes('mildew') || lower.includes('rust') || lower.includes('spot') || lower.includes('scorch'))
     return 'fungal';
-  if (lower.includes('bacterial')) return 'bacterial';
   if (lower.includes('spider') || lower.includes('mite')) return 'pest';
   if (lower.includes('deficiency')) return 'deficiency';
   if (lower.includes('healthy')) return 'unknown';
@@ -309,31 +329,72 @@ function cnnToAIResponse(predictions: MLPrediction[]): AIAnalysisResponse {
 
 export async function analyzePlantImage(
   imageBuffer: Buffer,
-  cropName?: string
+  cropName?: string,
+  language: string = 'en'
 ): Promise<DiagnosisResult> {
   let aiAnalysis: AIAnalysisResponse;
   let usedCNN = false;
 
-  // Step 1: Try CNN model first (fast, high accuracy for known classes)
+  // Step 1: Smart CNN routing with crop awareness
   const mlHealthy = await isMLServiceHealthy();
-  if (mlHealthy) {
+  const cropLower = cropName?.toLowerCase().trim();
+  const cropInCNN = cropLower ? CNN_SUPPORTED_CROPS.has(cropLower) : false;
+
+  // If user declared a crop NOT in CNN set, skip CNN entirely
+  if (mlHealthy && cropLower && !cropInCNN) {
+    logger.info('Declared crop not in CNN set, skipping CNN → Claude Vision', {
+      declaredCrop: cropLower,
+    });
+    aiAnalysis = await callClaudeVisionWithFallbackCheck(imageBuffer, cropName);
+  } else if (mlHealthy) {
     try {
       const predictions = await callMLService(imageBuffer);
       const topConfidence = predictions[0]?.confidence ?? 0;
 
-      if (topConfidence >= 0.7) {
-        logger.info('Using CNN model prediction', {
-          topClass: predictions[0].class_name,
-          confidence: topConfidence,
-          crop: predictions[0].crop,
-          disease: predictions[0].disease,
-        });
-        aiAnalysis = cnnToAIResponse(predictions);
-        usedCNN = true;
+      // Use stricter threshold (85%) when no crop context, normal (70%) when crop matches
+      const confidenceThreshold = cropLower ? 0.7 : 0.85;
+
+      if (topConfidence >= confidenceThreshold) {
+        const predictedCrop = predictions[0].crop?.toLowerCase().trim();
+
+        // Fix 1B: Validate predicted crop matches user-declared crop
+        if (cropLower && predictedCrop && predictedCrop !== cropLower) {
+          logger.warn('CNN predicted different crop than declared, falling back to Claude Vision', {
+            declaredCrop: cropLower,
+            predictedCrop,
+            confidence: topConfidence,
+            topClass: predictions[0].class_name,
+          });
+          aiAnalysis = await callClaudeVisionWithFallbackCheck(imageBuffer, cropName);
+        } else {
+          // Fix 1F: Check for high crop disagreement in top-5 predictions
+          const top5Crops = predictions.slice(0, 5).map(p => p.crop?.toLowerCase().trim());
+          const uniqueCrops = new Set(top5Crops.filter(Boolean));
+
+          if (uniqueCrops.size >= 5) {
+            logger.warn('CNN top-5 predictions all predict different crops — high disagreement, falling back to Claude Vision', {
+              uniqueCrops: [...uniqueCrops],
+              topConfidence,
+            });
+            aiAnalysis = await callClaudeVisionWithFallbackCheck(imageBuffer, cropName);
+          } else {
+            logger.info('Using CNN model prediction', {
+              topClass: predictions[0].class_name,
+              confidence: topConfidence,
+              crop: predictions[0].crop,
+              disease: predictions[0].disease,
+              declaredCrop: cropLower || 'not specified',
+              threshold: confidenceThreshold,
+            });
+            aiAnalysis = cnnToAIResponse(predictions);
+            usedCNN = true;
+          }
+        }
       } else {
         logger.info('CNN confidence too low, falling back to Claude Vision', {
           topClass: predictions[0]?.class_name,
           confidence: topConfidence,
+          threshold: confidenceThreshold,
         });
         aiAnalysis = await callClaudeVisionWithFallbackCheck(imageBuffer, cropName);
       }
@@ -484,15 +545,154 @@ export async function analyzePlantImage(
     );
   }
 
-  // Step 3: Build enriched result
+  // Fix 1E: Crop affiliation validation — warn if disease doesn't typically affect the declared crop
+  let cropWarning: string | undefined;
+  if (cropLower && dbDisease?.affectedCrops?.length) {
+    const cropMatchesAffected = dbDisease.affectedCrops.some((ac) => {
+      const cropRef = ac.crop;
+      const cropRefName = typeof cropRef === 'object' && cropRef !== null && 'name' in cropRef
+        ? (cropRef as { name: string }).name.toLowerCase()
+        : '';
+      return cropRefName === cropLower;
+    });
+    if (!cropMatchesAffected) {
+      cropWarning = `Note: "${dbDisease.name}" is not commonly associated with ${cropName}. Please verify the diagnosis with a local agricultural expert.`;
+      logger.warn('Disease-crop affiliation mismatch', {
+        disease: dbDisease.name,
+        declaredCrop: cropLower,
+        affectedCrops: dbDisease.affectedCrops.map(ac => String(ac.crop)),
+      });
+    }
+  }
+
+  // Step 3: Build enriched result with localization
+  const localizedResult = await buildLocalizedResult(
+    dbDisease,
+    dbDeficiency,
+    aiAnalysis,
+    pesticides,
+    language
+  );
+
+  // Prepend crop affiliation warning to prevention tips if applicable
+  if (cropWarning) {
+    localizedResult.preventionTips = [cropWarning, ...localizedResult.preventionTips];
+  }
+
+  return localizedResult;
+}
+
+/**
+ * Build a fully localized DiagnosisResult.
+ * Handles Hindi dedicated fields, translations Map cache, and on-the-fly
+ * translation via translationService (Sarvam AI / Azure / Bhashini).
+ */
+async function buildLocalizedResult(
+  dbDisease: IDisease | null,
+  dbDeficiency: IDeficiency | null,
+  aiAnalysis: AIAnalysisResponse,
+  pesticides: RecommendedPesticide[],
+  language: string
+): Promise<DiagnosisResult> {
+  // Default English fields
+  const englishName = dbDisease?.name || dbDeficiency?.name || aiAnalysis.primaryDiagnosis.name;
+  const englishNameHi = dbDisease?.nameHi || dbDeficiency?.nameHi || '';
+  const englishSymptoms = aiAnalysis.visibleSymptoms || [];
   const treatments = buildTreatments(dbDisease, dbDeficiency);
   const sampleImages = buildSampleImages(dbDisease, dbDeficiency);
   const preventionTips = buildPreventionTips(dbDisease, dbDeficiency);
 
-  const result: DiagnosisResult = {
+  // Start with English result
+  let localizedName = englishName;
+  let localizedNameHi = englishNameHi;
+  let localizedSymptoms = englishSymptoms;
+  let localizedTreatments = treatments;
+  let localizedPreventionTips = preventionTips;
+  let localizedDisclaimer = DISCLAIMER;
+
+  if (language !== 'en' && dbDisease) {
+    // Try Hindi dedicated fields first
+    if (language === 'hi') {
+      localizedName = dbDisease.nameHi || englishName;
+      localizedSymptoms = (dbDisease.symptomsHi?.length) ? dbDisease.symptomsHi : englishSymptoms;
+      localizedPreventionTips = (dbDisease.preventionTipsHi?.length) ? dbDisease.preventionTipsHi : preventionTips;
+
+      // Check translations map for Hindi treatments
+      const hiTranslation = dbDisease.translations?.get('hi');
+      if (hiTranslation) {
+        localizedTreatments = buildTreatmentsFromTranslation(hiTranslation, treatments);
+        if (hiTranslation.preventionTips?.length) {
+          localizedPreventionTips = hiTranslation.preventionTips;
+        }
+        if (hiTranslation.name) localizedName = hiTranslation.name;
+        if (hiTranslation.symptoms?.length) localizedSymptoms = hiTranslation.symptoms;
+        if (hiTranslation.disclaimer) localizedDisclaimer = hiTranslation.disclaimer;
+      }
+    } else {
+      // Non-Hindi language: check translations Map
+      const cachedTranslation = dbDisease.translations?.get(language);
+      if (cachedTranslation && cachedTranslation.symptoms?.length) {
+        // Use cached translation
+        localizedName = cachedTranslation.name || englishName;
+        localizedSymptoms = cachedTranslation.symptoms;
+        localizedTreatments = buildTreatmentsFromTranslation(cachedTranslation, treatments);
+        localizedPreventionTips = cachedTranslation.preventionTips?.length
+          ? cachedTranslation.preventionTips
+          : preventionTips;
+        if (cachedTranslation.disclaimer) localizedDisclaimer = cachedTranslation.disclaimer;
+      } else {
+        // Translate on-the-fly and cache in DB (fire-and-forget caching)
+        try {
+          await translateDiseaseTreatments(String(dbDisease._id), [language]);
+          // Re-fetch the disease to get the cached translation
+          const refreshedDisease = await Disease.findById(dbDisease._id);
+          const freshTranslation = refreshedDisease?.translations?.get(language);
+          if (freshTranslation && freshTranslation.symptoms?.length) {
+            localizedName = freshTranslation.name || englishName;
+            localizedSymptoms = freshTranslation.symptoms;
+            localizedTreatments = buildTreatmentsFromTranslation(freshTranslation, treatments);
+            localizedPreventionTips = freshTranslation.preventionTips?.length
+              ? freshTranslation.preventionTips
+              : preventionTips;
+            if (freshTranslation.disclaimer) localizedDisclaimer = freshTranslation.disclaimer;
+          }
+        } catch (err) {
+          logger.warn('On-the-fly translation failed, returning English', {
+            diseaseId: String(dbDisease._id),
+            language,
+            error: (err as Error).message,
+          });
+        }
+      }
+    }
+  } else if (language !== 'en' && !dbDisease) {
+    // No DB disease — try to translate AI analysis fields directly
+    try {
+      localizedName = await translateText(englishName, language);
+      localizedSymptoms = englishSymptoms.length > 0
+        ? await batchTranslate(englishSymptoms, language)
+        : [];
+      localizedPreventionTips = preventionTips.length > 0
+        ? await batchTranslate(preventionTips, language)
+        : [];
+      localizedDisclaimer = await translateText(DISCLAIMER, language);
+    } catch (err) {
+      logger.warn('Direct translation failed, returning English', {
+        language,
+        error: (err as Error).message,
+      });
+    }
+  }
+
+  // Use farmer summary (Team 3 feature) — safely access as it may not exist on IDeficiency yet
+  const farmerSummary = dbDisease?.farmerSummaryEn
+    || (dbDeficiency as unknown as Record<string, string | undefined>)?.farmerSummaryEn
+    || undefined;
+
+  return {
     primaryDiagnosis: {
-      name: dbDisease?.name || dbDeficiency?.name || aiAnalysis.primaryDiagnosis.name,
-      nameHi: dbDisease?.nameHi || dbDeficiency?.nameHi || '',
+      name: localizedName,
+      nameHi: localizedNameHi,
       scientificName:
         dbDisease?.scientificName || aiAnalysis.primaryDiagnosis.scientificName || '',
       type: aiAnalysis.primaryDiagnosis.type,
@@ -502,16 +702,37 @@ export async function analyzePlantImage(
     isHealthy: false,
     isPlantImage: true,
     differentialDiagnoses: aiAnalysis.differentialDiagnoses || [],
-    visibleSymptoms: aiAnalysis.visibleSymptoms || [],
+    visibleSymptoms: localizedSymptoms,
     affectedPart: aiAnalysis.affectedPart || 'unknown',
-    treatments,
+    treatments: localizedTreatments,
     recommendedPesticides: pesticides,
-    preventionTips,
+    preventionTips: localizedPreventionTips,
+    farmerSummary,
     sampleImages,
-    disclaimer: DISCLAIMER,
+    disclaimer: localizedDisclaimer,
   };
+}
 
-  return result;
+/**
+ * Build treatments from an IDiseaseTranslation, falling back to English treatments.
+ */
+function buildTreatmentsFromTranslation(
+  translation: { mechanical?: string[]; physical?: string[]; chemical?: IChemicalTreatment[]; biological?: string[] },
+  fallback: DiagnosisResult['treatments']
+): DiagnosisResult['treatments'] {
+  return {
+    mechanical: translation.mechanical?.length ? translation.mechanical : fallback.mechanical,
+    physical: translation.physical?.length ? translation.physical : fallback.physical,
+    chemical: translation.chemical?.length
+      ? translation.chemical.map((c): ChemicalTreatmentInfo => ({
+          name: c.name,
+          dosage: c.dosage,
+          applicationMethod: c.applicationMethod,
+          frequency: c.frequency,
+        }))
+      : fallback.chemical,
+    biological: translation.biological?.length ? translation.biological : fallback.biological,
+  };
 }
 
 /**
