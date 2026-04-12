@@ -22,6 +22,7 @@ export interface DiagnosisResult {
     severity: 'mild' | 'moderate' | 'severe' | 'critical' | 'healthy';
   };
   isHealthy: boolean;
+  isUncertain?: boolean;
   isPlantImage: boolean;
   healthyMessage?: string;
   differentialDiagnoses: Array<{

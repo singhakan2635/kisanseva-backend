@@ -19,22 +19,19 @@ const DISCLAIMER =
   'This is an AI-assisted diagnosis. Please consult a local agricultural expert or Krishi Vigyan Kendra (KVK) for confirmation before applying any treatment.';
 
 /**
- * Crops supported by the CNN model, extracted from class_names.json.
- * Used for smart routing: skip CNN if the declared crop isn't in this set.
+ * Crops supported by the CNN model, built from class_names.json.
+ * The Python ML service extracts crop as the FIRST underscore-delimited token
+ * from each class name (e.g., "Bell" from "Bell_Pepper_Leaf"), lowercased.
+ * We mirror that logic here so crop-routing matches what the model returns.
  */
-const CNN_SUPPORTED_CROPS = new Set([
-  'apple', 'bael', 'banana', 'bean', 'bell pepper', 'blueberry',
-  'cabbage', 'cauliflower', 'celery', 'cherry', 'chinar',
-  'chinese cabbage', 'chinese toon', 'citrus', 'coffee', 'corn', 'maize',
-  'cotton', 'cowpea', 'cucumber', 'guava', 'ginger', 'grape', 'grapes',
-  'hawthorn', 'hops', 'jamun', 'jujube', 'kiwifruit', 'leek', 'lemon',
-  'lentil', 'lentils', 'mango', 'melon', 'millet', 'mulberry', 'mung bean',
-  'nectarine', 'okra', 'onion', 'orange', 'peach', 'peanut', 'groundnut',
-  'pepper', 'pomegranate', 'potato', 'pumpkin', 'radish', 'raspberry',
-  'rice', 'sesame', 'sorghum', 'soybean', 'soyabean', 'spinach', 'squash',
-  'strawberry', 'sugarcane', 'sunflower', 'sweet potato', 'tea', 'tobacco',
-  'tomato', 'walnut', 'wheat', 'zucchini',
-]);
+import classNamesJson from '../../ml_serve/models/class_names.json';
+
+const CNN_SUPPORTED_CROPS: Set<string> = new Set(
+  (classNamesJson as string[]).map((cn) => {
+    const parts = cn.replace(/___/g, '_').replace(/__/g, '_').split('_').filter(Boolean);
+    return (parts[0] || '').toLowerCase();
+  })
+);
 
 const VISION_PROMPT = `You are an expert agricultural plant pathologist with deep knowledge of crop diseases prevalent in India and South Asia. Analyze this plant image carefully and provide a structured diagnosis.
 
@@ -303,7 +300,7 @@ function inferDiseaseType(
  */
 function cnnToAIResponse(predictions: MLPrediction[]): AIAnalysisResponse {
   const top = predictions[0];
-  const confidence = Math.round(top.confidence * 100); // 0-100 scale
+  const confidence = Math.round(top.confidence); // already 0-100 from ML service
 
   return {
     primaryDiagnosis: {
@@ -320,7 +317,7 @@ function cnnToAIResponse(predictions: MLPrediction[]): AIAnalysisResponse {
     },
     differentialDiagnoses: predictions.slice(1).map((p) => ({
       name: p.healthy ? `${p.crop} - Healthy` : `${p.crop} - ${p.disease}`,
-      confidence: Math.round(p.confidence * 100),
+      confidence: Math.round(p.confidence),
     })),
     visibleSymptoms: [],
     affectedPart: 'leaves',
@@ -371,8 +368,8 @@ export async function analyzePlantImage(
           const top5Crops = predictions.slice(0, 5).map(p => p.crop?.toLowerCase().trim());
           const uniqueCrops = new Set(top5Crops.filter(Boolean));
 
-          if (uniqueCrops.size >= 5) {
-            logger.warn('CNN top-5 predictions all predict different crops — high disagreement, falling back to Claude Vision', {
+          if (uniqueCrops.size >= 3) {
+            logger.warn('CNN top-5 predictions show high crop disagreement (3+ unique crops), falling back to Claude Vision', {
               uniqueCrops: [...uniqueCrops],
               topConfidence,
             });
@@ -483,16 +480,49 @@ export async function analyzePlantImage(
     aiAnalysis.primaryDiagnosis.name.toLowerCase().includes('healthy');
 
   if (isHealthy) {
-    logger.info('Healthy plant detected', {
-      confidence: aiAnalysis.primaryDiagnosis.confidence,
-    });
+    const confidence = aiAnalysis.primaryDiagnosis.confidence;
+
+    // Fix 2E/4A: Low-confidence "Healthy" is likely uncertain, not actually healthy
+    if (confidence < 70) {
+      logger.warn('Healthy diagnosis with low confidence — treating as uncertain', {
+        confidence,
+      });
+      return {
+        primaryDiagnosis: {
+          name: 'Unable to identify disease',
+          nameHi: 'बीमारी पहचानने में असमर्थ',
+          scientificName: '',
+          type: 'unknown',
+          confidence,
+          severity: 'mild',
+        },
+        isHealthy: false,
+        isUncertain: true,
+        isPlantImage: true,
+        differentialDiagnoses: aiAnalysis.differentialDiagnoses || [],
+        visibleSymptoms: [],
+        affectedPart: aiAnalysis.affectedPart || 'leaves',
+        treatments: { mechanical: [], physical: [], chemical: [], biological: [] },
+        recommendedPesticides: [],
+        preventionTips: [
+          'Please try again with a clearer photo of the affected area',
+          'Ensure good lighting and focus on the diseased part of the plant',
+          'Consult your local Krishi Vigyan Kendra (KVK) for in-person diagnosis',
+          'You can also contact your nearest agricultural extension officer',
+        ],
+        sampleImages: [],
+        disclaimer: DISCLAIMER,
+      };
+    }
+
+    logger.info('Healthy plant detected', { confidence });
     return {
       primaryDiagnosis: {
         name: 'Healthy',
         nameHi: 'स्वस्थ',
         scientificName: '',
         type: 'unknown',
-        confidence: aiAnalysis.primaryDiagnosis.confidence,
+        confidence,
         severity: 'healthy',
       },
       isHealthy: true,
