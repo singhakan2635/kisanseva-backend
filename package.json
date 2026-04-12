@@ -11,7 +11,8 @@
     "test:ci": "jest --forceExit --detectOpenHandles --ci",
     "lint": "npx tsc --noEmit",
     "heroku-postbuild": "npm run build",
-    "seed:data": "tsx scripts/seedData.ts"
+    "seed:data": "tsx scripts/seedData.ts",
+    "translate-diseases": "tsx src/scripts/translateDiseases.ts"
   },
   "engines": {
     "node": "22.x"

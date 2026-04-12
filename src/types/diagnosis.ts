@@ -40,6 +40,7 @@ export interface DiagnosisResult {
   recommendedPesticides: RecommendedPesticide[];
   preventionTips: string[];
   farmerSummary?: string;
+  translationFailed?: boolean;
   sampleImages: Array<{ url: string; caption: string }>;
   disclaimer: string;
 }

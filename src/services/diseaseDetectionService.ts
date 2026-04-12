@@ -639,6 +639,7 @@ async function buildLocalizedResult(
   let localizedTreatments = treatments;
   let localizedPreventionTips = preventionTips;
   let localizedDisclaimer = DISCLAIMER;
+  let translationFailed = false;
 
   if (language !== 'en' && dbDisease) {
     // Try Hindi dedicated fields first
@@ -657,6 +658,17 @@ async function buildLocalizedResult(
         if (hiTranslation.name) localizedName = hiTranslation.name;
         if (hiTranslation.symptoms?.length) localizedSymptoms = hiTranslation.symptoms;
         if (hiTranslation.disclaimer) localizedDisclaimer = hiTranslation.disclaimer;
+      }
+
+      // Warn if Hindi data is missing from both dedicated fields and translations map
+      const hasHindiData = !!(dbDisease.nameHi || dbDisease.symptomsHi?.length || hiTranslation?.symptoms?.length);
+      if (!hasHindiData) {
+        logger.warn('Hindi translation data missing for disease, returning English', {
+          diseaseId: String(dbDisease._id),
+          diseaseName: dbDisease.name,
+          language: 'hi',
+        });
+        translationFailed = true;
       }
     } else {
       // Non-Hindi language: check translations Map
@@ -689,9 +701,11 @@ async function buildLocalizedResult(
         } catch (err) {
           logger.warn('On-the-fly translation failed, returning English', {
             diseaseId: String(dbDisease._id),
+            diseaseName: dbDisease.name,
             language,
             error: (err as Error).message,
           });
+          translationFailed = true;
         }
       }
     }
@@ -708,9 +722,11 @@ async function buildLocalizedResult(
       localizedDisclaimer = await translateText(DISCLAIMER, language);
     } catch (err) {
       logger.warn('Direct translation failed, returning English', {
+        diseaseName: englishName,
         language,
         error: (err as Error).message,
       });
+      translationFailed = true;
     }
   }
 
@@ -738,6 +754,7 @@ async function buildLocalizedResult(
     recommendedPesticides: pesticides,
     preventionTips: localizedPreventionTips,
     farmerSummary,
+    translationFailed: translationFailed || undefined,
     sampleImages,
     disclaimer: localizedDisclaimer,
   };
