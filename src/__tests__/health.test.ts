@@ -8,7 +8,7 @@ describe('GET /api/health', () => {
     expect(res.status).toBe(200);
     expect(res.body).toEqual({
       success: true,
-      message: 'KisanSeva server is running',
+      message: 'FasalRakshak server is running',
     });
   });
 });

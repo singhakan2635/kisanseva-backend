@@ -1,7 +1,7 @@
 {
-  "name": "kisanseva-backend",
+  "name": "fasalrakshak-backend",
   "version": "1.0.0",
-  "description": "KisanSeva - Agriculture/Farmer Services Platform Backend API",
+  "description": "FasalRakshak - Agriculture/Farmer Services Platform Backend API",
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
@@ -19,7 +19,7 @@
   "keywords": [
     "agriculture",
     "farming",
-    "kisanseva"
+    "fasalrakshak"
   ],
   "author": "",
   "license": "ISC",

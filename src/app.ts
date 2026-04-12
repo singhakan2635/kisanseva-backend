@@ -84,7 +84,7 @@ if (rateLimitingEnabled) {
 
 // Health check (before auth - public endpoint)
 app.get('/api/health', (_req, res) => {
-  res.json({ success: true, message: 'KisanSeva server is running' });
+  res.json({ success: true, message: 'FasalRakshak server is running' });
 });
 
 // WhatsApp webhook routes (before auth - Meta calls these directly)

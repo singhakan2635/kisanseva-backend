@@ -1,5 +1,5 @@
 /**
- * WhatsApp Cloud API types for KisanSeva.
+ * WhatsApp Cloud API types for FasalRakshak.
  * Adapted from Medigent health-backend patterns.
  */
 

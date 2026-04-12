@@ -4,7 +4,7 @@ import app from '../app';
 const testUser = {
   firstName: 'Test',
   lastName: 'Farmer',
-  email: 'test@kisanseva.com',
+  email: 'test@fasalrakshak.com',
   password: 'password123',
   phone: '9876543210',
 };

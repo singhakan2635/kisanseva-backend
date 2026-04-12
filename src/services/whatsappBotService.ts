@@ -92,16 +92,16 @@ const MESSAGES: Record<string, Record<MsgKey, string | ((d: LangData) => string)
     sendPhotoOrText: 'Please send a text message or a photo of your plant. 📸',
     langChanged: (d: LangData) => `✅ Language changed to: ${d.nameNative} (${d.name})\n\nNow send a photo of your plant! 📸`,
     firstContact:
-      '🌾 *Welcome to KisanSeva!*\n\nPlease choose your language to get started:\n\nकृपया अपनी भाषा चुनें:',
+      '🌾 *Welcome to FasalRakshak!*\n\nPlease choose your language to get started:\n\nकृपया अपनी भाषा चुनें:',
     welcome:
-      'Hello! 🌾 Welcome to *KisanSeva*\n\n' +
+      'Hello! 🌾 Welcome to *FasalRakshak*\n\n' +
       'Send a *photo of your plant* to identify diseases. 📸\n\n' +
       '🔍 We will tell you:\n  • Disease name\n  • Severity level\n  • Treatment options\n  • Which pesticide to use\n\n' +
       '━━━━━━━━━━━━━━━\n' +
       '📋 *Menu:* Type "menu"\n🌐 *Language:* Type "language"\n❓ *Help:* Type "help"\n' +
       '━━━━━━━━━━━━━━━',
     help:
-      '📖 *KisanSeva Help*\n\n' +
+      '📖 *FasalRakshak Help*\n\n' +
       '1️⃣ *Send a photo* — We identify the disease\n' +
       '2️⃣ *Type crop name* — e.g., "rice", "tomato"\n' +
       '3️⃣ *"menu"* — Open settings menu\n' +
@@ -119,23 +119,23 @@ const MESSAGES: Record<string, Record<MsgKey, string | ((d: LangData) => string)
     shopInfo:
       '🏪 *Nearest Agricultural Shop*\n\nSearch "agricultural shop near me" on Google Maps.\n\n💡 Show the pesticide names from the diagnosis to the shopkeeper.',
     expertInfo:
-      '👨‍🌾 *Contact Agricultural Expert*\n\n📞 KisanCall Center: 1800-180-1551 (Toll-free)\n🌐 kisansuvidha.gov.in\n\nThis service will soon be available in the KisanSeva app!',
+      '👨‍🌾 *Contact Agricultural Expert*\n\n📞 KisanCall Center: 1800-180-1551 (Toll-free)\n🌐 kisansuvidha.gov.in\n\nThis service will soon be available in the FasalRakshak app!',
     comingSoon: '📋 This feature is coming soon!\n\nFor now, send a photo of your plant and we will diagnose it! 📸',
   },
   'hi-IN': {
     sendPhotoOrText: 'कृपया टेक्स्ट संदेश या पौधे की फोटो भेजें। 📸',
     langChanged: (d: LangData) => `✅ भाषा बदल दी गई: ${d.nameNative} (${d.name})\n\nअब अपने पौधे की फोटो भेजें! 📸`,
     firstContact:
-      '🌾 *KisanSeva में आपका स्वागत है!*\n\nकृपया अपनी भाषा चुनें:\n\nPlease choose your language:',
+      '🌾 *FasalRakshak में आपका स्वागत है!*\n\nकृपया अपनी भाषा चुनें:\n\nPlease choose your language:',
     welcome:
-      'नमस्ते! 🌾 *KisanSeva* में आपका स्वागत है।\n\n' +
+      'नमस्ते! 🌾 *FasalRakshak* में आपका स्वागत है।\n\n' +
       'अपने पौधे की बीमारी जानने के लिए *फोटो भेजें*। 📸\n\n' +
       '🔍 हम बताएंगे:\n  • बीमारी का नाम\n  • कितनी गंभीर है\n  • इलाज कैसे करें\n  • कौन सी दवाई लगाएँ\n\n' +
       '━━━━━━━━━━━━━━━\n' +
       '📋 *मेनू:* "मेनू" लिखें\n🌐 *भाषा:* "भाषा" लिखें\n❓ *मदद:* "मदद" लिखें\n' +
       '━━━━━━━━━━━━━━━',
     help:
-      '📖 *KisanSeva मदद मेनू*\n\n' +
+      '📖 *FasalRakshak मदद मेनू*\n\n' +
       '1️⃣ *फोटो भेजें* — पौधे की फोटो भेजें, हम बीमारी बताएंगे\n' +
       '2️⃣ *फसल का नाम* — "धान", "टमाटर", "गेहूं" आदि लिखें\n' +
       '3️⃣ *"मेनू"* — सेटिंग्स खोलें\n' +
@@ -153,7 +153,7 @@ const MESSAGES: Record<string, Record<MsgKey, string | ((d: LangData) => string)
     shopInfo:
       '🏪 *नज़दीकी कृषि दवाई दुकान*\n\nGoogle Maps पर "agricultural shop near me" खोजें।\n\n💡 ऊपर बताई गई दवाइयों का नाम दुकानदार को दिखाएँ।',
     expertInfo:
-      '👨‍🌾 *कृषि विशेषज्ञ से संपर्क*\n\n📞 KisanCall Center: 1800-180-1551 (टोल-फ्री)\n🌐 kisansuvidha.gov.in\n\nयह सेवा जल्द ही KisanSeva ऐप में उपलब्ध होगी!',
+      '👨‍🌾 *कृषि विशेषज्ञ से संपर्क*\n\n📞 KisanCall Center: 1800-180-1551 (टोल-फ्री)\n🌐 kisansuvidha.gov.in\n\nयह सेवा जल्द ही FasalRakshak ऐप में उपलब्ध होगी!',
     comingSoon: '📋 यह सुविधा जल्द आ रही है।\n\nअभी के लिए, अपने पौधे की फोटो भेजें! 📸',
   },
 };
@@ -538,7 +538,7 @@ async function sendLanguageSelectionOnFirstContact(phone: string): Promise<void>
 
   await api.sendInteractiveList(
     phone,
-    '*KisanSeva में स्वागत है!*\n\n' +
+    '*FasalRakshak में स्वागत है!*\n\n' +
     'कृपया अपनी भाषा चुनें\nPlease choose your language',
     'भाषा चुनें',       // 10 chars, under 20
     sections
@@ -564,7 +564,7 @@ async function sendSettingsMenu(phone: string, language: string): Promise<void> 
         {
           id: 'menu_help',
           title: isEn ? 'Help & Tips' : 'मदद और सुझाव',              // 11 / 12 chars
-          description: isEn ? 'How to use KisanSeva' : 'KisanSeva कैसे इस्तेमाल करें',
+          description: isEn ? 'How to use FasalRakshak' : 'FasalRakshak कैसे इस्तेमाल करें',
         },
         {
           id: 'menu_photo',

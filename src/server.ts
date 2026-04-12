@@ -8,7 +8,7 @@ async function start() {
   await connectDB();
 
   const server = app.listen(env.PORT, () => {
-    logger.info(`KisanSeva server running on port ${env.PORT}`, { env: env.NODE_ENV });
+    logger.info(`FasalRakshak server running on port ${env.PORT}`, { env: env.NODE_ENV });
   });
 
   // Start the weekly scheme update scheduler
