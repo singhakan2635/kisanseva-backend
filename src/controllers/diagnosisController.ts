@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import multer, { FileFilterCallback } from 'multer';
 import * as diseaseDetectionService from '../services/diseaseDetectionService';
+import { User, SUPPORTED_LANGUAGE_CODES } from '../models/User';
+import type { AuthRequest } from '../types';
 import logger from '../utils/logger';
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
@@ -47,20 +49,37 @@ export async function analyzeImage(req: Request, res: Response): Promise<void> {
 
     const cropName = req.body.cropName as string | undefined;
 
+    // Resolve language: explicit body param > authenticated user preference > default 'en'
+    let language = (req.body.language as string | undefined) || 'en';
+    const authReq = req as AuthRequest;
+    if (language === 'en' && authReq.user?.id) {
+      const user = await User.findById(authReq.user.id).select('preferredLanguage');
+      if (user?.preferredLanguage && user.preferredLanguage !== 'en') {
+        language = user.preferredLanguage;
+      }
+    }
+    // Validate language code
+    if (!SUPPORTED_LANGUAGE_CODES.includes(language as typeof SUPPORTED_LANGUAGE_CODES[number])) {
+      language = 'en';
+    }
+
     logger.info('Starting plant disease analysis', {
       fileSize: req.file.size,
       mimeType: req.file.mimetype,
       cropName: cropName || 'not specified',
+      language,
     });
 
     const result = await diseaseDetectionService.analyzePlantImage(
       req.file.buffer,
-      cropName
+      cropName,
+      language
     );
 
     logger.info('Plant disease analysis complete', {
       diagnosis: result.primaryDiagnosis.name,
       confidence: result.primaryDiagnosis.confidence,
+      language,
     });
 
     res.json({

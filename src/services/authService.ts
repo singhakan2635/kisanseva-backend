@@ -30,6 +30,7 @@ export async function register(data: {
   password: string;
   phone?: string;
   role?: UserRole;
+  preferredLanguage?: string;
 }): Promise<{ user: Record<string, unknown>; accessToken: string; refreshToken: string }> {
   const existing = await User.findOne({ email: data.email.toLowerCase() });
   if (existing) {
@@ -57,6 +58,7 @@ export async function register(data: {
     lastName: data.lastName,
     role,
     phone: data.phone,
+    ...(data.preferredLanguage ? { preferredLanguage: data.preferredLanguage } : {}),
   });
 
   logger.info('User registered', { userId: user._id.toString(), role });

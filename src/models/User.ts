@@ -2,6 +2,17 @@ import mongoose, { Schema, Document } from 'mongoose';
 import bcrypt from 'bcryptjs';
 import type { UserRole } from '../types';
 
+export type SupportedLanguage =
+  | 'en' | 'hi' | 'bn' | 'ta' | 'te' | 'mr' | 'gu' | 'kn' | 'ml' | 'pa'
+  | 'or' | 'as' | 'ur' | 'sa' | 'mai' | 'kok' | 'doi' | 'mni' | 'sat'
+  | 'sd' | 'ne' | 'bo' | 'ks';
+
+export const SUPPORTED_LANGUAGE_CODES: SupportedLanguage[] = [
+  'en', 'hi', 'bn', 'ta', 'te', 'mr', 'gu', 'kn', 'ml', 'pa',
+  'or', 'as', 'ur', 'sa', 'mai', 'kok', 'doi', 'mni', 'sat',
+  'sd', 'ne', 'bo', 'ks',
+];
+
 export interface IUser extends Document {
   email: string;
   passwordHash?: string;
@@ -10,6 +21,7 @@ export interface IUser extends Document {
   role: UserRole;
   phone?: string;
   firebaseUid?: string;
+  preferredLanguage: SupportedLanguage;
   createdAt: Date;
   updatedAt: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
@@ -40,6 +52,11 @@ const userSchema = new Schema<IUser>(
     },
     phone: { type: String, trim: true },
     firebaseUid: { type: String, unique: true, sparse: true },
+    preferredLanguage: {
+      type: String,
+      enum: SUPPORTED_LANGUAGE_CODES,
+      default: 'en',
+    },
   },
   {
     timestamps: true,

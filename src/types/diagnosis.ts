@@ -38,6 +38,7 @@ export interface DiagnosisResult {
   };
   recommendedPesticides: RecommendedPesticide[];
   preventionTips: string[];
+  farmerSummary?: string;
   sampleImages: Array<{ url: string; caption: string }>;
   disclaimer: string;
 }

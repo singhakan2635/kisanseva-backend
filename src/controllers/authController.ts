@@ -31,9 +31,9 @@ function sendAuthResponse(
 
 export async function register(req: Request, res: Response): Promise<void> {
   try {
-    const { firstName, lastName, email, password, phone } = req.body;
+    const { firstName, lastName, email, password, phone, preferredLanguage } = req.body;
     const result = await authService.register({
-      firstName, lastName, email, password, phone,
+      firstName, lastName, email, password, phone, preferredLanguage,
     });
     sendAuthResponse(res, 201, result.user, result.accessToken, result.refreshToken, 'Registration successful');
   } catch (error) {
@@ -106,11 +106,12 @@ export async function updateProfile(req: AuthRequest, res: Response): Promise<vo
       res.status(401).json({ success: false, message: 'Authentication required' });
       return;
     }
-    const { firstName, lastName, phone: newPhone } = req.body;
+    const { firstName, lastName, phone: newPhone, preferredLanguage } = req.body;
     const update: Record<string, string> = {};
     if (firstName !== undefined) update.firstName = firstName;
     if (lastName !== undefined) update.lastName = lastName;
     if (newPhone !== undefined) update.phone = newPhone;
+    if (preferredLanguage !== undefined) update.preferredLanguage = preferredLanguage;
 
     const { User } = await import('../models/User');
     const user = await User.findByIdAndUpdate(req.user.id, { $set: update }, { new: true }).select('-passwordHash');

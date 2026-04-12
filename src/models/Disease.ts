@@ -51,6 +51,8 @@ export interface IDisease extends Document {
   preventionTips: string[];
   preventionTipsHi: string[];
   translations: Map<string, IDiseaseTranslation>;
+  farmerSummaryEn?: string;
+  farmerSummaryHi?: string;
   source?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -131,6 +133,8 @@ const diseaseSchema = new Schema<IDisease>(
       },
       default: {},
     },
+    farmerSummaryEn: { type: String },
+    farmerSummaryHi: { type: String },
     source: { type: String },
   },
   {
