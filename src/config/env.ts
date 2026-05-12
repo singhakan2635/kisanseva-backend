@@ -35,6 +35,9 @@ export const env = {
   // Azure Translator API (fallback translation service)
   AZURE_TRANSLATOR_KEY: process.env.AZURE_TRANSLATOR_KEY || '',
   AZURE_TRANSLATOR_REGION: process.env.AZURE_TRANSLATOR_REGION || 'centralindia',
+
+  // OpenWeatherMap API (free tier: 1000 calls/day)
+  OPENWEATHER_API_KEY: process.env.OPENWEATHER_API_KEY || '',
 };
 
 // Warn if refresh token secret is missing or same as JWT secret

@@ -14,6 +14,7 @@ import languageRoutes from './routes/language';
 import whatsappRoutes from './routes/whatsapp';
 import whatsappTokenRoutes from './routes/whatsappToken';
 import schemeRoutes from './routes/schemes';
+import weatherRoutes from './routes/weather';
 
 const app = express();
 
@@ -97,6 +98,9 @@ app.get('/api/whatsapp-token/exchange-now', exchangeTokenNow);
 
 // Public scheme routes (GET endpoints are public, POST/PATCH/DELETE check auth internally via requireRole)
 app.use('/api/schemes', schemeRoutes);
+
+// Public weather routes (non-sensitive, no auth required)
+app.use('/api/weather', weatherRoutes);
 
 // JWT auth - applied globally, exempts login/register internally
 app.use(authMiddleware);

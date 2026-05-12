@@ -36,6 +36,28 @@ KisanSeva is an agriculture/farmer services platform that helps farmers identify
 - **WhatsApp**: Cloud API integration (same pattern as Medigent)
 - **Logging**: Winston only - NEVER use console.log
 
+## Cost Control Rules (CRITICAL)
+
+### AI API Spending
+- **Claude Haiku ONLY** for all Anthropic API calls (diagnosis, summaries). NEVER use Sonnet or Opus in production — too expensive.
+- **Sarvam AI** for ALL translations (UI strings + disease data + descriptions). Single translation engine, no duplication.
+- **Generate once, cache forever**: All translations, farmer summaries, and TTS audio must be cached in the database. Never translate the same content twice.
+- **Rate limit awareness**: Sarvam has rate limits. Batch scripts must include delays (1-2s between calls) and retry logic.
+- **Budget tracking**: Log every external API call with cost estimate. Add a `GET /api/admin/api-costs` endpoint that shows daily/monthly API spend.
+
+### Cost-Effective Architecture
+- **CNN model first** (free, runs locally on dyno): DINOv2 handles ~70% of scans with zero API cost.
+- **Claude Haiku fallback** (cheap): Only called when CNN confidence is low or crop doesn't match. ~$0.001 per call.
+- **Sarvam translations** (one-time): Translate all 781 diseases × 22 languages ONCE (~$17). Then serve from DB cache forever.
+- **TTS audio caching**: Generate audio for each disease summary + language combo ONCE. Store URL, serve cached.
+- **NEVER call an API in a loop without checking cache first.**
+- **Pre-generate in batch scripts** (off-peak) rather than on-the-fly during user requests.
+
+### Spending Limits
+- Monthly Anthropic API budget: monitor via dashboard, alert if > $50/month
+- Monthly Sarvam API budget: mostly one-time, ongoing should be < $10/month
+- If costs spike, check logs for missing cache hits or translation loops
+
 ## Engineering Rules
 
 ### CI/CD First
